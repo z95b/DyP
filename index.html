@@ -1,11 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Stats Cuqui</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff69b4;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #ffb6c1;
+      border: 2px solid #ff69b4;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #ff69b4;
+    }
+    .result-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .set {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      width: 45%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+    }
+    .set-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #ff69b4;
+    }
+    .stat-line {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .dice-roll {
+      display: inline-block;
+      margin-right: 10px;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 50%;
+      background-color: #ffe4e1;
+      color: #333;
+    }
+    .low-roll {
+      color: red;
+      font-weight: bold;
+    }
+    /* Responsive para pantallas pequeñas */
+    @media screen and (max-width: 768px) {
+      .set {
+        width: 100%;
+      }
+      h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
 </head>
 <body>
-    hola
+
+  <h1>Dragonas Y Perronas</h1>
+  <button id="generateButton">GENERAR STATS</button>
+
+  <div class="result-container" style="display: none;" id="resultsContainer">
+    <div class="set" id="set1">
+      <div class="set-title">Set 1</div>
+      </video>
+    </div>
+    <div class="set" id="set2">
+      <div class="set-title">Set 2</div>
+  </div>
+
+  <script>
+    document.getElementById('generateButton').addEventListener('click', function() {
+      function rollStats() {
+        const rolls = [];
+        for (let i = 0; i < 6; i++) {
+          const diceRolls = [];
+          for (let j = 0; j < 4; j++) {
+            diceRolls.push(Math.floor(Math.random() * 6) + 1);
+          }
+          diceRolls.sort((a, b) => a - b);
+          const lowestRoll = diceRolls[0];
+          const sumOfTopThree = diceRolls[1] + diceRolls[2] + diceRolls[3];
+          rolls.push({ dice: diceRolls, sum: sumOfTopThree, lowest: lowestRoll });
+        }
+        return rolls;
+      }
+
+      const set1 = rollStats();
+      const set2 = rollStats();
+
+      const set1Container = document.getElementById('set1');
+      const set2Container = document.getElementById('set2');
+   
+      set1.forEach(stat => {
+        const statLine = document.createElement('div');
+        statLine.className = 'stat-line';
+        let lowRollHighlighted = false;
+        stat.dice.forEach(dice => {
+          const diceElement = document.createElement('span');
+          diceElement.className = 'dice-roll';
+          diceElement.textContent = dice;
+          if (dice === stat.lowest && !lowRollHighlighted) {
+            diceElement.classList.add('low-roll');
+            lowRollHighlighted = true;
+          }
+          statLine.appendChild(diceElement);
+        });
+        const sumElement = document.createElement('span');
+        sumElement.textContent = ` = ${stat.sum}`;
+        statLine.appendChild(sumElement);
+        set1Container.appendChild(statLine);
+      });
+
+      set2.forEach(stat => {
+        const statLine = document.createElement('div');
+        statLine.className = 'stat-line';
+        let lowRollHighlighted = false;
+        stat.dice.forEach(dice => {
+          const diceElement = document.createElement('span');
+          diceElement.className = 'dice-roll';
+          diceElement.textContent = dice;
+          if (dice === stat.lowest && !lowRollHighlighted) {
+            diceElement.classList.add('low-roll');
+            lowRollHighlighted = true;
+          }
+          statLine.appendChild(diceElement);
+        });
+        const sumElement = document.createElement('span');
+        sumElement.textContent = ` = ${stat.sum}`;
+        statLine.appendChild(sumElement);
+        set2Container.appendChild(statLine);
+      });
+
+      document.getElementById('resultsContainer').style.display = 'flex';
+    });
+  </script>
+
 </body>
 </html>
