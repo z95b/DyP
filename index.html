@@ -29,7 +29,7 @@
       cursor: pointer;
       transition: background-color 0.3s;
       display: block; 
-      margin: 0 auto; 
+      margin: 0 auto 20px;
     }
     button:hover {
       background-color: #ff69b4;
@@ -70,8 +70,25 @@
       color: red;
       font-weight: bold;
     }
-
-
+    .links-container {
+      margin-top: 30px;
+    }
+    .link-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffb6c1;
+      border: 2px solid #ff69b4;
+      border-radius: 20px;
+      color: white;
+      margin: 10px;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .link-btn:hover {
+      background-color: #ff69b4;
+    }
     @media screen and (max-width: 768px) {
       .set {
         width: 100%;
@@ -85,12 +102,12 @@
 <body>
 
   <img id="dnp" src="DnP.gif" alt="Descripción del GIF" style="max-width: 100%; height: auto;">
-
+  
   <h1>Generador de Stats</h1> 
 
   <button id="generateButton">GENERAR STATS</button>
   
-  <div class="result-container" style="display: none;" id="resultsContainer">
+  <div class="result-container" id="resultsContainer" style="display: none;">
     <div class="set" id="set1">
       <div class="set-title">Set 1</div>
     </div>
@@ -98,14 +115,27 @@
       <div class="set-title">Set 2</div>
     </div>
   </div>
-  
+
+  <div class="links-container">
+    <a href="https://docs.google.com/document/d/1amakRRCoQZRiCYnIYT99JBnrja_tY1GNIBNdu3tHcFU/edit?usp=sharing" class="link-btn">FICHA</a>
+    <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="link-btn">RAZAS</a>
+    <a href="https://docs.google.com/document/u/0/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit" class="link-btn">CLASES</a>
+    <a href="https://docs.google.com/document/d/1d3crS_GMVS5TDmTpqnTaOYPt7tNXUt4iTDLVI3n2s0g/edit?usp=sharing" class="link-btn">ARMAS</a>
+    <a href="https://docs.google.com/document/d/1amakRRCoQZRiCYnIYT99JBnrja_tY1GNIBNdu3tHcFU/edit?usp=sharing" class="link-btn">RUNAS</a>
+    <a href="https://docs.google.com/document/d/1AMj_ZXyBYFPHXMJBCPIUntG5cOepWFOA0cCoEsT6SNs/edit?usp=sharing" class="link-btn">REGLAS</a>
+  </div>
+  <br/> <br/> <br/>
+  <hr>
+  <div>
+    <h6> V1. Versión de enlaces</h6>
+  </div>
+
   <script>
     document.getElementById('generateButton').addEventListener('click', function() {
       const resultsContainer = document.getElementById('resultsContainer');
       const button = document.getElementById('generateButton');
-  
+
       if (resultsContainer.style.display === 'none') {
-        // Generar dados
         function rollStats() {
           const rolls = [];
           for (let i = 0; i < 6; i++) {
@@ -120,16 +150,16 @@
           }
           return rolls;
         }
-  
+
         const set1 = rollStats();
         const set2 = rollStats();
-  
+
         const set1Container = document.getElementById('set1');
         const set2Container = document.getElementById('set2');
-  
+
         set1Container.innerHTML = '<div class="set-title">Set 1</div>';
         set2Container.innerHTML = '<div class="set-title">Set 2</div>';
-  
+
         set1.forEach(stat => {
           const statLine = document.createElement('div');
           statLine.className = 'stat-line';
@@ -149,7 +179,7 @@
           statLine.appendChild(sumElement);
           set1Container.appendChild(statLine);
         });
-  
+
         set2.forEach(stat => {
           const statLine = document.createElement('div');
           statLine.className = 'stat-line';
@@ -169,11 +199,10 @@
           statLine.appendChild(sumElement);
           set2Container.appendChild(statLine);
         });
-  
+
         resultsContainer.style.display = 'flex';
         button.textContent = 'CANCELAR DADOS';
       } else {
-        // Ocultar resultados y restaurar el botón
         resultsContainer.style.display = 'none';
         button.textContent = 'GENERAR STATS';
       }
