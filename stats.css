@@ -1,120 +1,141 @@
-/* Estilo general del cuerpo */
 body {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    background-color: #111;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url('media/poker.jpeg'); /* Imagen de fondo */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Oscurece la imagen de fondo */
-    z-index: -1;
-  }
-  
-  /* Logo */
-  #dnp {
-    width: 1000px; /* Tamaño aumentado */
-    margin-top: 30px;
-  }
-  
-  /* Título */
-  h1 {
-    font-size: 3em;
-    color: #ff0000;
-    margin: 20px 0;
-    text-shadow: 2px 2px 8px black;
-  }
-  
-  /* Botón de generación de stats */
-  button#generateButton {
-    padding: 20px 40px; /* Tamaño aumentado */
-    font-size: 22px; /* Tamaño de fuente aumentado */
-    font-family: 'Cursive', serif; /* Tipografía elegante */
-    background-color: #333;
-    border: 3px solid #ff0000;
-    border-radius: 30px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-  }
-  button#generateButton:hover {
-    background-color: #ff0000;
-    transform: scale(1.1);
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('media/poker.jpeg'); 
+  background-size: contain; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+}
 
-  
-  /* Cada set de stats */
-  .set {
-    background-color: #333;
-    border-radius: 10px;
-    padding: 20px;
-    width: 45%;
-    margin: 10px;
-    color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+
+#dnp {
+  width: 1000px;
+  max-width: 1000px;
+  margin-top: 30px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #ff0000;
+  margin: 20px 0;
+  text-shadow: 2px 2px 8px black;
+}
+
+button#generateButton {
+  padding: 15px 30px;
+  font-size: 18px;
+  font-family: 'Cursive', serif;
+  background-color: #333;
+  border: 3px solid #ff0000;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+button#generateButton:hover {
+  background-color: #ff0000;
+  transform: scale(1.1);
+}
+
+.result-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 10px; 
+  width: 100%; 
+}
+
+.set {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1 1 45%;
+  min-width: 250px; 
+  max-width: 500px;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+.set-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #ff0000;
+  text-shadow: 1px 1px 5px black;
+}
+
+.stat-line {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.dice-roll {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  color: #111;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.low-roll {
+  color: yellow;
+  font-weight: bold;
+  background-color: #222;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2em;
   }
-  .set-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #ff0000;
-    text-shadow: 1px 1px 5px black;
+  #dnp {
+    width: 90%; 
   }
-  
-  /* Estilo para las líneas de estadísticas */
+  button#generateButton {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
   .stat-line {
-    font-size: 18px;
-    margin: 10px 0;
+    font-size: 16px;
   }
-  
-  /* Estilo para cada dado */
-  .dice-roll {
-    display: inline-block;
-    margin-right: 10px;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: #ff0000;
-    color: #111;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 480px) {
+
+  h1 {
+    font-size: 1.8em;
   }
-  
-  /* Estilo para el roll más bajo */
-  .low-roll {
-    color: yellow;
-    font-weight: bold;
-    background-color: #222;
+  #dnp {
+    width: 100%;
   }
-  
-  /* Media queries para dispositivos móviles */
-  @media screen and (max-width: 768px) {
-    .result-container {
-      width: 90%;
-    }
-    h1 {
-      font-size: 2.5em;
-    }
-    .set {
-      width: 100%;
-    }
+  button#generateButton {
+    font-size: 14px;
+    padding: 8px 15px;
   }
-  
+  .stat-line {
+    font-size: 14px;
+  }
+}

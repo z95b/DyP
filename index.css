@@ -1,77 +1,94 @@
-/* General */
 body {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    background-color: #f0f8ff;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  background-color: #f0f8ff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.background-image {
+  background-image: url('media/Caedrel.png');
+  background-size: contain; /* Ajusta el ancho completo de la imagen */
+  background-position: center top;
+  background-attachment: fixed; /* Efecto parallax */
+  background-repeat: repeat-x; /* Repite horizontalmente */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #ff69b4;
+  margin: 20px 0;
+}
+
+.logo {
+  width: 100%; 
+  height: auto; 
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-btn {
+  padding: 15px 25px;
+  font-size: 18px;
+  background-color: #ffb6c1;
+  border: 2px solid #ff69b4;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 10px 0;
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+}
+
+.menu-btn:hover {
+  background-color: #ff69b4;
+  transform: scale(1.05);
+}
+
+footer {
+  margin-top: 30px;
+}
+
+footer p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+@media screen and (max-width: 768px) {
   h1 {
-    font-size: 2.5em;
-    color: #ff69b4;
-    margin: 20px 0;
-  }
-  
-  .logo {
-    width: 1000px;
-    height: auto;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-  
-  /* Menu Buttons */
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 2em;
   }
   
   .menu-btn {
-    padding: 15px 25px;
-    font-size: 18px;
-    background-color: #ffb6c1;
-    border: 2px solid #ff69b4;
-    border-radius: 25px;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.2s;
-    margin: 10px 0;
-    display: inline-block;
-    width: 80%;
-    text-align: center;
+    width: 90%;
+    font-size: 16px;
   }
-  
-  .menu-btn:hover {
-    background-color: #ff69b4;
-    transform: scale(1.05);
-  }
-  
-  /* Footer */
-  footer {
-    margin-top: 30px;
-  }
-  
-  footer p {
-    font-size: 0.9em;
-    color: #666;
-  }
-  
-  @media screen and (max-width: 768px) {
-    h1 {
-      font-size: 2em;
-    }
-    
-    .menu-btn {
-      width: 90%;
-      font-size: 16px;
-    }
-  }
-  
+}
