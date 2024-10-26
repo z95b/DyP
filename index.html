@@ -3,211 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="ico.ico" type="image/x-icon">
+  <link rel="icon" href="media/ico.ico" type="image/x-icon">
   <title>Dragonas Y Perronas</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      background-color: #f0f8ff;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 2.5em;
-      color: #ff69b4;
-      margin: 20px 0;
-    }
-    button {
-      padding: 12px 25px;
-      font-size: 18px;
-      background-color: #ffb6c1;
-      border: 2px solid #ff69b4;
-      border-radius: 25px;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      display: block; 
-      margin: 0 auto 20px;
-    }
-    button:hover {
-      background-color: #ff69b4;
-    }
-    .result-container {
-      display: flex;
-      justify-content: center; 
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-    .set {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 20px;
-      width: 45%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      margin: 10px;
-    }
-    .set-title {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #ff69b4;
-    }
-    .stat-line {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-    .dice-roll {
-      display: inline-block;
-      margin-right: 10px;
-      font-weight: bold;
-      padding: 8px;
-      border-radius: 50%;
-      background-color: #ffe4e1;
-      color: #333;
-    }
-    .low-roll {
-      color: red;
-      font-weight: bold;
-    }
-    .links-container {
-      margin-top: 30px;
-    }
-    .link-btn {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #ffb6c1;
-      border: 2px solid #ff69b4;
-      border-radius: 20px;
-      color: white;
-      margin: 10px;
-      cursor: pointer;
-      display: inline-block;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-    .link-btn:hover {
-      background-color: #ff69b4;
-    }
-    @media screen and (max-width: 768px) {
-      .set {
-        width: 100%;
-      }
-      h1 {
-        font-size: 2em;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-  <img id="dnp" src="DnP.gif" alt="Descripción del GIF" style="max-width: 100%; height: auto;">
-  
-  <h1>Generador de Stats</h1> 
+  <div class="background-image"></div>
 
-  <button id="generateButton">GENERAR STATS</button>
-  
-  <div class="result-container" id="resultsContainer" style="display: none;">
-    <div class="set" id="set1">
-      <div class="set-title">Set 1</div>
+  <div class="container">
+    <a href="index.html" class="logo-link">
+      <img id="dnp" src="media/DnP.gif" alt="Descripción del GIF" class="logo">
+    </a>
+
+    <div class="menu-container">
+      <a href="stats.html" class="menu-btn">GENERADOR DE STATS</a>
+      <a href="https://www.docdroid.net/1auqYzE/dd-5a-edicion-hoja-o-ficha-editable-pdf" class="menu-btn">FICHA</a>
+      <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="menu-btn">RAZAS</a>
+      <a href="https://docs.google.com/document/u/0/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit" class="menu-btn">CLASES</a>
+      <a href="https://docs.google.com/document/d/1d3crS_GMVS5TDmTpqnTaOYPt7tNXUt4iTDLVI3n2s0g/edit?usp=sharing" class="menu-btn">ARMAS</a>
+      <a href="https://docs.google.com/document/d/1amakRRCoQZRiCYnIYT99JBnrja_tY1GNIBNdu3tHcFU/edit?usp=sharing" class="menu-btn">RUNAS</a>
+      <a href="https://docs.google.com/document/d/1AMj_ZXyBYFPHXMJBCPIUntG5cOepWFOA0cCoEsT6SNs/edit?usp=sharing" class="menu-btn">REGLAS</a>
     </div>
-    <div class="set" id="set2">
-      <div class="set-title">Set 2</div>
-    </div>
+
+    <footer>
+      <hr>
+      <p>V1. Versión de enlaces</p>
+    </footer>
   </div>
-
-  <div class="links-container">
-    <a href="https://www.docdroid.net/1auqYzE/dd-5a-edicion-hoja-o-ficha-editable-pdf" class="link-btn">FICHA</a>
-    <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="link-btn">RAZAS</a>
-    <a href="https://docs.google.com/document/u/0/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit" class="link-btn">CLASES</a>
-    <a href="https://docs.google.com/document/d/1d3crS_GMVS5TDmTpqnTaOYPt7tNXUt4iTDLVI3n2s0g/edit?usp=sharing" class="link-btn">ARMAS</a>
-    <a href="https://docs.google.com/document/d/1amakRRCoQZRiCYnIYT99JBnrja_tY1GNIBNdu3tHcFU/edit?usp=sharing" class="link-btn">RUNAS</a>
-    <a href="https://docs.google.com/document/d/1AMj_ZXyBYFPHXMJBCPIUntG5cOepWFOA0cCoEsT6SNs/edit?usp=sharing" class="link-btn">REGLAS</a>
-  </div>
-  <br/> <br/> <br/>
-  <hr>
-  <div>
-    <h6> V1. Versión de enlaces</h6>
-  </div>
-
-  <script>
-    document.getElementById('generateButton').addEventListener('click', function() {
-      const resultsContainer = document.getElementById('resultsContainer');
-      const button = document.getElementById('generateButton');
-
-      if (resultsContainer.style.display === 'none') {
-        function rollStats() {
-          const rolls = [];
-          for (let i = 0; i < 6; i++) {
-            const diceRolls = [];
-            for (let j = 0; j < 4; j++) {
-              diceRolls.push(Math.floor(Math.random() * 6) + 1);
-            }
-            diceRolls.sort((a, b) => a - b);
-            const lowestRoll = diceRolls[0];
-            const sumOfTopThree = diceRolls[1] + diceRolls[2] + diceRolls[3];
-            rolls.push({ dice: diceRolls, sum: sumOfTopThree, lowest: lowestRoll });
-          }
-          return rolls;
-        }
-
-        const set1 = rollStats();
-        const set2 = rollStats();
-
-        const set1Container = document.getElementById('set1');
-        const set2Container = document.getElementById('set2');
-
-        set1Container.innerHTML = '<div class="set-title">Set 1</div>';
-        set2Container.innerHTML = '<div class="set-title">Set 2</div>';
-
-        set1.forEach(stat => {
-          const statLine = document.createElement('div');
-          statLine.className = 'stat-line';
-          let lowRollHighlighted = false;
-          stat.dice.forEach(dice => {
-            const diceElement = document.createElement('span');
-            diceElement.className = 'dice-roll';
-            diceElement.textContent = dice;
-            if (dice === stat.lowest && !lowRollHighlighted) {
-              diceElement.classList.add('low-roll');
-              lowRollHighlighted = true;
-            }
-            statLine.appendChild(diceElement);
-          });
-          const sumElement = document.createElement('span');
-          sumElement.textContent = ` = ${stat.sum}`;
-          statLine.appendChild(sumElement);
-          set1Container.appendChild(statLine);
-        });
-
-        set2.forEach(stat => {
-          const statLine = document.createElement('div');
-          statLine.className = 'stat-line';
-          let lowRollHighlighted = false;
-          stat.dice.forEach(dice => {
-            const diceElement = document.createElement('span');
-            diceElement.className = 'dice-roll';
-            diceElement.textContent = dice;
-            if (dice === stat.lowest && !lowRollHighlighted) {
-              diceElement.classList.add('low-roll');
-              lowRollHighlighted = true;
-            }
-            statLine.appendChild(diceElement);
-          });
-          const sumElement = document.createElement('span');
-          sumElement.textContent = ` = ${stat.sum}`;
-          statLine.appendChild(sumElement);
-          set2Container.appendChild(statLine);
-        });
-
-        resultsContainer.style.display = 'flex';
-        button.textContent = 'CANCELAR DADOS';
-      } else {
-        resultsContainer.style.display = 'none';
-        button.textContent = 'GENERAR STATS';
-      }
-    });
-  </script>
 
 </body>
 </html>
