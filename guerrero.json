@@ -1,0 +1,82 @@
+{
+  "guerrero": {
+    "dadosGolpe": "1d10 + Constitución",
+    "vidaInicial": "10 + Constitución",
+    "competencias": {
+      "armaduras": "Todas las armaduras y escudos",
+      "armas": ["Armas marciales", "Sencillas"],
+      "herramientas": "Ninguna",
+      "salvadas": ["Fuerza", "Constitución"],
+      "habilidades": [
+        "Acrobacias",
+        "Atletismo",
+        "Historia",
+        "Intimidación",
+        "Percepción",
+        "Perspicacia",
+        "Supervivencia",
+        "Trato con animales"
+      ]
+    },
+    "aptitudMagica": "Inteligencia (Guerrero Arcano)",
+    "mejorasCaracteristica": [4, 6, 8, 12, 14, 16, 19],
+    "estilosCombate": [
+      {
+        "nombre": "Combate con Armas a dos Manos",
+        "descripcion": "Añades tu modificador de ataque al daño de tu segunda arma"
+      },
+      {
+        "nombre": "Combate a dos Manos",
+        "descripcion": "Si sacas 1 o 2 de daño puedes re-lanzar un dado a tu elección"
+      },
+      {
+        "nombre": "Defensa",
+        "descripcion": "Todas las armaduras reciben un +1"
+      },
+      {
+        "nombre": "Duelo",
+        "descripcion": "Si solo usas una arma de una mano, tienes un +2 en tiradas de ataque"
+      },
+      {
+        "nombre": "Protector",
+        "descripcion": "Si estás a 1 casilla de un aliado que es atacado, puedes usar tu reacción para dar desventaja a ese golpe"
+      },
+      {
+        "nombre": "Tirador",
+        "descripcion": "Recibes un +2 en tiradas de ataque con armas a distancia"
+      }
+    ],
+    "habilidadesGuerrero": [
+      {
+        "nombre": "Tomar aliento",
+        "nivel": 1,
+        "descripcion": "Te curas (1d10 + Lvl)"
+      },
+      {
+        "nombre": "Acción súbita",
+        "nivel": 2,
+        "descripcion": "Una vez por descanso Corto/Largo puedes llevar a cabo una acción más."
+      },
+      {
+        "nombre": "Ataque adicional",
+        "nivel": 5,
+        "descripcion": "Puedes atacar 2 veces al mismo objetivo o a un objetivo diferente usando la misma acción."
+      },
+      {
+        "nombre": "Ataque adicional (2)",
+        "nivel": 11,
+        "descripcion": "Puedes atacar 3 veces al mismo objetivo o a un objetivo diferente usando la misma acción."
+      },
+      {
+        "nombre": "Ataque adicional (3)",
+        "nivel": 20,
+        "descripcion": "Puedes atacar 4 veces al mismo objetivo o a un objetivo diferente usando la misma acción."
+      },
+      {
+        "nombre": "Indómito",
+        "nivel": 9,
+        "descripcion": "Puedes repetir una tirada de salvación. Una vez por descanso largo."
+      }
+    ]
+  }
+}
