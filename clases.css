@@ -1,128 +1,109 @@
-* {
-    box-sizing: border-box;
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: #f0f8ff;
+    color: #333;
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e9ecef;
-    color: #343a40;
-}
-
-.background-image {
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  .background-image {
+    background-image: url('media/Caedrel.png');
+    background-size: contain; /* Ajusta el ancho completo de la imagen */
+    background-position: center top;
+    background-attachment: fixed; /* Efecto parallax */
+    background-repeat: repeat-x; /* Repite horizontalmente */
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('media/background.jpg') no-repeat center center fixed; /* Cambia esto al URL de tu imagen */
-    background-size: cover;
     z-index: -1;
-    filter: blur(5px);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
+  }
+  
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
-}
-
-.container:hover {
-    transform: translateY(-5px);
-}
-
-.logo {
-    display: block;
-    margin: 0 auto 20px;
-    width: 180px; /* Ajusta el tamaño según sea necesario */
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  h1 {
     font-size: 2.5em;
-    color: #007bff;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    text-align: center;
-    color: #495057;
-    margin-bottom: 20px;
-}
-
-button {
-    display: block;
-    width: 100%;
-    padding: 12px;
+    color: #ff69b4;
     margin: 20px 0;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  }
+  
+  .logo {
+    width: 100%; 
+    height: auto; 
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  
+  
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .menu-btn {
+    padding: 15px 25px;
     font-size: 18px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid #dee2e6;
-    text-align: left;
-}
-
-th {
-    background-color: #007bff;
+    background-color: #ffb6c1;
+    border: 2px solid #ff69b4;
+    border-radius: 25px;
     color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 10px 0;
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+  }
+  
+  .menu-btn:hover {
+    background-color: #ff69b4;
+    transform: scale(1.05);
+  }
+  
+  footer {
+    margin-top: 30px;
+  }
+  
+  footer p {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 2em;
+    }
+    
+    .menu-btn {
+      width: 90%;
+      font-size: 16px;
+    }
+  }
+  
+  .guerrero-btn {
+    display: block;
+    width: 30%; /* Ajusta el tamaño según sea necesario */
+    height: 30%; /* Asegúrate de que sea cuadrada */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 8px; /* Bordes redondeados para la imagen */
 }
 
-td {
-    background-color: #f8f9fa;
-}
-
-td:last-child {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.hidden {
-    display: none;
-}
-
-/* estilos para el contenedor del guerrero */
-#guerrero-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
-}
-
-#guerrero-container h3 {
-    color: #333;
-}
-
-#guerrero-container p {
-    margin: 5px 0;
-    color: #555;
+.guerrero-btn:hover {
+    transform: translateY(-2px); /* Efecto de hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra al hacer hover */
 }

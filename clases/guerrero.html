@@ -1,54 +1,614 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizador de D&D</title>
-    <link rel="stylesheet" href="dissenys.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Información de la Clase D&D</h1>
-        <div id="content"></div>
-    </div>
-    <script>
+    <title>Guerrero - D&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Garamond&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("guerrero.txt")
-        .then(response => response.text())
-        .then(data => parseData(data))
-        .catch(error => console.error("Error al cargar el archivo:", error));
-});
+        h1,
+        h2,
+        h3 {
+            color: #e0b100;
+        }
 
-function parseData(data) {
-    const contentDiv = document.getElementById("content");
-    const categories = data.split("\n\n");
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-    categories.forEach(category => {
-        const lines = category.split("\n");
-        const categoryId = lines[0].trim().match(/\*disseny-\d+/)[0].replace('*', '');
-        const title = lines[1].split(": ")[1].replace(/\"/g, '');
-        const items = lines.slice(2).map(line => line.replace(/^- /, '').trim());
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
 
-        const categoryDiv = document.createElement("div");
-        categoryDiv.classList.add("category", categoryId);
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
 
-        const titleElement = document.createElement("h2");
-        titleElement.textContent = title;
-        categoryDiv.appendChild(titleElement);
+        th {
+            background-color: #444;
+        }
 
-        const listElement = document.createElement("ul");
-        items.forEach(item => {
-            const listItem = document.createElement("li");
-            listItem.textContent = item;
-            listElement.appendChild(listItem);
-        });
+        tr:hover {
+            background-color: #555;
+        }
 
-        categoryDiv.appendChild(listElement);
-        contentDiv.appendChild(categoryDiv);
-    });
+        .highlight {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .grid-item {
+            background-color: #2E2E2E;
+            /* Color de fondo del cuadrado */
+            color: #FFFFFF;
+            /* Color del texto */
+            padding: 15px;
+            border-radius: 8px;
+            /* Esquinas redondeadas */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra para dar profundidad */
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        .circles-container {
+            display: flex;
+            gap: 15px;
+            /* Espaciado entre los círculos */
+            margin: 20px 0;
+            justify-content: center;
+            /* Centra los círculos horizontalmente */
+        }
+
+        .circle {
+            background-color: #2E2E2E;
+            /* Color de fondo del círculo */
+            color: #FFFFFF;
+            /* Color del texto */
+            width: 40px;
+            /* Ancho del círculo */
+            height: 40px;
+            /* Alto del círculo */
+            border-radius: 50%;
+            /* Hace que el div sea redondo */
+            display: flex;
+            /* Para centrar el contenido */
+            align-items: center;
+            /* Centra verticalmente */
+            justify-content: center;
+            /* Centra horizontalmente */
+            font-size: 16px;
+            /* Tamaño del texto */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra para dar profundidad */
+        }
+
+        
+        .maniobras-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Permite que los elementos se distribuyan en varias líneas */
+            gap: 20px;
+            /* Espacio entre los cuadrados */
+            justify-content: flex-start;
+            /* Alinea los cuadrados al inicio */
+        }
+
+        .maniobra {
+            background-color: #2c3e50;
+            /* Color elegante (un azul oscuro) */
+            color: white;
+            /* Texto blanco */
+            border-radius: 40px;
+            /* Bordes redondeados */
+            padding: 20px;
+            /* Espaciado interno */
+            height: 0 auto;
+            /* Altura fija */
+            max-width: 0 auto;
+            /* Ancho variable */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra suave */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Transiciones suaves */
+            position: relative;
+            /* Necesario para el efecto de hover */
+        }
+
+        .maniobra:hover {
+            transform: scale(1.1);
+            /* Aumenta el tamaño al pasar el ratón */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            /* Sombra más pronunciada */
+        }
+
+
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding: 10px 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 50px;
+            /* Espacio para el número de nivel */
+        }
+
+        .timeline-level {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            /* Aumentado para mejor visibilidad */
+            height: 40px;
+            /* Aumentado para mejor visibilidad */
+            background-color: #ff5722;
+            /* Color vibrante para el círculo */
+            color: #ffffff;
+            /* Color del texto */
+            border-radius: 50%;
+            /* Hace que el div sea redondo */
+            display: flex;
+            /* Para centrar el contenido */
+            align-items: center;
+            /* Centra verticalmente */
+            justify-content: center;
+            /* Centra horizontalmente */
+            font-size: 18px;
+            /* Tamaño del texto */
+            font-weight: bold;
+            /* Negrita para mayor énfasis */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            /* Sombra más pronunciada */
+        }
+/* Estilos comunes para aptitudes y habilidades */
+.timeline, .aptitudes-container {
+    margin: 20px 0;
+    padding: 10px 0;
 }
 
+.timeline-item, .aptitud {
+    position: relative;
+    margin: 20px 0;
+    padding-left: 50px;
+}
+
+/* Nivel para aptitudes */
+.aptitud .timeline-level {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #2ecc71;
+    /* Color diferente para aptitudes */
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenido de las habilidades y aptitudes */
+.timeline-content, .aptitud-content {
+    background-color: #014149;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin-left: 15px;
+    border-left: 4px solid #00796b;
+}
+
+.timeline-content strong, .aptitud-content strong {
+    color: #00796b;
+}
+
+/* Colores específicos para aptitudes */
+.gran-campeon .aptitud-content {
+    background-color: #e74c3c;
+}
+
+.maestro-combate .aptitud-content {
+    background-color: #f39c12;
+}
+
+.guerrero-arcano .aptitud-content {
+    background-color: #8e44ad;
+}
+
+/* Efecto hover para aptitudes */
+.aptitud:hover .aptitud-content {
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Guerrero</h1>
+        <h2>Datos de Golpe:</h2>
+        <p><span class="highlight">1d10 + Constitución</span></p>
+
+        <h2>Competencias</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Armaduras:</h3>
+                <p>Todas las armaduras y escudos</p>
+            </div>
+            <div class="grid-item">
+                <h3>Armas:</h3>
+                <p>Armas marciales / Sencillas</p>
+            </div>
+            <div class="grid-item">
+                <h3>Herramientas:</h3>
+                <p>Ninguna</p>
+            </div>
+            <div class="grid-item">
+                <h3>Salvadas:</h3>
+                <p>Fuerza + Constitución</p>
+            </div>
+        </div>
+
+        <h2>Habilidades</h2>
+        <p>Escoge 2 entre:</p>
+        <div class="grid-container">
+            <div class="grid-item">Acrobacias</div>
+            <div class="grid-item">Atletismo</div>
+            <div class="grid-item">Historia</div>
+            <div class="grid-item">Intimidación</div>
+            <div class="grid-item">Percepción</div>
+            <div class="grid-item">Perspicacia</div>
+            <div class="grid-item">Supervivencia</div>
+            <div class="grid-item">Trato con animales</div>
+        </div>
+
+        <h2>Aptitud mágica</h2>
+        <p>Inteligencia (Guerrero Arcano)</p>
+
+        <h2>Mejoras de Característica</h2>
+        <div class="circles-container">
+            <div class="circle">4</div>
+            <div class="circle">6</div>
+            <div class="circle">8</div>
+            <div class="circle">12</div>
+            <div class="circle">14</div>
+            <div class="circle">16</div>
+            <div class="circle">19</div>
+        </div>
+
+    </div>
+    </br>
+    <div class="container">
+
+        <h2>Estilos de Combate</h2>
+        <p><strong>Debes elegir 1:</strong></p>
+        <ul>
+            <li><strong>Combate con Armas a dos Manos:</strong> Añades tu modificador de ataque al daño de tu segunda
+                arma.</li>
+            <li><strong>Combate a dos Manos:</strong> Si sacas 1 o 2 de daño puedes re-lanzar un dado a tu elección.
+            </li>
+            <li><strong>Defensa:</strong> Todas las armaduras reciben un +1.</li>
+            <li><strong>Duelo:</strong> Si solo usas una arma de una mano, tienes un +2 en tiradas de ataque.</li>
+            <li><strong>Protector:</strong> Si estás a 1 casilla de un aliado que es atacado, puedes usar tu reacción
+                para dar desventaja a ese golpe.</li>
+            <li><strong>Tirador:</strong> Recibes un +2 en tiradas de ataque con armas a distancia.</li>
+        </ul>
+    </div>
+    </br>
+
+    <div class="container">
+
+        <h2>Habilidades del Guerrero</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-level">1</div>
+                <div class="timeline-content">
+                    <strong>Tomar aliento:</strong> (Acc. Adic.) Te curas (1d10 + Lvl)
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-level">2</div>
+                <div class="timeline-content">
+                    <strong>Acción súbita:</strong> Una vez por descanso Corto/Largo puedes llevar a cabo una acción
+                    más.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-level">5</div>
+                <div class="timeline-content">
+                    <strong>Ataque adicional:</strong> Puedes atacar 2 veces al mismo objetivo o a un objetivo diferente
+                    usando la misma acción.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-level">9</div>
+                <div class="timeline-content">
+                    <strong>Indómito:</strong> Puedes repetir una tirada de salvación. Una vez por descanso largo.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-level">11</div>
+                <div class="timeline-content">
+                    <strong>Ataque adicional (2):</strong> Puedes atacar 3 veces al mismo objetivo o a un objetivo
+                    diferente usando la misma acción.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-level">20</div>
+                <div class="timeline-content">
+                    <strong>Ataque adicional (3):</strong> Puedes atacar 4 veces al mismo objetivo o a un objetivo
+                    diferente usando la misma acción.
+                </div>
+            </div>
+        </div>
+    </div>
+    </br>
+
+    <div class="container">
+
+        <h2>Aptitudes Marciales</h2>
+
+        <!-- Selector de nivel -->
+        <label for="nivel-selector">Selecciona tu nivel:</label>
+        <select id="nivel-selector">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+        </select>
+        <div class="aptitudes-container" id="aptitudes-container">
+            <div class="aptitud gran-campeon" data-nivel="3">
+                <div class="timeline-level">3</div>
+                <div class="aptitud-content">
+                    <strong>El Gran Campeón</strong>
+                    <p><strong>Crítico Mejorado</strong> (Lvl 3)<br>Sacar 19 en una tirada de ataque también es considerado crítico.</p>
+                </div>
+            </div>
+            <div class="aptitud gran-campeon" data-nivel="7">
+                <div class="timeline-level">7</div>
+                <div class="aptitud-content">
+                    <strong>Atleta Sobresaliente</strong>
+                    <p><strong>(Lvl 7)</strong><br>Añades la mitad de tu bonificador de Fuerza, Destreza o Constitución.</p>
+                </div>
+            </div>
+            <div class="aptitud gran-campeon" data-nivel="10">
+                <div class="timeline-level">10</div>
+                <div class="aptitud-content">
+                    <strong>Estilo de combate adicional</strong>
+                    <p><strong>(Lvl 10)</strong><br>Se explica solo.</p>
+                </div>
+            </div>
+            <div class="aptitud gran-campeon" data-nivel="15">
+                <div class="timeline-level">15</div>
+                <div class="aptitud-content">
+                    <strong>Crítico Superior</strong>
+                    <p><strong>(Lvl 15)</strong><br>Si sacas 18 también es considerado crítico.</p>
+                </div>
+            </div>
+            <div class="aptitud gran-campeon" data-nivel="18">
+                <div class="timeline-level">18</div>
+                <div class="aptitud-content">
+                    <strong>Superviviente</strong>
+                    <p><strong>(Lvl 18)</strong><br>Regeneras 5 + Mod. Const. al estar por debajo del 50% de tu vida máxima cada turno.</p>
+                </div>
+            </div>
+        
+            <div class="aptitud maestro-combate" data-nivel="3">
+                <div class="timeline-level">3</div>
+                <div class="aptitud-content">
+                    <strong>Maestro de Combate</strong>
+                    <p><strong>Supremacía de Combate</strong> (Lvl 3)<br>Aprendes 3 maniobras. Cada vez que aprendas nuevas maniobras, puedes sustituir las que ya sabes por otras. Obtienes 4 dados de supremacía (4d8).</p>
+                    <p><strong>Estudioso de la Guerra</strong> (Lvl 3)<br>3 competencias en herramientas de artesano a tu elección.</p>
+                </div>
+            </div>
+            <div class="aptitud maestro-combate" data-nivel="7">
+                <div class="timeline-level">7</div>
+                <div class="aptitud-content">
+                    <strong>Supremacía de Combate</strong>
+                    <p><strong>(Lvl 7)</strong><br>Obtienes 2 nuevas maniobras. Obtienes un dado de supremacía adicional (5d8).</p>
+                    <p><strong>Conocer a tu enemigo</strong> (Lvl 7)<br>Si inviertes un minuto o más interactuando con un personaje fuera de combate, conocerás si tu enemigo es superior, igual o inferior a ti respecto a: (Elige 2)<br> + Fuerza<br> + Destreza<br> + Constitución<br> + Clase de Armadura<br> + Puntos de golpe actuales<br> + Nivel de clase (Total)<br> + Niveles de Guerrero.</p>
+                </div>
+            </div>
+            <div class="aptitud maestro-combate" data-nivel="10">
+                <div class="timeline-level">10</div>
+                <div class="aptitud-content">
+                    <strong>Supremacía de Combate</strong>
+                    <p><strong>(Lvl 10)</strong><br>Obtienes 2 nuevas maniobras. Tus dados pasan de ser d8 a ser d10.</p>
+                </div>
+            </div>
+            <div class="aptitud maestro-combate" data-nivel="15">
+                <div class="timeline-level">15</div>
+                <div class="aptitud-content">
+                    <strong>Supremacía de Combate</strong>
+                    <p><strong>(Lvl 15)</strong><br>Obtienes 2 nuevas maniobras. Obtienes un dado de supremacía adicional (6d10).</p>
+                </div>
+            </div>
+            <div class="aptitud maestro-combate" data-nivel="18">
+                <div class="timeline-level">18</div>
+                <div class="aptitud-content">
+                    <strong>Supremacía mejorada</strong>
+                    <p><strong>(Lvl 18)</strong><br>Los dados pasan de d10 a d12.</p>
+                    <p><strong>Salvadas de Supremacía</strong>:<br>Tus enemigos deberán sacar: 8 + Competencia + Mod de Fuerza o Destreza. Los dados de supremacía se recuperan mediante un descanso Corto.</p>
+                </div>
+            </div>
+        
+            <div class="aptitud guerrero-arcano" data-nivel="3">
+                <div class="timeline-level">3</div>
+                <div class="aptitud-content">
+                    <strong>Guerrero Arcano</strong>
+                    <p><strong>Lanzamiento de conjuros</strong> (Lvl 3)<br>Puedes aprender conjuros de Abjuración o Evocación de la clase “Mago”.<br>Necesitarás Inteligencia para lanzar conjuros.</p>
+                    <p><strong>Arma Vinculada</strong> (Lvl 3)<br>Al realizar un descanso corto, puedes vincularte con un arma:<br> + No se te puede desarmar<br> + Puedes atraer el arma a tu mano usando una acción adicional.<br> + Puedes tener 2 armas vinculadas, pero solo podrás hacer aparecer 1 por acción adicional.</p>
+                </div>
+            </div>
+            <div class="aptitud guerrero-arcano" data-nivel="7">
+                <div class="timeline-level">7</div>
+                <div class="aptitud-content">
+                    <strong>Magia de Guerra</strong>
+                    <p><strong>(Lvl 7)</strong><br>Si usas un truco como acción, puedes atacar con tu arma como acción adicional.</p>
+                </div>
+            </div>
+            <div class="aptitud guerrero-arcano" data-nivel="10">
+                <div class="timeline-level">10</div>
+                <div class="aptitud-content">
+                    <strong>Golpe Sobrenatural</strong>
+                    <p><strong>(Lvl 10)</strong><br>Al acertar un golpe con tu arma a un objetivo, este tendrá desventaja cuando le ataques en tu siguiente turno con un ataque mágico.</p>
+                </div>
+            </div>
+            <div class="aptitud guerrero-arcano" data-nivel="15">
+                <div class="timeline-level">15</div>
+                <div class="aptitud-content">
+                    <strong>Carga Arcana</strong>
+                    <p><strong>(Lvl 15)</strong><br>Puedes usar tu acción Súbita para teletransportarte a un espacio de 30m (6C) que puedas ver, antes o después de usar tu acción normal.</p>
+                </div>
+            </div>
+            <div class="aptitud guerrero-arcano" data-nivel="18">
+                <div class="timeline-level">18</div>
+                <div class="aptitud-content">
+                    <strong>Magia de Guerra Mejorada</strong>
+                    <p><strong>(Lvl 18)</strong><br>Al lanzar un conjuro, puedes usar tu acción adicional para atacar con tu arma.</p>
+                </div>
+            </div>
+        </div>
+        
+
+    <script>
+        // Función para filtrar las aptitudes según el nivel seleccionado
+        document.getElementById('nivel-selector').addEventListener('change', function() {
+            const nivelSeleccionado = parseInt(this.value);
+            const aptitudes = document.querySelectorAll('.aptitud');
+            aptitudes.forEach(aptitud => {
+                const nivelAptitud = parseInt(aptitud.getAttribute('data-nivel'));
+                // Mostrar solo las aptitudes que son de nivel seleccionado o inferior
+                if (nivelAptitud <= nivelSeleccionado) {
+                    aptitud.style.display = 'block';
+                } else {
+                    aptitud.style.display = 'none';
+                }
+            });
+        });
+        // Inicializa la visibilidad de las aptitudes
+        document.getElementById('nivel-selector').dispatchEvent(new Event('change'));
+    </script>
+
+    </br>
+
+    <div class="container">
+        <h2>Maniobras</h2>
+        <div class="maniobras-container">
+            <div class="maniobra">
+                <strong>Arremetida:</strong> Aumentas 1C tu rango de ataque. Si aciertas, añades el número del dado al
+                daño.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque Amenazador:</strong> Al impactar con un ataque, puedes asustar a tu objetivo. Añade el
+                resultado al daño y el objetivo hará una Salvada de Sabiduría.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque de Barrido:</strong> Si hay una criatura a 1c de tu objetivo, puedes lanzar un dado de
+                ataque para atacarla y hacerle el daño de tu dado de Superioridad.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque Preciso:</strong> Añades tu dado de supremacía a la tirada de ataque antes o después de
+                saber el resultado.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque Provocador:</strong> Al acertar un ataque, añades el dado de supremacía al daño y el
+                objetivo hará una S. de Sab. Si falla, tendrá desventaja contra enemigos que no seas tú.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque y Derribo:</strong> Añade el resultado del dado al daño de ataque. Tu objetivo ha de
+                hacer una S. de Fuerza. Si falla, es derribado.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque y Desarme:</strong> Añade el resultado del dado al daño de ataque. Tu objetivo ha de
+                hacer una S. de Fuerza. Si falla, su arma cae al suelo.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque y Distracción:</strong> Al impactar, añade el resultado del dado a la tirada de daño. El
+                enemigo tiene desventaja en su próximo ataque.
+            </div>
+            <div class="maniobra">
+                <strong>Ataque y Presión:</strong> Al impactar, añade el resultado del dado a la tirada de daño. Si el
+                enemigo no tiene más de 0 hit points, no podrá atacarte en su próximo turno.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function filtrarHabilidades() {
+            const nivelSeleccionado = parseInt(document.getElementById('nivel').value);
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                const nivelHabilidad = parseInt(item.querySelector('.timeline-level').textContent);
+                if (nivelHabilidad <= nivelSeleccionado) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
+
 </html>
