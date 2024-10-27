@@ -1,0 +1,41 @@
+*disseny-1
+Título: "Dados de golpe y vida"
+- Dados de golpe: 1d10 + Constitución
+- Vida inicial: 10 + Constitución
+
+*disseny-2
+Título: "Competencias en armaduras y armas"
+- Armaduras: Todas las armaduras y escudos
+- Armas: Armas marciales, sencillas
+- Herramientas: Ninguna
+- Salvadas: Fuerza, Constitución
+
+*disseny-3
+Título: "Habilidades"
+- Acrobacias, Atletismo, Historia, Intimidación, Percepción, Perspicacia, Supervivencia, Trato con animales
+
+*disseny-4
+Título: "Aptitud mágica"
+- Inteligencia (Guerrero Arcano)
+
+*disseny-5
+Título: "Mejoras de característica"
+- Niveles: 4, 6, 8, 12, 14, 16, 19
+
+*disseny-6
+Titol: "Estilos de combate"
+- Combate con Armas a dos Manos: Añades tu modificador de ataque al daño de tu segunda arma
+- Combate a dos Manos: Si sacas 1 o 2 de daño puedes re-lanzar un dado a tu elección
+- Defensa: Todas las armaduras reciben un +1
+- Duelo: Si solo usas una arma de una mano, tienes un +2 en tiradas de ataque
+- Protector: Si estás a 1 casilla de un aliado que es atacado, puedes usar tu reacción para dar desventaja a ese golpe
+- Tirador: Recibes un +2 en tiradas de ataque con armas a distancia
+
+*disseny-7
+Titol: "Habilidades del Guerrero"
+- Tomar aliento (Nivel 1): Te curas (1d10 + Lvl)
+- Acción súbita (Nivel 2): Una vez por descanso Corto/Largo puedes llevar a cabo una acción más.
+- Ataque adicional (Nivel 5): Puedes atacar 2 veces al mismo objetivo o a un objetivo diferente usando la misma acción.
+- Ataque adicional [2] (Nivel 11): Puedes atacar 3 veces al mismo objetivo o a un objetivo diferente usando la misma acción.
+- Ataque adicional (3) (Nivel 20): Puedes atacar 4 veces al mismo objetivo o a un objetivo diferente usando la misma acción.
+- Indómito (Nivel 9): Puedes repetir una tirada de salvación. Una vez por descanso largo.

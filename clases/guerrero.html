@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de D&D</title>
+    <link rel="stylesheet" href="dissenys.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Información de la Clase D&D</h1>
+        <div id="content"></div>
+    </div>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("guerrero.txt")
+        .then(response => response.text())
+        .then(data => parseData(data))
+        .catch(error => console.error("Error al cargar el archivo:", error));
+});
+
+function parseData(data) {
+    const contentDiv = document.getElementById("content");
+    const categories = data.split("\n\n");
+
+    categories.forEach(category => {
+        const lines = category.split("\n");
+        const categoryId = lines[0].trim().match(/\*disseny-\d+/)[0].replace('*', '');
+        const title = lines[1].split(": ")[1].replace(/\"/g, '');
+        const items = lines.slice(2).map(line => line.replace(/^- /, '').trim());
+
+        const categoryDiv = document.createElement("div");
+        categoryDiv.classList.add("category", categoryId);
+
+        const titleElement = document.createElement("h2");
+        titleElement.textContent = title;
+        categoryDiv.appendChild(titleElement);
+
+        const listElement = document.createElement("ul");
+        items.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            listElement.appendChild(listItem);
+        });
+
+        categoryDiv.appendChild(listElement);
+        contentDiv.appendChild(categoryDiv);
+    });
+}
+
+    </script>
+</body>
+</html>
