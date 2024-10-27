@@ -1,6 +1,8 @@
+/* Estilo general del cuerpo */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 100%);
+    color: #333;
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,49 +11,164 @@ body {
     min-height: 100vh;
 }
 
+/* Contenedor principal */
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin: 0;
+    padding: 10px 0 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    grid-column: span 2;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos de categoría (tarjetas) */
+.category {
     padding: 20px;
     background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 6px solid transparent;
+    position: relative;
+    overflow: hidden;
 }
 
-h1 {
+.category::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+    z-index: 0;
+    transition: opacity 0.3s;
+}
+
+.category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.category:hover::before {
+    opacity: 0.9;
+}
+
+/* Títulos de las categorías */
+.category h2 {
+    color: #333;
+    font-size: 1.8em;
     text-align: center;
-    color: #444;
+    margin: 0;
+    padding-bottom: 10px;
+    position: relative;
+    font-weight: 600;
+    z-index: 1;
 }
 
-.category {
-    margin: 20px 0;
-    padding: 15px;
-    border-left: 5px solid #007bff;
-    background-color: #e9f5ff;
+.category h2::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 3px;
+    background-color: currentColor;
+    margin: 8px auto 0;
     border-radius: 5px;
 }
 
-.category h2 {
-    color: #007bff;
-    font-size: 1.4em;
-}
-
+/* Lista de elementos */
 .category ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 15px 0 0;
+    display: grid;
+    gap: 10px;
+    z-index: 1;
 }
 
 .category ul li {
-    padding: 5px 0;
-    font-size: 1.1em;
+    padding: 10px;
+    background-color: rgba(240, 240, 240, 0.8);
+    border-radius: 8px;
+    font-size: 1em;
     color: #333;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.category.disseny-1 { border-color: #ff7f50; background-color: #fff4e6; }
-.category.disseny-2 { border-color: #32cd32; background-color: #e6ffe6; }
-.category.disseny-3 { border-color: #ff69b4; background-color: #ffe6f7; }
-.category.disseny-4 { border-color: #8a2be2; background-color: #f0e6ff; }
-.category.disseny-5 { border-color: #ffa500; background-color: #fff7e6; }
-.category.disseny-6 { border-color: #1e90ff; background-color: #e6f2ff; }
-.category.disseny-7 { border-color: #dc143c; background-color: #ffe6e6; }
+.category ul li:hover {
+    background-color: rgba(210, 210, 210, 0.9);
+    transform: scale(1.02);
+}
+
+/* Iconos decorativos para listas */
+.category ul li::before {
+    content: "•";
+    font-size: 1.5em;
+    color: #888;
+    margin-right: 8px;
+}
+
+/* Color de fondo y borde para cada tipo de disseny */
+.category.disseny-1 { 
+    border-left: 6px solid #ff7f50;
+    background: linear-gradient(135deg, #fff4e6, #ffe0cc);
+}
+
+.category.disseny-2 { 
+    border-left: 6px solid #32cd32; 
+    background: linear-gradient(135deg, #e6ffe6, #ccffcc);
+}
+
+.category.disseny-3 { 
+    border-left: 6px solid #ff69b4; 
+    background: linear-gradient(135deg, #ffe6f7, #ffcced);
+}
+
+.category.disseny-4 { 
+    border-left: 6px solid #8a2be2; 
+    background: linear-gradient(135deg, #f0e6ff, #e6ccff);
+}
+
+.category.disseny-5 { 
+    border-left: 6px solid #ffa500; 
+    background: linear-gradient(135deg, #fff7e6, #ffebcc);
+}
+
+.category.disseny-6 { 
+    border-left: 6px solid #1e90ff; 
+    background: linear-gradient(135deg, #e6f2ff, #cce5ff);
+}
+
+.category.disseny-7 { 
+    border-left: 6px solid #dc143c; 
+    background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+}
