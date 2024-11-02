@@ -25,13 +25,8 @@ Escoge 2 entre:
 - Inteligencia (Guerrero Arcano)
 
 ### Mejoras de Característica
-4.
-6.
-8.
-12.
-14.
-16.
-19.
+4. 6. 8. 12. 14. 16. 19. 
+
 
 ## Estilos de Combate
 **Debes elegir 1:**
@@ -85,13 +80,13 @@ Escoge 2 entre:
      - Niveles de Guerrero.
    
 10. **Supremacía de Combate** 
-   - Tus dados pasan de ser d8 a ser d10.
+   - Tus dados pasan de ser d8 a ser d10
    
 15. **Supremacía de Combate** 
-   - Obtienes 2 nuevas maniobras. Obtienes un dado de supremacía adicional (6d10).
+   - Obtienes 2 nuevas maniobras. Obtienes un dado de supremacía adicional (6d10)
    
 18. **Supremacía mejorada** 
-   - Los dados pasan de d10 a d12.
+   - Los dados pasan de d10 a d12
 
 ### Guerrero Arcano
 3. **Lanzamiento de conjuros** 

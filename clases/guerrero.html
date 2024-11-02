@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guerrero - D&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dissenys.css">
 
@@ -50,12 +51,14 @@ function convertMarkdownToHTML(markdown) {
             subCategoryCounter++;
             currentColor = getColorBySubCategoryCounter(subCategoryCounter);
             htmlContent += `<h3 class="${currentColor}">${line.replace('### ', '').trim()}</h3>`;
-        } else if (/^\d+\.\s/.test(line)) {
-            const listItem = line.replace(/^(\d+)\.\s/, '');
-            const number = line.match(/^(\d+)\./)[1];
-            const formattedItem = listItem.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            let colorClass = getColorBySubCategoryCounter(subCategoryCounter);
-            htmlContent += `<div class="number-circle ${colorClass}">${number}</div><span class="inline-text">${formattedItem}</span><br>`;
+        } else if (/(\d+\.\s?)+/.test(line)) {
+            const formattedLine = line
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Negrita
+                .replace(/(\d+)\./g, (match, number) => {
+                    const colorClass = getColorBySubCategoryCounter(subCategoryCounter);
+                    return `<div class="number-circle ${colorClass}">${number}</div>`;
+                });
+            htmlContent += `<span class="inline-text">${formattedLine}</span><br>`;
         } else if (line.trim().length > 0) {
             htmlContent += `<p>${line.trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`;
         }

@@ -1,3 +1,7 @@
+
+html{
+    
+}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
     background-color: #1c1c1c;
@@ -115,13 +119,18 @@ tr:hover {
 }
 
 .default-circle {
-    background-color: rgb(128, 128, 128); /* Color por defecto para más de cuatro */
+    background-color: rgb(128, 128, 128);
 }
 
 .inline-text {
-    display: inline-block; /* Permite que el texto esté en línea */
-    vertical-align: middle; /* Alinea verticalmente con el círculo */
+    display: inline-block; 
+    vertical-align: middle; 
 }
 
 
-/* Añadir más colores según sea necesario */
+strong {
+    font-family: 'Georgia', monospace;
+    font-weight: bold;
+    font-size: 1.1em; 
+    color: #333333; 
+}
