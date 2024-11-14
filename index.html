@@ -5,7 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="media/ico.ico" type="image/x-icon">
   <title>Dragonas Y Perronas</title>
-  <link rel="stylesheet" href="index.css">
+
+  <style>
+body {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  background-color: #f0f8ff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.background-image {
+  background-image: url('media/Caedrel.png');
+  background-size: contain; /* Ajusta el ancho completo de la imagen */
+  background-position: center top;
+  background-attachment: fixed; /* Efecto parallax */
+  background-repeat: repeat-x; /* Repite horizontalmente */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #ff69b4;
+  margin: 20px 0;
+}
+
+.logo {
+  width: 100%; 
+  height: auto; 
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-btn {
+  padding: 15px 25px;
+  font-size: 18px;
+  background-color: #ffb6c1;
+  border: 2px solid #ff69b4;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 10px 0;
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+}
+
+.menu-btn:hover {
+  background-color: #ff69b4;
+  transform: scale(1.05);
+}
+
+footer {
+  margin-top: 30px;
+}
+
+footer p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+  
+  .menu-btn {
+    width: 90%;
+    font-size: 16px;
+  }
+}
+
+
+  </style>
 </head>
 <body>
 
@@ -19,6 +117,7 @@
     <div class="menu-container">
       <a href="stats.html" class="menu-btn">GENERADOR DE STATS</a>
       <a href="https://www.docdroid.net/1auqYzE/dd-5a-edicion-hoja-o-ficha-editable-pdf" class="menu-btn">FICHA</a>
+      <a  onclick="descargarFitxa2()" class="menu-btn">FICHA ULTA MEGA PRO OMG</a>
       <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="menu-btn">RAZAS</a>
       <a href="clases.html" class="menu-btn">CLASES</a>
       <a href="https://docs.google.com/document/d/1d3crS_GMVS5TDmTpqnTaOYPt7tNXUt4iTDLVI3n2s0g/edit?usp=sharing" class="menu-btn">ARMAS</a>
@@ -28,9 +127,17 @@
 
     <footer>
       <hr>
-      <p>V1. Versión de enlaces</p>
+      <p>V1.1 RAZAAAS :)</p>
     </footer>
   </div>
 
+  <script>
+    function descargarFitxa2() {
+        const enlace = document.createElement("a");
+        enlace.href = "media\FitxaDnD2.pdf"; // Reemplaza con la ruta de tu PDF
+        enlace.download = "FitxaDnD2.pdf"; // Nombre del archivo descargado
+        enlace.click();
+    }
+    </script>
 </body>
 </html>

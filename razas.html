@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas de Personajes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4fb;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            overflow: visible;
+            margin-bottom: 20px;
+            border: 2px solid #e0e0f0;
+            align-items: stretch;
+            box-sizing: border-box;
+        }
+
+        .image-container {
+            flex: 4;
+            aspect-ratio: 4 / 3;
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            height: auto;
+        }
+
+        .content {
+            flex: 6;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: left;
+            line-height: 1.5;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        .attributes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .attribute-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* Colores para los círculos de atributos */
+        .strength { background-color: #ff6b6b; }
+        .dexterity { background-color: #4dabf7; }
+        .constitution { background-color: #ffcc00; }
+        .intelligence { background-color: #a29bfe; }
+        .wisdom { background-color: #55efc4; }
+        .charisma { background-color: #fd79a8; }
+
+        .attribute-rectangle {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f0f5;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            flex: 1 1 auto; /* Permite que el rectángulo se ajuste al lado de los círculos */
+        }
+
+        .ability-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .table {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .cell {
+            flex: 1 1 100%;
+            background-color: #f7f7fb;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #333;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        /* Media Query para dispositivos móviles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .image-container {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4 / 3;
+                flex: none;
+            }
+
+            .content {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .description {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .attributes {
+                flex-direction: column;
+                align-items: center; /* En móviles, coloca el rectángulo debajo de los círculos */
+            }
+
+            .table {
+                flex-direction: column;
+            }
+
+            .cell {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="characters"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('razas.json')
+            .then(response => response.json())
+            .then(data => {
+                const charactersContainer = document.getElementById('characters');
+                
+                data.raza.sort((a, b) => a.title.localeCompare(b.title));
+                
+                data.raza.forEach(character => {
+                    const container = document.createElement('div');
+                    container.classList.add('container');
+
+                    const imageContainer = document.createElement('div');
+                    imageContainer.classList.add('image-container');
+                    const imagePath = `razas/${character.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}.png`;
+                    imageContainer.style.backgroundImage = `url('${imagePath}')`;
+
+                    const content = document.createElement('div');
+                    content.classList.add('content');
+
+                    const title = document.createElement('div');
+                    title.classList.add('title');
+                    title.textContent = character.title;
+
+                    const description = document.createElement('div');
+                    description.classList.add('description');
+                    description.textContent = character.description;
+
+                    // Crear círculos para atributos principales
+                    const attributesContainer = document.createElement('div');
+                    attributesContainer.classList.add('attributes');
+
+                    const attributeClasses = {
+                        strength: "strength",
+                        dexterity: "dexterity",
+                        constitution: "constitution",
+                        intelligence: "intelligence",
+                        wisdom: "wisdom",
+                        charisma: "charisma"
+                    };
+
+                    for (const [key, label] of Object.entries(attributeClasses)) {
+                        const circle = document.createElement('div');
+                        circle.classList.add('attribute-circle', label);
+                        circle.textContent = character.characteristics[key];
+                        attributesContainer.appendChild(circle);
+                    }
+
+                    // Crear rectángulo para tamaño y velocidad
+                    const sizeAndVelContainer = document.createElement('div');
+                    sizeAndVelContainer.classList.add('attribute-rectangle');
+                    sizeAndVelContainer.innerHTML = `
+                        <div>Tamaño: ${character.characteristics.size}</div> 
+                        <span style="font-size: 35px; margin: 0 15px;"> ʃ </span> 
+                        <div>Velocidad: ${character.characteristics.vel}</div>
+                    `;
+
+                    // Añadir el rectángulo al lado de los círculos en pantallas grandes
+                    attributesContainer.appendChild(sizeAndVelContainer);
+
+                    // Crear tabla de habilidades
+                    const abilitiesTable = document.createElement('div');
+                    abilitiesTable.classList.add('table');
+
+                    character.abilities.forEach(section => {
+                        for (const [ability, description] of Object.entries(section.content)) {
+                            const cell = document.createElement('div');
+                            cell.classList.add('cell');
+
+                            const abilityTitle = document.createElement('div');
+                            abilityTitle.classList.add('ability-title');
+                            abilityTitle.textContent = `${ability}:`;
+
+                            const abilityDescription = document.createElement('p');
+                            abilityDescription.textContent = description;
+
+                            cell.appendChild(abilityTitle);
+                            cell.appendChild(abilityDescription);
+
+                            abilitiesTable.appendChild(cell);
+                        }
+                    });
+
+                    // Añadir los elementos al contenedor de contenido
+                    content.appendChild(title);
+                    content.appendChild(description);
+                    content.appendChild(attributesContainer); // Añadir círculos de atributos y rectángulo
+                    content.appendChild(abilitiesTable); // Añadir habilidades
+
+                    container.appendChild(imageContainer);
+                    container.appendChild(content);
+                    charactersContainer.appendChild(container);
+                });
+            })
+            .catch(error => console.error('Error cargando el JSON:', error));
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+    "raza": [
+        {
+            "title": "HUMANOS",
+            "description": "Los humanos son extremadamente comunes en las tierras habitadas gracias a su gran adaptación al entorno, al medio y a la propia genética. No destacan en ningún aspecto pero tampoco se quedan atrás en ninguno, cada uno tiene sus fuerzas y debilidades, ventajas y desventajas.",
+            "characteristics": {
+                "strength": "+2**",
+                "dexterity": "+2**",
+                "constitution": "+2**",
+                "intelligence": "+2**",
+                "wisdom": "+2**",
+                "charisma": "+2**",
+                "size": "S - L",
+                "vel": "6c"
+            },
+            "abilities": [
+                {
+                    "title": "HABILIDADES",
+                    "content": {
+                        "Hibridación": "Los humanos pueden mezclarse genéticamente con cualquier otra raza humanoide conocida",
+                        "Idiomas": "Elige 1 idioma extra",
+                        "Habilidoso": "Elige 2 habilidades (Historia, Naturaleza, Atletismo...)"
+                    }
+                }
+            ]
+        }
+    ]
+}
