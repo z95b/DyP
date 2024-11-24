@@ -7,122 +7,123 @@
   <title>Dragonas Y Perronas</title>
 
   <style>
+/* General Styles */
 body {
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  background-color: #f0f8ff;
-  color: #333;
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(180deg, #f3e5f5, #e1bee7, #d1c4e9);
+  color: #4b0082;
   margin: 0;
   padding: 0;
-  position: relative;
   overflow-x: hidden;
+  font-size: 16px; /* Base para rem */
 }
 
+/* Fixed Background */
 .background-image {
-  background-image: url('media/Caedrel.png');
-  background-size: contain; /* Ajusta el ancho completo de la imagen */
-  background-position: center top;
-  background-attachment: fixed; /* Efecto parallax */
-  background-repeat: repeat-x; /* Repite horizontalmente */
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  background-image: url('media/dyp.jpg');
+  background-size:cover;
+  background-position: center;
+  position: fixed; /* Fija la imagen */
+  margin-top: -10%;
+  width: 100%;
+  height: 120%; /* Ocupa toda la altura del viewport */
+  z-index: -100;
 }
 
+/* Spacer for the Background */
+.spacer {
+  height: 100vh; /* Ocupa una altura igual a la del viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
 .container {
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
+  max-width: 60rem; /* Ancho máximo */
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 0.2rem solid #a78bfa;
+  border-radius: 1rem;
+  box-shadow: 0 0 1.5rem rgba(147, 112, 219, 0.5);
   position: relative;
   z-index: 1;
 }
 
+/* Heading */
 h1 {
-  font-size: 2.5em;
-  color: #ff69b4;
-  margin: 20px 0;
+  font-size: 3rem;
+  color: #6a1b9a;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background-color:rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
-.logo {
-  width: 100%; 
-  height: auto; 
-  border-radius: 20px;
-  margin-bottom: 20px;
-}
-
-
+/* Menu Buttons */
 .menu-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .menu-btn {
-  padding: 15px 25px;
-  font-size: 18px;
-  background-color: #ffb6c1;
-  border: 2px solid #ff69b4;
-  border-radius: 25px;
+  width: 18rem; /* Ancho fijo para botones */
+  padding: 1rem;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #b39ddb, #9575cd);
+  border: 0.2rem solid #5e35b1;
+  border-radius: 1.5rem;
   color: white;
   text-decoration: none;
-  transition: background-color 0.3s, transform 0.2s;
-  margin: 10px 0;
-  display: inline-block;
-  width: 80%;
   text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.3);
+  font-weight: bold;
 }
 
 .menu-btn:hover {
-  background-color: #ff69b4;
-  transform: scale(1.05);
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0 1.2rem rgba(147, 112, 219, 0.7);
+  background: linear-gradient(90deg, #9575cd, #5e35b1);
 }
 
+/* Footer */
 footer {
-  margin-top: 30px;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 footer p {
-  font-size: 0.9em;
-  color: #666;
+  font-size: 1rem;
+  color: #4b0082;
 }
-
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-  }
-  
-  .menu-btn {
-    width: 90%;
-    font-size: 16px;
-  }
-}
-
-
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div class="background-image"></div>
+  <!-- Fixed Background Image -->
+  <div class="background-image">  </div>
 
+  <!-- Spacer to view the background -->
+ 
+  <!-- Content starts below the background -->
   <div class="container">
-    <a href="index.html" class="logo-link">
-      <img id="dnp" src="media/DnP.gif" alt="Descripción del GIF" class="logo">
-    </a>
+    <h1>D & P</h1>
 
     <div class="menu-container">
-      <a href="stats.html" class="menu-btn">GENERADOR DE STATS</a>
-      <a href="https://www.docdroid.net/1auqYzE/dd-5a-edicion-hoja-o-ficha-editable-pdf" class="menu-btn">FICHA (Recuerda Descargar)</a>
-      <a  onclick="descargarFitxa2()" class="menu-btn">FICHA MEGA PRO (Recuerda Descargar)</a>
-      <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="menu-btn">RAZAS</a>
-      <a href="clases.html" class="menu-btn">CLASES</a>
-      <a href="https://docs.google.com/document/d/1d3crS_GMVS5TDmTpqnTaOYPt7tNXUt4iTDLVI3n2s0g/edit?usp=sharing" class="menu-btn">ARMAS</a>
-      <a href="https://docs.google.com/document/d/1amakRRCoQZRiCYnIYT99JBnrja_tY1GNIBNdu3tHcFU/edit?usp=sharing" class="menu-btn">RUNAS</a>
-      <a href="https://docs.google.com/document/d/1AMj_ZXyBYFPHXMJBCPIUntG5cOepWFOA0cCoEsT6SNs/edit?usp=sharing" class="menu-btn">REGLAS</a>
+      <a href="stats.html" class="menu-btn" target="_blank">GENERADOR DE STATS</a>
+      <a onclick="descargarFitxa()" class="menu-btn">FICHA</a>
+      <a onclick="descargarFitxa2()" class="menu-btn">FICHA MEGA PRO </a>
+      <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="menu-btn" target="_blank">RAZAS DOC</a>
+      <a href="razas.html" class="menu-btn" target="_blank">RAZAS NUEVO</a>
+      <a href="clases.html" class="menu-btn" target="_blank">CLASES</a>
+      <a href="https://nivel20.com/games/dnd-5/items" class="menu-btn" target="_blank">ARMAS</a>
+      <a href="https://docs.google.com/document/d/1amakRRCoQZRiCYnIYT99JBnrja_tY1GNIBNdu3tHcFU/edit?usp=sharing" class="menu-btn" target="_blank">RUNAS</a>
+      <a href="https://docs.google.com/document/d/1AMj_ZXyBYFPHXMJBCPIUntG5cOepWFOA0cCoEsT6SNs/edit?usp=sharing" class="menu-btn" target="_blank">REGLAS</a>
     </div>
 
     <footer>
@@ -130,14 +131,24 @@ footer p {
       <p>V1.1 RAZAAAS :)</p>
     </footer>
   </div>
+  <div class="spacer">
+    <h1>Dragonas Y Perronas</h1>
+  </div>
 
   <script>
-    function descargarFitxa2() {
-        const enlace = document.createElement("a");
-        enlace.href = "FitxaDnD2.pdf"; // Reemplaza con la ruta de tu PDF
-        enlace.download = "FitxaDnD2.pdf"; // Nombre del archivo descargado
+
+function descargarFitxa() {
+      const enlace = document.createElement("a");
+        enlace.href = "FitxaDnD.pdf";
+        enlace.download = "FitxaDnD.pdf";
         enlace.click();
+      }
+    function descargarFitxa2() {
+      const enlace = document.createElement("a");
+      enlace.href = "FitxaDnD2.pdf";
+      enlace.download = "FitxaDnD2.pdf";
+      enlace.click();
     }
-    </script>
+  </script>
 </body>
 </html>

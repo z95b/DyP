@@ -24,5 +24,30 @@
                 }
             ]
         }
+        ,{
+            "title": "Nombre de la raza y del documento que se guardará",
+            "description": "descripción",
+            "characteristics": {
+                "strength": "numero positivo o negativo, si se ponen 2 asteriscos es por alguna excepción",
+                "dexterity": "numero positivo o negativo, si se ponen 2 asteriscos es por alguna excepción",
+                "constitution": "numero positivo o negativo, si se ponen 2 asteriscos es por alguna excepción",
+                "intelligence": "numero positivo o negativo, si se ponen 2 asteriscos es por alguna excepción",
+                "wisdom": "numero positivo o negativo, si se ponen 2 asteriscos es por alguna excepción",
+                "charisma": "numero positivo o negativo, si se ponen 2 asteriscos es por alguna excepción",
+                "size": "Elegir en una lista de checkbox los diferentes tamaños que tiene y luego poner aqui en el json el más pequeño y el más grande en el siguiente formato: Minúsculo - Pequeño por ejemplo, o Mediano - Gigante, habrán 5 tamaños desde Minúsculo a Gigante",
+                "vel": "Numero"
+            },
+            "abilities": [
+                {
+                    "title": "HABILIDADES",
+                    "content": {
+                        "El usuario debe meter el nombre de esta habilidad": "Su descripción",
+                        "Más habilidades, hasta un número indefinido": "Su descripón",
+                        "": ""
+                    }
+                }
+            ]
+        }
+        
     ]
 }
