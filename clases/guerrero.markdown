@@ -25,7 +25,7 @@ Escoge 2 entre:
 - Inteligencia (Guerrero Arcano)
 
 ### Mejoras de Característica
-4. 6. 8. 12. 14. 16. 19. 
+4. 6. 8. 12. 14. 16. 19.
 
 
 ## Estilos de Combate

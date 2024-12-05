@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="media/ico.ico" type="image/x-icon">
+  <title>Dragones y Mazmorras</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Cinzel', serif;
+      background: linear-gradient(180deg, #f3e5f5, #e1bee7, #d1c4e9);
+      color: #4b0082;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Background */
+    .background-image {
+      background-image: url('media/dyp.jpg');
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      margin-top: -10%;
+      width: 100%;
+      height: 120%;
+      z-index: -100;
+    }
+
+    /* Content Container */
+    .container {
+      max-width: 60rem;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 0.2rem solid #a78bfa;
+      border-radius: 1rem;
+      box-shadow: 0 0 1.5rem rgba(147, 112, 219, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Heading */
+    h1 {
+      font-size: 3rem;
+      color: #6a1b9a;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    /* Cards for Lists */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: linear-gradient(90deg, #b39ddb, #9575cd);
+      border: 0.2rem solid #5e35b1;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.3);
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-0.3rem);
+      box-shadow: 0 0 1.2rem rgba(147, 112, 219, 0.7);
+      background: linear-gradient(90deg, #9575cd, #5e35b1);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 1rem;
+      color: #4b0082;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed Background -->
+  <div class="background-image"></div>
+
+  <!-- Content -->
+  <div class="container">
+    <h1>Dragones y Mazmorras</h1>
+    <div id="content"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <hr>
+    <p>&copy; 2024 Dragones y Mazmorras. Diseñado con ❤️ por Aventureros del Código.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const markdownFile = 'guerrero.markdown'; // Archivo Markdown
+
+      fetch(markdownFile)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`No se pudo cargar el archivo: ${response.statusText}`);
+          }
+          return response.text();
+        })
+        .then(markdownText => {
+          const converter = new showdown.Converter();
+          let htmlContent = converter.makeHtml(markdownText);
+
+          // Transformar listas en tarjetas cuadradas
+          htmlContent = transformListsToCards(htmlContent);
+
+          document.getElementById('content').innerHTML = htmlContent;
+        })
+        .catch(error => {
+          document.getElementById('content').innerHTML = `
+            <div class="alert alert-danger" role="alert">
+              Error al cargar el contenido: ${error.message}
+            </div>`;
+        });
+    });
+
+    function transformListsToCards(content) {
+      const listRegex = /<ul>\s*<li>(.*?)<\/li>(.*?)<\/ul>/gs;
+      return content.replace(listRegex, (match, firstItem, otherItems) => {
+        const items = [firstItem, ...otherItems.match(/<li>(.*?)<\/li>/g) || []];
+        const cards = items.map(item => `
+          <div class="card">${item.replace(/<\/?li>/g, '')}</div>`).join('');
+        return `<div class="card-grid">${cards}</div>`;
+      });
+    }
+  </script>
+</body>
+</html>
