@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Iniciativa - D&D</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #eaeaea;
+            font-family: 'MedievalSharp', cursive;
+        }
+        .card {
+            border: 2px solid #8B0000;
+            background: linear-gradient(145deg, #2b2b2b, #1c1c1c);
+            box-shadow: 5px 5px 15px #000000, -5px -5px 15px #333333;
+            border-radius: 10px;
+            color: white;
+        }
+        .npc-card {
+            border: 2px solid #FFD700;
+        }
+        .form-control, .btn {
+            border-radius: 5px;
+        }
+        .initiative-list {
+            border: 2px dashed #FFD700;
+            padding: 10px;
+        }
+        .initiative-list h5 {
+            font-size: 1.2rem;
+        }
+        .btn-danger {
+            font-size: 0.8rem;
+            padding: 3px 6px;
+        }
+        .npc {
+            color: #FFD700;
+        }
+        .btn-primary {
+            background-color: #8B0000;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <h1 class="text-center mb-4">Calculador de Iniciativa - D&D</h1>
+
+        <!-- Formulario para añadir personajes -->
+        <div class="card p-3 mb-4">
+            <h4>Añadir Personaje</h4>
+            <div class="row g-2">
+                <div class="col-md-8">
+                    <input type="text" id="nombrePersonaje" class="form-control" placeholder="Nombre del personaje">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" id="bonificadorPersonaje" class="form-control" placeholder="Bonificador">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary w-100" id="addPersonaje">Añadir</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de personajes -->
+        <div id="listaPersonajes" class="row g-3"></div>
+
+        <!-- Formulario para añadir NPC -->
+        <div class="card p-3 mb-4">
+            <h4 class="npc">Añadir NPC</h4>
+            <div class="row g-2">
+                <div class="col-md-8">
+                    <input type="text" id="nombreNPC" class="form-control" placeholder="Nombre del NPC">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" id="bonificadorNPC" class="form-control" placeholder="Bonificador">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary w-100" id="addNPC">Añadir</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de NPCs -->
+        <div id="listaNPCs" class="row g-3"></div>
+
+        <!-- Generar iniciativa -->
+        <button class="btn btn-success w-100 mt-3" id="generateInitiative">Generar Iniciativa</button>
+
+        <!-- Resultados -->
+        <div id="resultadoIniciativa" class="initiative-list mt-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Local Storage Keys
+        const KEY_PERSONAJES = 'personajesDND';
+
+        // Variables de personajes y NPCs
+        let personajes = JSON.parse(localStorage.getItem(KEY_PERSONAJES)) || [];
+        let npcs = [];
+
+        // Cargar personajes al inicio
+        function cargarPersonajes() {
+            document.getElementById('listaPersonajes').innerHTML = '';
+            personajes.forEach((p, index) => {
+                document.getElementById('listaPersonajes').innerHTML += `
+                    <div class="col-md-6">
+                        <div class="card p-2">
+                            <h5>${p.nombre}</h5>
+                            <p>Bonificador: ${p.bonificador}</p>
+                            <button class="btn btn-danger" onclick="eliminarPersonaje(${index})">Eliminar</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        cargarPersonajes();
+
+        // Añadir personaje
+        document.getElementById('addPersonaje').addEventListener('click', () => {
+            const nombre = document.getElementById('nombrePersonaje').value;
+            const bonificador = parseInt(document.getElementById('bonificadorPersonaje').value);
+
+            if (!nombre || isNaN(bonificador)) {
+                Swal.fire('Error', 'Debes completar todos los campos.', 'error');
+                return;
+            }
+
+            personajes.push({ nombre, bonificador });
+            localStorage.setItem(KEY_PERSONAJES, JSON.stringify(personajes));
+            cargarPersonajes();
+        });
+
+        // Eliminar personaje
+        function eliminarPersonaje(index) {
+            personajes.splice(index, 1);
+            localStorage.setItem(KEY_PERSONAJES, JSON.stringify(personajes));
+            cargarPersonajes();
+        }
+
+        // Añadir NPC
+        document.getElementById('addNPC').addEventListener('click', () => {
+            const nombre = document.getElementById('nombreNPC').value;
+            const bonificador = parseInt(document.getElementById('bonificadorNPC').value);
+
+            if (!nombre || isNaN(bonificador)) {
+                Swal.fire('Error', 'Debes completar todos los campos.', 'error');
+                return;
+            }
+
+            npcs.push({ nombre, bonificador });
+            cargarNPCs();
+        });
+
+        // Cargar NPCs
+        function cargarNPCs() {
+            document.getElementById('listaNPCs').innerHTML = '';
+            npcs.forEach((npc, index) => {
+                document.getElementById('listaNPCs').innerHTML += `
+                    <div class="col-md-6">
+                        <div class="card p-2 npc-card">
+                            <h5 class="npc">${npc.nombre}</h5>
+                            <p class="npc">Bonificador: ${npc.bonificador}</p>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // Generar iniciativa
+        document.getElementById('generateInitiative').addEventListener('click', () => {
+            const iniciativa = [...personajes, ...npcs].map(p => {
+                const d20 = Math.floor(Math.random() * 20) + 1;
+                const total = d20 + p.bonificador;
+                return { ...p, d20, total };
+            }).sort((a, b) => b.total - a.total);
+
+            const resultado = iniciativa.map((p, index) => `
+                <h5>[${index + 1}] ${p.nombre} --> ${p.total} === ${p.d20} + ${p.bonificador}</h5>
+            `).join('');
+            document.getElementById('resultadoIniciativa').innerHTML = resultado;
+        });
+    </script>
+</body>
+</html>
