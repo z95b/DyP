@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fichas de Personajes</title>
+    <title>Razas Personalizadas</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
         body {
-        font-family: 'Montserrat', 'Cinzel', serif; /* Montserrat como alternativa */
-        font-weight: 700;
-            background: linear-gradient(180deg, #f3e5f5, #e1bee7, #d1c4e9);
-            color: #4b0082;
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: #fff;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -19,152 +17,27 @@
             align-items: center;
         }
 
-        /* Main Container */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-            display: flex;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 3px solid #a78bfa;
-            align-items: stretch;
-        }
-
-        /* Image Container */
-        .image-container {
-            flex: 4;
-            aspect-ratio: 4 / 3;
-            background-size: cover;
-            background-position: top;
-            background-repeat: no-repeat;
-        }
-
-        /* Content */
-        .content {
-            flex: 6;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Title */
-        .title {
-            font-weight: 700;
-            font-size: 2rem;
-            color: #6a1b9a;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(106, 27, 154, 0.5);
-        }
-
-        /* Description */
-        .description {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            word-wrap: break-word;
-        }
-
-        /* Attributes Section */
-        .attributes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .attribute-circle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Attribute Colors */
-        .strength { background-color: #ff6b6b; }
-        .dexterity { background-color: #4dabf7; }
-        .constitution { background-color: #ffcc00; }
-        .intelligence { background-color: #a29bfe; }
-        .wisdom { background-color: #55efc4; }
-        .charisma { background-color: #fd79a8; }
-
-        .attribute-rectangle {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            border: 2px solid #a78bfa;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            flex: 1 1 auto;
-            box-shadow: 0 0 8px rgba(147, 112, 219, 0.5);
-        }
-
-        /* Abilities Table */
-        .table {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .cell {
-            flex: 1 1 100%;
-            background: linear-gradient(135deg, #e1bee7, #f3e5f5);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #4b0082;
-            border: 2px solid #a78bfa;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .ability-title {
-            font-weight: bold;
-            color: #6a1b9a;
-            margin-bottom: 5px;
-        }
-
-        /* Buttons */
-        button {
+        .button {
             padding: 10px 20px;
-            background: linear-gradient(90deg, #b39ddb, #9575cd);
-            border: 2px solid #5e35b1;
-            border-radius: 30px;
-            color: white;
+            background: linear-gradient(135deg, #ffbf00, #ffa500);
+            border: none;
+            color: #000;
             font-weight: bold;
-            font-size: 1rem;
+            border-radius: 5px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.3s;
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px rgba(147, 112, 219, 0.6);
+        .button:hover {
+            background: linear-gradient(135deg, #ffa500, #ffbf00);
         }
 
-        /* Overlay */
         #overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
             display: none;
             justify-content: center;
             align-items: center;
@@ -172,239 +45,357 @@
         }
 
         #form-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
             width: 90%;
-            max-width: 500px;
-            text-align: left;
+            max-width: 600px;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 191, 0, 0.6);
+            overflow-y: auto;
+            max-height: 80vh; /* Barra desplazante si supera esta altura */
         }
 
-        #form-container input {
+        #form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffbf00;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            margin-bottom: 10px;
             padding: 10px;
-            border: 1px solid #a78bfa;
+            background: #333;
+            border: 1px solid #444;
             border-radius: 5px;
-            font-size: 1rem;
+            color: #fff;
         }
 
-        #form-container button {
-            background: linear-gradient(90deg, #b39ddb, #9575cd);
-            border: none;
-            color: white;
+        .size-options {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .size-options div {
+            flex: 1;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .size-options input {
+            margin-top: 5px;
+        }
+
+        #characters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .character-container {
+            width: 100%;
+            max-width: 300px;
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 1px solid #444;
+        }
+
+        .character-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .character-content {
+            padding: 15px;
+            color: #fff;
+        }
+
+        .character-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #ffbf00;
+        }
+
+        .character-description {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        .character-attributes {
+            margin-top: 15px;
+        }
+
+        .character-attribute {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
         }
 
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
+            #form-container {
+                width: 95%;
+            }
+
+            .size-options {
+                justify-content: space-evenly;
+            }
+
+            .character-container {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .character-title {
+                font-size: 1.2rem;
+            }
+
+            .character-description {
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <button onclick="mostrarFormulario()">Generar JSON</button>
+    <button class="button" onclick="mostrarFormulario()">Agregar Raza</button>
 
-    <body>
-        <button onclick="mostrarFormulario()">Generar JSON</button>
-    
-        <div id="overlay" onclick="ocultarFormulario()">
-            <div id="form-container" onclick="event.stopPropagation()">
-                <h2>Crear nueva raza</h2>
-                <input type="text" id="title" placeholder="Nombre de la raza">
-                <input type="text" id="description" placeholder="Descripción de la raza">
-                <input type="number" id="strength" placeholder="Fuerza">
-                <input type="number" id="dexterity" placeholder="Destreza">
-                <input type="number" id="constitution" placeholder="Constitución">
-                <input type="number" id="intelligence" placeholder="Inteligencia">
-                <input type="number" id="wisdom" placeholder="Sabiduría">
-                <input type="number" id="charisma" placeholder="Carisma">
-                
-                <h3>Tamaño (selecciona los tamaños permitidos)</h3>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" value="Minúsculo"> Minúsculo</label>
-                    <label><input type="checkbox" value="Pequeño"> Pequeño</label>
-                    <label><input type="checkbox" value="Mediano"> Mediano</label>
-                    <label><input type="checkbox" value="Grande"> Grande</label>
-                    <label><input type="checkbox" value="Gigante"> Gigante</label>
+    <div id="overlay" onclick="cerrarFormulario()">
+        <div id="form-container" onclick="event.stopPropagation()">
+            <h2>Formulario de Razas</h2>
+            <form id="raceForm">
+                <div class="form-group">
+                    <label for="raceName">Nombre de la Raza</label>
+                    <input type="text" id="raceName" required>
                 </div>
-                <input type="number" id="vel" placeholder="Velocidad (en número)">
-    
-                <h3>Habilidades</h3>
-                <div class="ability-group">
-                    <input type="text" id="ability1-name" placeholder="Nombre de la habilidad 1">
-                    <input type="text" id="ability1-desc" placeholder="Descripción de la habilidad 1">
+                <div class="form-group">
+                    <label for="raceDescription">Descripción</label>
+                    <textarea id="raceDescription" rows="4" required></textarea>
                 </div>
-                <div class="ability-group">
-                    <input type="text" id="ability2-name" placeholder="Nombre de la habilidad 2">
-                    <input type="text" id="ability2-desc" placeholder="Descripción de la habilidad 2">
+                <div class="form-group">
+                    <label for="bonusRules">Reglas de estos bonificadores</label>
+                    <textarea id="bonusRules" rows="2"></textarea>
                 </div>
-                <div class="ability-group">
-                    <input type="text" id="ability3-name" placeholder="Nombre de la habilidad 3">
-                    <input type="text" id="ability3-desc" placeholder="Descripción de la habilidad 3">
+                <div class="form-group">
+                    <label>Bonificadores</label>
+                    <input type="number" id="strength" placeholder="Fuerza" required>
+                    <input type="number" id="dexterity" placeholder="Destreza" required>
+                    <input type="number" id="constitution" placeholder="Constitución" required>
+                    <input type="number" id="intelligence" placeholder="Inteligencia" required>
+                    <input type="number" id="wisdom" placeholder="Sabiduría" required>
+                    <input type="number" id="charisma" placeholder="Carisma" required>
                 </div>
-                
-                <button onclick="generarJSON()">Crear JSON</button>
-            </div>
+                <div class="form-group">
+                    <label for="movementSpeed">Velocidad (casillas)</label>
+                    <input type="number" id="movementSpeed" required>
+                </div>
+                <div class="form-group">
+                    <label>Tamaños</label>
+                    <div class="size-options">
+                        <div>
+                            <label>Minúsculo</label>
+                            <input type="checkbox" value="Minúsculo">
+                        </div>
+                        <div>
+                            <label>Pequeño</label>
+                            <input type="checkbox" value="Pequeño">
+                        </div>
+                        <div>
+                            <label>Mediano</label>
+                            <input type="checkbox" value="Mediano">
+                        </div>
+                        <div>
+                            <label>Grande</label>
+                            <input type="checkbox" value="Grande">
+                        </div>
+                        <div>
+                            <label>Gigante</label>
+                            <input type="checkbox" value="Gigante">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Habilidades</label>
+                    <div id="abilitiesContainer"></div>
+                    <button type="button" onclick="addAbility()">+ Añadir habilidad</button>
+                </div>
+                <button type="button" class="button" onclick="generateJSON()">Descargar JSON</button>
+            </form>
         </div>
-        <div id="characters"></div>
+    </div>
 
-        <script>
-              function mostrarFormulario() {
+    <div id="characters"></div>
+
+    <script>
+async function cargarRazas() {
+    const charactersContainer = document.getElementById('characters');
+
+    try {
+        console.log('Solicitando lista de archivos JSON...');
+        const response = await fetch('razas_lista.php');
+
+        if (!response.ok) {
+            throw new Error(`Error al obtener razas_lista.php: ${response.status} ${response.statusText}`);
+        }
+
+        const archivos = await response.json();
+        console.log('Archivos JSON obtenidos:', archivos);
+
+        if (archivos.error) {
+            console.error('Error del servidor:', archivos.error);
+            return;
+        }
+
+        for (const archivo of archivos) {
+            console.log(`Cargando datos desde el archivo: razas/${archivo}...`);
+            const razaResponse = await fetch(`razas/${archivo}`);
+
+            if (!razaResponse.ok) {
+                console.error(`Error al cargar el archivo JSON: razas/${archivo}`);
+                continue;
+            }
+
+            const raza = await razaResponse.json();
+            console.log(`Datos cargados de ${archivo}:`, raza);
+
+            const container = document.createElement('div');
+            container.classList.add('character-container');
+
+            const image = document.createElement('div');
+            image.classList.add('character-image');
+            image.style.backgroundImage = `url('razas/${archivo.replace('.json', '.png')}')`;
+
+            const content = document.createElement('div');
+            content.classList.add('character-content');
+
+            const title = document.createElement('div');
+            title.classList.add('character-title');
+            title.textContent = raza.raceName;
+
+            const description = document.createElement('div');
+            description.classList.add('character-description');
+            description.textContent = raza.raceDescription;
+
+            const attributes = document.createElement('div');
+            attributes.classList.add('character-attributes');
+            for (const [key, value] of Object.entries(raza.attributes)) {
+                const attribute = document.createElement('div');
+                attribute.classList.add('character-attribute');
+                attribute.textContent = `${key}: ${value}`;
+                attributes.appendChild(attribute);
+            }
+
+            content.appendChild(title);
+            content.appendChild(description);
+            content.appendChild(attributes);
+
+            container.appendChild(image);
+            container.appendChild(content);
+
+            charactersContainer.appendChild(container);
+        }
+    } catch (error) {
+        console.error('Error cargando razas:', error);
+    }
+}
+
+
+        function mostrarFormulario() {
             document.getElementById('overlay').style.display = 'flex';
         }
 
-        function ocultarFormulario() {
+        function cerrarFormulario() {
             document.getElementById('overlay').style.display = 'none';
         }
 
-        function generarJSON() {
-            const title = document.getElementById("title").value || "Nombre predeterminado";
-            const description = document.getElementById("description").value || "Descripción predeterminada";
-            const strength = document.getElementById("strength").value || "0";
-            const dexterity = document.getElementById("dexterity").value || "0";
-            const constitution = document.getElementById("constitution").value || "0";
-            const intelligence = document.getElementById("intelligence").value || "0";
-            const wisdom = document.getElementById("wisdom").value || "0";
-            const charisma = document.getElementById("charisma").value || "0";
-            const vel = document.getElementById("vel").value || "0";
-
-            const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked');
-            const sizes = Array.from(checkboxes).map(cb => cb.value);
-            const size = sizes.length > 1 ? `${sizes[0]} - ${sizes[sizes.length - 1]}` : sizes[0] || "Sin tamaño definido";
-
-            const abilities = {
-                [document.getElementById("ability1-name").value]: document.getElementById("ability1-desc").value,
-                [document.getElementById("ability2-name").value]: document.getElementById("ability2-desc").value,
-                [document.getElementById("ability3-name").value]: document.getElementById("ability3-desc").value,
-            };
-
-            const razaData = {
-                title,
-                description,
-                characteristics: {
-                    strength,
-                    dexterity,
-                    constitution,
-                    intelligence,
-                    wisdom,
-                    charisma,
-                    size,
-                    vel
-                },
-                abilities: [
-                    {
-                        title: "HABILIDADES",
-                        content: abilities
-                    }
-                ]
-            };
-
-            const jsonString = JSON.stringify(razaData, null, 4);
-
-            const enlace = document.createElement("a");
-            const archivo = new Blob([jsonString], {type: "application/json"});
-            enlace.href = URL.createObjectURL(archivo);
-            enlace.download = `${title.replace(/\s+/g, "_")}.json`;
-            enlace.click();
-
-            ocultarFormulario();
+        function addAbility() {
+            const container = document.getElementById('abilitiesContainer');
+            const abilityGroup = document.createElement('div');
+            abilityGroup.innerHTML = `
+                <input type="text" placeholder="Nombre de habilidad" required>
+                <textarea placeholder="Descripción de habilidad" required></textarea>
+            `;
+            container.appendChild(abilityGroup);
         }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch('razas.json')
-            .then(response => response.json())
-            .then(data => {
-                const charactersContainer = document.getElementById('characters');
-                
-                data.raza.sort((a, b) => a.title.localeCompare(b.title));
-                
-                data.raza.forEach(character => {
-                    const container = document.createElement('div');
-                    container.classList.add('container');
+        async function generateJSON() {
+    const raceName = document.getElementById('raceName').value.trim();
+    const raceDescription = document.getElementById('raceDescription').value.trim();
+    const bonusRules = document.getElementById('bonusRules').value.trim();
+    const movementSpeed = document.getElementById('movementSpeed').value.trim();
 
-                    const imageContainer = document.createElement('div');
-                    imageContainer.classList.add('image-container');
-                    const imagePath = `razas/${character.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}.png`;
-                    imageContainer.style.backgroundImage = `url('${imagePath}')`;
+    // Recopilar atributos
+    const attributes = {
+        strength: document.getElementById('strength').value.trim(),
+        dexterity: document.getElementById('dexterity').value.trim(),
+        constitution: document.getElementById('constitution').value.trim(),
+        intelligence: document.getElementById('intelligence').value.trim(),
+        wisdom: document.getElementById('wisdom').value.trim(),
+        charisma: document.getElementById('charisma').value.trim(),
+    };
 
-                    const content = document.createElement('div');
-                    content.classList.add('content');
+    // Recopilar tamaños seleccionados
+    const sizes = Array.from(document.querySelectorAll('.size-options input:checked')).map(cb => cb.value);
 
-                    const title = document.createElement('div');
-                    title.classList.add('title');
-                    title.textContent = character.title;
-
-                    const description = document.createElement('div');
-                    description.classList.add('description');
-                    description.textContent = character.description;
-
-                    const attributesContainer = document.createElement('div');
-                    attributesContainer.classList.add('attributes');
-
-                    const attributeClasses = {
-                        strength: "strength",
-                        dexterity: "dexterity",
-                        constitution: "constitution",
-                        intelligence: "intelligence",
-                        wisdom: "wisdom",
-                        charisma: "charisma"
-                    };
-
-                    for (const [key, label] of Object.entries(attributeClasses)) {
-                        const circle = document.createElement('div');
-                        circle.classList.add('attribute-circle', label);
-                        circle.textContent = character.characteristics[key];
-                        attributesContainer.appendChild(circle);
-                    }
-
-                    const sizeAndVelContainer = document.createElement('div');
-                    sizeAndVelContainer.classList.add('attribute-rectangle');
-                    sizeAndVelContainer.innerHTML = `
-                        <div>Tamaño: ${character.characteristics.size}</div> 
-                        <span style="font-size: 35px; margin: 0 15px;"> ʃ </span> 
-                        <div>Velocidad: ${character.characteristics.vel}</div>
-                    `;
-
-                    attributesContainer.appendChild(sizeAndVelContainer);
-
-                    const abilitiesTable = document.createElement('div');
-                    abilitiesTable.classList.add('table');
-
-                    character.abilities.forEach(section => {
-                        for (const [ability, description] of Object.entries(section.content)) {
-                            const cell = document.createElement('div');
-                            cell.classList.add('cell');
-
-                            const abilityTitle = document.createElement('div');
-                            abilityTitle.classList.add('ability-title');
-                            abilityTitle.textContent = `${ability}:`;
-
-                            const abilityDescription = document.createElement('p');
-                            abilityDescription.textContent = description;
-
-                            cell.appendChild(abilityTitle);
-                            cell.appendChild(abilityDescription);
-
-                            abilitiesTable.appendChild(cell);
-                        }
-                    });
-
-                    content.appendChild(title);
-                    content.appendChild(description);
-                    content.appendChild(attributesContainer);
-                    content.appendChild(abilitiesTable);
-
-                    container.appendChild(imageContainer);
-                    container.appendChild(content);
-                    charactersContainer.appendChild(container);
-                });
-            })
-            .catch(error => console.error('Error cargando el JSON:', error));
+    // Recopilar habilidades
+    const abilities = Array.from(document.getElementById('abilitiesContainer').children).map(group => {
+        const inputs = group.querySelectorAll('input, textarea');
+        return {
+            name: inputs[0].value.trim(),
+            description: inputs[1].value.trim(),
+        };
     });
-</script>
+
+    // Crear objeto JSON
+    const jsonData = {
+        raceName,
+        raceDescription,
+        bonusRules,
+        movementSpeed,
+        attributes,
+        sizes,
+        abilities,
+    };
+
+    // Convertir a JSON string
+    const jsonString = JSON.stringify(jsonData, null, 4);
+
+    // Crear y descargar el archivo JSON
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${raceName || 'raza'}.json`; // Nombre del archivo
+    link.click();
+
+    // Liberar el objeto URL
+    URL.revokeObjectURL(url);
+
+    // Cerrar el formulario
+    document.getElementById('overlay').style.display = 'none';
+}
 
 
+        document.addEventListener('DOMContentLoaded', cargarRazas);
+    </script>
 </body>
 </html>
