@@ -1,0 +1,16 @@
+{
+    "raceName": "",
+    "raceDescription": "",
+    "bonusRules": "",
+    "movementSpeed": "",
+    "attributes": {
+        "strength": "",
+        "dexterity": "",
+        "constitution": "",
+        "intelligence": "",
+        "wisdom": "",
+        "charisma": ""
+    },
+    "sizes": [],
+    "abilities": []
+}

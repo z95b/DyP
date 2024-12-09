@@ -1,11 +1,6 @@
 <?php
-$directory = 'razas/';
-if (is_dir($directory)) {
-    $files = scandir($directory);
-    print_r($files);
-} else {
-    echo "El directorio no existe.";
-}
+echo "PHP funciona correctamente.";
+
 
 header('Content-Type: application/json');
 

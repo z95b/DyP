@@ -1,0 +1,29 @@
+{
+    "raceName": "Dracónidos",
+    "raceDescription": "Esto describe a los dragones. Esto describe a los dragones. Esto describe a los dragones. Esto describe a los dragones.",
+    "bonusRules": "Seleccionar solamente 1 bonificador de +2",
+    "movementSpeed": "7",
+    "attributes": {
+        "strength": "2",
+        "dexterity": "-1",
+        "constitution": "0",
+        "intelligence": "0",
+        "wisdom": "0",
+        "charisma": "2"
+    },
+    "sizes": [
+        "Pequeño",
+        "Mediano",
+        "Grande"
+    ],
+    "abilities": [
+        {
+            "name": "Idiomas",
+            "description": "Tiene 1 idioma extra"
+        },
+        {
+            "name": "Híbrido",
+            "description": "Puede procrear con cualquier raza. Esto describe a los dragones. Esto describe a los dragones. Esto describe a los dragones."
+        }
+    ]
+}
