@@ -1,5 +1,6 @@
 [
     "humanos.json",
+    "semi_humanos.json",
     "draconidos.json",
     "kobolds.json",
     "elfos.json",
@@ -8,7 +9,7 @@
     "medianos.json",
     "semiorcos.json",
     "tieflings.json",
-    "goblins_sociables.json",
+    "goblins.json",
     "slime_inteligente.json",
     "tabaxis.json",
     "locahtah.json",
@@ -31,7 +32,6 @@
     "no_muerto.json",
     "kitsune.json",
     "drow.json",
-    "semi_humanos.json",
     "foxfolks.json",
     "druegar.json",
     "owlers.json",
