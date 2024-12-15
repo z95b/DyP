@@ -64,7 +64,7 @@
         align-items: stretch;
         /* La imagen ocupa todo el alto */
         width: 100%;
-        max-width: 800px;
+        max-width: 1000px;
         /* Hacer más amplio si es necesario */
         background: #242424;
         border-radius: 15px;
@@ -426,16 +426,19 @@
             const container = document.createElement("div");
             container.classList.add("character-container");
 
-            // Imagen
-            const image = document.createElement("div");
-            image.classList.add("character-image");
-            image.style.backgroundImage = `url('${directorio}${archivo.replace(".json", ".png")}')`;
-            container.appendChild(image);
+       
 
+            
             // Contenido textual
             const content = document.createElement("div");
             content.classList.add("character-content");
+            content.style.backgroundImage = `url('${directorio}${archivo.replace(".json", ".png")}')`;
 
+                 // Imagen
+                 const image = document.createElement("div");
+            image.classList.add("character-image");
+            image.style.backgroundImage = `url('${directorio}${archivo.replace(".json", ".png")}')`;
+            container.appendChild(image);
             // Título
             const title = document.createElement("div");
             title.classList.add("character-title");
