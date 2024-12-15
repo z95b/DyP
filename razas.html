@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Razas Personalizadas</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Cinzel', serif;
@@ -45,72 +49,104 @@
         }
 
         .character-container {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch; /* La imagen ocupa todo el alto */
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            /* La imagen ocupa todo el alto */
+            width: 100%;
+            max-width: 800px;
+            /* Hacer más amplio si es necesario */
+            background: #242424;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid #444;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .character-image {
+            flex: 1;
+            width: 33%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .character-content {
+            flex: 2;
+            padding: 20px;
+            color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+
+/* Superposición para oscurecer el fondo */
+.character-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 800px; /* Hacer más amplio si es necesario */
-    background: #242424;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid #444;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Oscurecimiento normal */
+    z-index: 1;
 }
 
-.character-image {
-    flex: 1;
-    width: 33%;
-    background-size: cover;
-    background-position: center;
-}
-
-.character-content {
-    flex: 2;
-    padding: 20px;
-    color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.character-attributes {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.character-attribute {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Forma de rombo */
-    background: #333;
-    color: #ffa726;
-    font-weight: bold;
-    text-align: center;
+/* Contenido sobre el fondo */
+.character-content > * {
     position: relative;
+    z-index: 2;
 }
 
-.habilities-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
+@media (max-width: 768px) {
+    .character-content::before {
+        background-color: rgba(0, 0, 0, 0.65); /* Oscurecimiento móvil */
+    }
 }
 
-.hability {
-    background: #333;
-    padding: 10px;
-    border-radius: 10px;
-    color: #ffa726;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
+        .character-attributes {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .character-attribute {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            /* Forma de rombo */
+            background: #333;
+            color: #ffa726;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+        }
+
+        .habilities-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .hability {
+            background: #333;
+            padding: 10px;
+            border-radius: 10px;
+            color: #ffa726;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
 
         #overlay {
             position: fixed;
@@ -126,10 +162,10 @@
         }
 
         #form-container {
-            width: 90%;
+            width: 100%;
             max-width: 600px;
             background: #242424;
-            padding: 20px;
+            padding: 3%;
             border-radius: 15px;
             color: #fff;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -196,10 +232,48 @@
             margin-top: 15px;
             width: 100%;
         }
+
+        .character-title {
+    font-family: 'Cinzel Decorative', serif; /* Fuente fantasiosa */
+    font-size: 2rem; /* Tamaño grande */
+    color: #ffd700; /* Color dorado */
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra para mayor impacto */
+    letter-spacing: 2px; /* Espaciado para un toque más épico */
+}
+
+
+@media (max-width: 768px) {
+    .character-container {
+        flex-direction: column; /* Organizar en columnas para móviles */
+    }
+
+    .character-image {
+        display: none; /* Oculta el contenedor de imagen en móviles */
+    }
+
+    .character-content {
+        background-size: cover; /* Escalar la imagen para cubrir el fondo */
+        background-position: center; /* Centrar la imagen */
+        background-repeat: no-repeat; /* Evitar repeticiones */
+        border-radius: 15px; /* Bordes redondeados */
+        padding: 20px; /* Espaciado interno para el contenido */
+        color: #fff; /* Asegura legibilidad */
+    }
+}
+
+
+
+
     </style>
 </head>
+
 <body>
-    <button class="button" onclick="mostrarFormulario()">Agregar Raza</button>
+    <button class="button" onclick="mostrarFormulario()">Agregar
+        Raza</button>
+
+
     <div id="overlay" onclick="cerrarFormulario()">
         <div id="form-container" onclick="event.stopPropagation()">
             <h2>Formulario de Razas</h2>
@@ -210,11 +284,13 @@
                 </div>
                 <div class="form-group">
                     <label for="raceDescription">Descripción</label>
-                    <textarea id="raceDescription" rows="3" placeholder="Breve descripción de la raza" required></textarea>
+                    <textarea id="raceDescription" rows="3" placeholder="Breve descripción de la raza"
+                        required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="bonusRules">Reglas de Bonificadores</label>
-                    <textarea id="bonusRules" rows="2" placeholder="Ej: Seleccionar solo 1 bonificador de +2"></textarea>
+                    <textarea id="bonusRules" rows="2"
+                        placeholder="Ej: Seleccionar solo 1 bonificador de +2"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Bonificadores de Atributos</label>
@@ -226,28 +302,45 @@
                     <input type="number" id="charisma" placeholder="Carisma" required>
                 </div>
                 <div class="form-group">
-                    <label for="movementSpeed">Velocidad de Movimiento</label>
+                    <label for="movementSpeed">Velocidad de
+                        Movimiento</label>
                     <input type="number" id="movementSpeed" placeholder="Ej: 7 casillas" required>
                 </div>
                 <div class="form-group">
                     <label>Tamaños Disponibles</label>
-                    <label><input type="checkbox" value="Minúsculo"> Minúsculo</label>
-                    <label><input type="checkbox" value="Pequeño"> Pequeño</label>
-                    <label><input type="checkbox" value="Mediano"> Mediano</label>
-                    <label><input type="checkbox" value="Grande"> Grande</label>
-                    <label><input type="checkbox" value="Gigante"> Gigante</label>
+                    <label><input type="checkbox" value="Minúsculo">
+                        Minúsculo</label>
+                    <label><input type="checkbox" value="Pequeño">
+                        Pequeño</label>
+                    <label><input type="checkbox" value="Mediano">
+                        Mediano</label>
+                    <label><input type="checkbox" value="Grande">
+                        Grande</label>
+                    <label><input type="checkbox" value="Gigante">
+                        Gigante</label>
                 </div>
                 <div class="form-group">
                     <label>Habilidades</label>
                     <div id="abilitiesContainer"></div>
-                    <button type="button" onclick="addAbility()">+ Añadir Habilidad</button>
+                    <button type="button" onclick="addAbility()">+ Añadir
+                        Habilidad</button>
                 </div>
                 <button type="button" class="button" onclick="generateJSON()">Descargar JSON</button>
             </form>
         </div>
     </div>
+
+
+    <input
+    type="text"
+    id="searchBar"
+    placeholder="Buscar por nombre de raza..."
+    style="margin-top: 20px; padding: 10px; width: 90%; max-width: 600px; font-size: 1rem; border: 1px solid #444; border-radius: 10px; background-color: #333; color: #fff;"
+/>
     <div id="characters"></div>
     <script>
+        
+        
         function mostrarFormulario() {
             document.getElementById('overlay').style.display = 'flex';
         }
@@ -257,105 +350,153 @@
         }
 
         function addAbility() {
-            const container = document.getElementById('abilitiesContainer');
-            const abilityGroup = document.createElement('div');
-            abilityGroup.classList.add('ability-group');
-            abilityGroup.innerHTML = `
-                <input type="text" placeholder="Nombre de habilidad" required>
-                <textarea placeholder="Descripción de habilidad" rows="2" required></textarea>
-                <button type="button" onclick="this.parentElement.remove()">Eliminar</button>
-            `;
-            container.appendChild(abilityGroup);
-        }
-
-        async function cargarRazas() {
-    const charactersContainer = document.getElementById('characters');
-    const directorio = 'razas/';
-
-    try {
-        const response = await fetch(directorio);
-        if (!response.ok) throw new Error(`Error: ${response.status}`);
-        const textoHTML = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(textoHTML, 'text/html');
-        const archivos = Array.from(doc.querySelectorAll('a'))
-            .map(link => link.href.split('/').pop())
-            .filter(nombre => nombre.endsWith('.json'));
-
-        for (const archivo of archivos) {
-            const razaResponse = await fetch(`${directorio}${archivo}`);
-            if (!razaResponse.ok) continue;
-            const raza = await razaResponse.json();
-
-            const container = document.createElement('div');
-            container.classList.add('character-container');
-
-            // Imagen
-            const image = document.createElement('div');
-            image.classList.add('character-image');
-            image.style.backgroundImage = `url('${directorio}${archivo.replace('.json', '.png')}')`;
-            container.appendChild(image);
-
-            // Contenido textual
-            const content = document.createElement('div');
-            content.classList.add('character-content');
-
-            // Título
-            const title = document.createElement('div');
-            title.classList.add('character-title');
-            title.textContent = raza.raceName;
-            content.appendChild(title);
-
-            // Descripción
-            const description = document.createElement('div');
-            description.classList.add('character-description');
-            description.textContent = raza.raceDescription;
-            content.appendChild(description);
-
-            // Atributos en rombos
-            const attributes = document.createElement('div');
-            attributes.classList.add('character-attributes');
-            ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'].forEach(key => {
-                const value = raza.attributes[key] || '';
-                const attribute = document.createElement('div');
-                attribute.classList.add('character-attribute');
-                attribute.textContent = value; // Solo el valor del atributo
-                attributes.appendChild(attribute);
-            });
-            content.appendChild(attributes);
-
-            // Tamaños
-            const sizes = document.createElement('div');
-            sizes.classList.add('character-attribute');
-            sizes.textContent = `Tamaños: ${raza.sizes.join(', ')}`;
-            content.appendChild(sizes);
-
-            // Habilidades
-            const habilitiesContainer = document.createElement('div');
-            habilitiesContainer.classList.add('habilities-container');
-            raza.abilities.forEach(ability => {
-                const abilityDiv = document.createElement('div');
-                abilityDiv.classList.add('hability');
-                abilityDiv.innerHTML = `<strong>${ability.name}</strong>: ${ability.description}`;
-                habilitiesContainer.appendChild(abilityDiv);
-            });
-            content.appendChild(habilitiesContainer);
-
-            container.appendChild(content);
-            charactersContainer.appendChild(container);
-        }
-    } catch (error) {
-        console.error('Error cargando razas:', error);
-    }
+    const container = document.getElementById('abilitiesContainer');
+    const abilityGroup = document.createElement('div');
+    abilityGroup.classList.add('ability-group');
+    abilityGroup.innerHTML = `
+        <input type="text" placeholder="Nombre de habilidad" required style="flex: 20; ">
+        <textarea placeholder="Descripción de habilidad" rows="4" required style="flex: 60;"></textarea>
+        <button type="button" onclick="this.closest('.ability-group').remove()" style="background: none; border: none; cursor: pointer; color: #ff6f00; font-size: 1.5rem;flex: 1;">&times;</button>
+`;
+    container.appendChild(abilityGroup);
 }
 
 
+        async function cargarRazas() {
+
+            
+            const charactersContainer = document.getElementById('characters');
+            const directorio = 'razas/';
+            try {
+                const response = await fetch(directorio);
+                if (!response.ok) throw new Error(`Error: ${response.status}`);
+                const textoHTML = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(textoHTML, 'text/html');
+                const archivos = Array.from(doc.querySelectorAll('a'))
+                    .map(link => link.href.split('/').pop())
+                    .filter(nombre => nombre.endsWith('.json'));
+                for (const archivo of archivos) {
+                    const razaResponse = await fetch(`${directorio}${archivo}`);
+                    if (!razaResponse.ok) continue;
+                    const raza = await razaResponse.json();
+                    const container = document.createElement('div');
+                    container.classList.add('character-container');
+                    // Imagen
+                    const image = document.createElement('div');
+image.classList.add('character-image');
+image.style.backgroundImage = `url('${directorio}${archivo.replace('.json', '.png')}')`;
+container.appendChild(image);
+
+                    // Contenido textual
+                    const content = document.createElement('div');
+content.classList.add('character-content');
+content.style.backgroundImage = `url('${directorio}${archivo.replace('.json', '.png')}')`;
+
+                    // Título
+                    const title = document.createElement('div');
+                    title.classList.add('character-title');
+                    title.textContent = raza.raceName;
+                    content.appendChild(title);
+                    // Descripción
+                    const description = document.createElement('div');
+                    description.classList.add('character-description');
+                    description.textContent = raza.raceDescription;
+                    content.appendChild(description);
+                    // Atributos en rombos
+                    // Contenedor para bonusRules y atributos
+                    const bonusAttributesContainer = document.createElement('div');
+                    bonusAttributesContainer.style.border = '1px solid LightSteelBlue'; // Borde de 2px
+                    bonusAttributesContainer.style.borderRadius = '10px';
+                    bonusAttributesContainer.style.padding = '10px';
+                    bonusAttributesContainer.style.margin = '10px 0';
+                    bonusAttributesContainer.style.display = 'flex';
+                    bonusAttributesContainer.style.flexDirection = 'column';
+                    bonusAttributesContainer.style.alignItems = 'center';
+                    // Texto de bonusRules
+                    const bonusRulesText = document.createElement('div');
+                    bonusRulesText.style.marginBottom = '10px';
+                    bonusRulesText.style.textAlign = 'center';
+                    bonusRulesText.style.fontSize = '14px';
+                    bonusRulesText.textContent = raza.bonusRules;
+                    bonusAttributesContainer.appendChild(bonusRulesText);
+                    // Contenedor de atributos (rombos)
+                    const attributes = document.createElement('div');
+                    attributes.classList.add('character-attributes');
+                    const attributeColors = {
+                        strength: 'Red', // Fuerza
+                        dexterity: 'Lime', // Destreza
+                        constitution: 'Gold', // Constitución
+                        intelligence: 'SteelBlue', // Inteligencia
+                        wisdom: 'DarkViolet', // Sabiduría
+                        charisma: 'HotPink' // Carisma
+                    };
+                    ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'].forEach(key => {
+                        const value = raza.attributes[key] || '';
+                        const attribute = document.createElement('div');
+                        attribute.classList.add('character-attribute');
+                        // Aplicar color del borde y número
+                        attribute.style.border = `5px solid ${attributeColors[key]}`;
+                        attribute.style.marginInline = '5px';
+                        attribute.style.marginBlockEnd= '10px';
+                        attribute.style.color = attributeColors[key]; // Color del número
+                        // Contenido del rombo
+                        const numberSpan = document.createElement('span');
+                        numberSpan.textContent = value;
+                        numberSpan.style.color = attributeColors[key]; // Color del número
+                        attribute.appendChild(numberSpan);
+                        attributes.appendChild(attribute);
+                    });
+                    // Agregar atributos al contenedor
+                    bonusAttributesContainer.appendChild(attributes);
+                    // Añadir todo el contenedor al contenido
+                    content.appendChild(bonusAttributesContainer);
+                    // Tamaños
+                    // Tamaños y Velocidad
+                    const sizeSpeedContainer = document.createElement('div');
+                    sizeSpeedContainer.style.display = 'flex';
+                    sizeSpeedContainer.style.justifyContent = 'space-between';
+                    sizeSpeedContainer.style.gap = '10px';
+                    const sizesDiv = document.createElement('div');
+                    sizesDiv.style.flex = '3';
+                    sizesDiv.style.padding = '10px';
+                    sizesDiv.style.backgroundColor = '#333';
+                    sizesDiv.style.borderRadius = '10px';
+                    sizesDiv.style.textAlign = 'center';
+                    sizesDiv.textContent = `${raza.sizes.join(', ')}`;
+                    sizeSpeedContainer.appendChild(sizesDiv);
+                    const speedDiv = document.createElement('div');
+                    speedDiv.style.flex = '2';
+                    speedDiv.style.display = 'flex'; // Activar flexbox
+                    speedDiv.style.justifyContent = 'center'; // Centrado horizontal
+                    speedDiv.style.alignItems = 'center'; // Centrado vertical
+                    speedDiv.style.backgroundColor = '#333';
+                    speedDiv.style.borderRadius = '10px';
+                    speedDiv.textContent = `Vel. ${raza.movementSpeed} c`;
+                    sizeSpeedContainer.appendChild(speedDiv);
+                    content.appendChild(sizeSpeedContainer);
+                    // Habilidades
+                    const habilitiesContainer = document.createElement('div');
+                    habilitiesContainer.classList.add('habilities-container');
+                    raza.abilities.forEach(ability => {
+                        const abilityDiv = document.createElement('div');
+                        abilityDiv.classList.add('hability');
+                        abilityDiv.innerHTML = `<strong>${ability.name}</strong>: ${ability.description}`;
+                        habilitiesContainer.appendChild(abilityDiv);
+                    });
+                    content.appendChild(habilitiesContainer);
+                    container.appendChild(content);
+                    charactersContainer.appendChild(container);
+                }
+            } catch (error) {
+                console.error('Error cargando razas:', error);
+            }
+        }
         async function generateJSON() {
             const raceName = document.getElementById('raceName').value.trim();
             const raceDescription = document.getElementById('raceDescription').value.trim();
             const bonusRules = document.getElementById('bonusRules').value.trim();
             const movementSpeed = document.getElementById('movementSpeed').value.trim();
-
             const attributes = {
                 strength: document.getElementById('strength').value.trim(),
                 dexterity: document.getElementById('dexterity').value.trim(),
@@ -364,9 +505,8 @@
                 wisdom: document.getElementById('wisdom').value.trim(),
                 charisma: document.getElementById('charisma').value.trim(),
             };
-
-            const sizes = Array.from(document.querySelectorAll('.form-group input[type="checkbox"]:checked')).map(cb => cb.value);
-
+            const sizes = Array.from(document.querySelectorAll('.form-group input[type="checkbox"]:checked')).map(
+                cb => cb.value);
             const abilities = Array.from(document.getElementById('abilitiesContainer').children).map(group => {
                 const inputs = group.querySelectorAll('input, textarea');
                 return {
@@ -374,7 +514,6 @@
                     description: inputs[1].value.trim(),
                 };
             });
-
             const jsonData = {
                 raceName,
                 raceDescription,
@@ -384,21 +523,35 @@
                 sizes,
                 abilities,
             };
-
             const jsonString = JSON.stringify(jsonData, null, 4);
-            const blob = new Blob([jsonString], { type: 'application/json' });
+            const blob = new Blob([jsonString], {
+                type: 'application/json'
+            });
             const url = URL.createObjectURL(blob);
-
             const link = document.createElement('a');
             link.href = url;
             link.download = `${raceName || 'raza'}.json`;
             link.click();
-
             URL.revokeObjectURL(url);
             cerrarFormulario();
         }
 
+        document.getElementById('searchBar').addEventListener('input', (event) => {
+            const query = event.target.value.toLowerCase();
+            const characters = document.querySelectorAll('.character-container');
+
+            characters.forEach((character) => {
+                const name = character.querySelector('.character-title').textContent.toLowerCase();
+                if (name.includes(query)) {
+                    character.style.display = ''; // Mostrar el contenedor (restaura el estilo por defecto)
+                } else {
+                    character.style.display = 'none'; // Ocultar el contenedor
+                }
+            });
+        });
         document.addEventListener('DOMContentLoaded', cargarRazas);
+
     </script>
 </body>
+
 </html>
