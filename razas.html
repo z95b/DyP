@@ -14,9 +14,14 @@
       rel="stylesheet"
     />
 
-    <style>
-      body {
-        font-family: "Cinzel", serif;
+    <link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  body {
+    font-family: "Playfair Display", serif;
         background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
         color: #f4f4f4;
         margin: 0;
@@ -107,6 +112,9 @@
         z-index: 2;
       }
 
+      .character-description{
+        color:#ccc
+      }
       @media (max-width: 768px) {
         .character-content::before {
           background-color: rgba(0, 0, 0, 0.65); /* Oscurecimiento móvil */
@@ -120,11 +128,12 @@
         margin-top: 15px;
         margin-bottom: 15px;
         flex-wrap: wrap;
+        font-size: 1.8rem;
       }
 
       .character-attribute {
         display: flex;
-        justify-content: center;
+        justify-content:center;
         align-items: center;
         width: 60px;
         height: 60px;
@@ -135,6 +144,10 @@
         font-weight: bold;
         text-align: center;
         position: relative;
+      }
+
+      .character-attribute span{
+        margin-bottom: 15%;
       }
 
       .habilities-container {
@@ -148,7 +161,7 @@
         background: #333;
         padding: 10px;
         border-radius: 10px;
-        color: #ffa726;
+        color: Orange;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
       }
 
@@ -429,10 +442,10 @@
             title.textContent = raza.raceName;
             content.appendChild(title);
 
-            // Descripción
+            // Descripción con saltos de línea
             const description = document.createElement("div");
             description.classList.add("character-description");
-            description.textContent = raza.raceDescription;
+            description.innerHTML = raza.raceDescription.replace(/\n/g, "<br>");
             content.appendChild(description);
 
             // Bonus y atributos
@@ -509,13 +522,13 @@
 
             content.appendChild(sizeSpeedContainer);
 
-            // Habilidades
+            // Habilidades con saltos de línea
             const habilitiesContainer = document.createElement("div");
             habilitiesContainer.classList.add("habilities-container");
             raza.abilities.forEach((ability) => {
                 const abilityDiv = document.createElement("div");
                 abilityDiv.classList.add("hability");
-                abilityDiv.innerHTML = `<strong>${ability.name}</strong>: ${ability.description}`;
+                abilityDiv.innerHTML = `<strong style="font-family: 'Cinzel'">${ability.name}</strong>: ${ability.description.replace(/\n/g, "<br>")}`;
                 habilitiesContainer.appendChild(abilityDiv);
             });
 
