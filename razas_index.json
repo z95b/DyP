@@ -1,7 +1,7 @@
 [
-    "humanos.json",
     "semi_humanos.json",
     "draconidos.json",
+    "humanos.json",
     "kobolds.json",
     "elfos.json",
     "enanos.json",
