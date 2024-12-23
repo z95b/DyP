@@ -4,14 +4,15 @@
     "bonusRules": "",
     "movementSpeed": "6",
     "attributes": {
-        "strength": "2",
+        "strength": "+2",
         "dexterity": "0",
-        "constitution": "1",
+        "constitution": "+1",
         "intelligence": "0",
         "wisdom": "0",
         "charisma": "0"
     },
     "sizes": [
+        "Diminuto","Pequeño","Enorme",
         "Mediano",
         "Grande"
     ],

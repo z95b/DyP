@@ -15,13 +15,13 @@
     />
 
     <link
-  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
-  rel="stylesheet"
-/>
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  body {
-    font-family: "Playfair Display", serif;
+    <style>
+      body {
+        font-family: "Playfair Display", serif;
         background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
         color: #f4f4f4;
         margin: 0;
@@ -62,16 +62,17 @@
         display: flex;
         flex-direction: row;
         align-items: stretch;
-        /* La imagen ocupa todo el alto */
         width: 100%;
-        max-width: 1000px;
-        /* Hacer más amplio si es necesario */
+        max-width: fit-content;
         background: #242424;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
         border: 1px solid #444;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative; /* Necesario para los efectos */
+        border-radius: 15px;
+        overflow: hidden;
       }
 
       .character-image {
@@ -112,14 +113,21 @@
         z-index: 2;
       }
 
-      .character-description{
-        color:#ccc
+      .character-description {
+        color: #ccc;
       }
-      @media (max-width: 768px) {
-        .character-content::before {
-          background-color: rgba(0, 0, 0, 0.65); /* Oscurecimiento móvil */
-        }
+      .character-size {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #444;
+        color: white;
       }
+
+ 
 
       .character-attributes {
         display: flex;
@@ -133,7 +141,7 @@
 
       .character-attribute {
         display: flex;
-        justify-content:center;
+        justify-content: center;
         align-items: center;
         width: 60px;
         height: 60px;
@@ -146,7 +154,7 @@
         position: relative;
       }
 
-      .character-attribute span{
+      .character-attribute span {
         margin-bottom: 15%;
       }
 
@@ -161,8 +169,9 @@
         background: #333;
         padding: 10px;
         border-radius: 10px;
-        color: Orange;
+        color: AntiqueWhite;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        font-family: "Courier New", Courier, monospace;
       }
 
       #overlay {
@@ -260,7 +269,15 @@
         letter-spacing: 2px; /* Espaciado para un toque más épico */
       }
 
+      .character-attribute {
+        position: relative; /* Necesario para posicionar el span con la inicial */
+      }
+
       @media (max-width: 768px) {
+        body{
+          max-width: 760px;
+
+        }
         .character-container {
           flex-direction: column; /* Organizar en columnas para móviles */
         }
@@ -349,11 +366,11 @@
           </div>
           <div class="form-group">
             <label>Tamaños Disponibles</label>
-            <label><input type="checkbox" value="Minúsculo" /> Minúsculo</label>
+            <label><input type="checkbox" value="Diminuto" /> Diminuto</label>
             <label><input type="checkbox" value="Pequeño" /> Pequeño</label>
             <label><input type="checkbox" value="Mediano" /> Mediano</label>
             <label><input type="checkbox" value="Grande" /> Grande</label>
-            <label><input type="checkbox" value="Gigante" /> Gigante</label>
+            <label><input type="checkbox" value="Enorme" /> Enorme</label>
           </div>
           <div class="form-group">
             <label>Habilidades</label>
@@ -407,18 +424,71 @@
         container.appendChild(abilityGroup);
       }
 
+      
+      document.getElementById("characters").addEventListener("click", (event) => {
+    const container = event.target.closest(".character-container");
+    if (!container) return; // Si no se hizo clic en un contenedor, no hace nada
+
+    const titleElement = container.querySelector(".character-title");
+    if (!titleElement) return; // Si no hay título, no continúa
+
+    const raza = titleElement.textContent.trim(); // Obtiene el nombre de la raza
+    const baseUrl = "https://www.google.com/search";
+    const query = `${raza} dnd`; // Permite caracteres especiales en la URL
+    const params = new URLSearchParams({
+        q: query,
+        tbm: "isch", // Habilita la búsqueda de imágenes
+        source: "lnms"
+    });
+    const url = `${baseUrl}?${params.toString()}`;
+    window.open(url, "_blank");
+});
+
+
+
+
+      // Función para determinar el color del borde basado en los atributos más altos
+      function getBorderStyleForHighestAttributes(attributes, attributeColors) {
+        // Encuentra el valor máximo entre los atributos
+        const maxValue = Math.max(
+          ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
+        );
+
+        // Encuentra todos los atributos que tienen el valor máximo
+        const highestAttributes = Object.keys(attributes).filter(
+          (key) => parseInt(attributes[key], 10) === maxValue
+        );
+
+        // Si hay más de un atributo con el valor máximo (empate), crea un gradiente
+        if (highestAttributes.length > 1) {
+          const gradientStops = highestAttributes
+            .map((attr, index) => {
+              const color = attributeColors[attr];
+              const percentage = (100 / highestAttributes.length) * (index + 1);
+              return `${color} ${percentage}%`;
+            })
+            .join(", ");
+          return `linear-gradient(90deg, ${gradientStops})`;
+        }
+
+        // Si solo hay un atributo más alto, devuelve su color
+        return attributeColors[highestAttributes[0]];
+      }
+
       async function cargarRazas() {
-    const charactersContainer = document.getElementById("characters");
-    const directorio = "razas/";
+        const charactersContainer = document.getElementById("characters");
+        const directorio = "razas/";
 
-    try {
-        // Cargar el índice de razas desde index.json
-        const indexResponse = await fetch(`razas_index.json`);
-        if (!indexResponse.ok) throw new Error("No se pudo cargar el índice de razas.");
-        const archivos = await indexResponse.json();
+        try {
+          // Cargar el índice de razas desde index.json
+          const indexResponse = await fetch(`razas_index.json`);
+          if (!indexResponse.ok)
+            throw new Error("No se pudo cargar el índice de razas.");
+          const archivos = await indexResponse.json();
 
-        // Iterar sobre los archivos listados en index.json
-        for (const archivo of archivos) {
+          // Iterar sobre los archivos listados en index.json
+
+          for (const archivo of archivos) {
             const razaResponse = await fetch(`${directorio}${archivo}`);
             if (!razaResponse.ok) continue;
             const raza = await razaResponse.json();
@@ -426,24 +496,89 @@
             const container = document.createElement("div");
             container.classList.add("character-container");
 
-       
+            // Determinar el color del borde basado en los atributos más altos
+            const attributeColors = {
+              strength: "Tomato",
+              dexterity: "PaleGreen",
+              constitution: "Gold",
+              intelligence: "SkyBlue",
+              wisdom: "MediumPurple",
+              charisma: "HotPink",
+            };
+
+            // Función para determinar el borde luminoso
+
+            const getBorderStyleForHighestAttributes = (attributes) => {
+    const maxValue = Math.max(
+        ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
+    );
+    const highestAttributes = Object.keys(attributes).filter(
+        (key) => parseInt(attributes[key], 10) === maxValue
+    );
+
+    if (highestAttributes.length > 1) {
+        let currentIndex = 0;
+
+        // Crear una función para actualizar el box-shadow dinámicamente
+        const updateBoxShadow = () => {
+            const currentAttribute = highestAttributes[currentIndex];
+            const color = attributeColors[currentAttribute];
+            container.style.boxShadow = `0 0 15px ${color}`; // Actualizar el box-shadow del contenedor
+            currentIndex = (currentIndex + 1) % highestAttributes.length; // Avanzar al siguiente atributo
+        };
+
+        // Ejecutar la función cada segundo
+        setInterval(updateBoxShadow, 1000);
+
+        // Devolver el estilo inicial
+        return {
+            border: `2px solid ${attributeColors[highestAttributes[0]]}`,
+            boxShadow: `0 0 15px ${attributeColors[highestAttributes[0]]}`,
+        };
+    }
+
+    return {
+        border: `2px solid ${attributeColors[highestAttributes[0]]}`,
+        boxShadow: `0 0 15px ${attributeColors[highestAttributes[0]]}`,
+    };
+};
 
             
+            const { border, boxShadow } = getBorderStyleForHighestAttributes(raza.attributes);
+container.style.border = border;
+container.style.boxShadow = boxShadow;
+
+
+            // Aplicar el borde luminoso al contenedor
+            container.style.border = `5px solid transparent`;
+            container.style.backgroundImage = border.includes("linear-gradient")
+              ? border
+              : `none`;
+            container.style.boxShadow = `0 0 15px ${boxShadow}`;
+
             // Contenido textual
             const content = document.createElement("div");
             content.classList.add("character-content");
-            content.style.backgroundImage = `url('${directorio}${archivo.replace(".json", ".png")}')`;
+            content.style.backgroundImage = `url('${directorio}${archivo.replace(
+              ".json",
+              ".png"
+            )}')`;
 
-                 // Imagen
-                 const image = document.createElement("div");
+            // Imagen
+            const image = document.createElement("div");
             image.classList.add("character-image");
-            image.style.backgroundImage = `url('${directorio}${archivo.replace(".json", ".png")}')`;
+            image.style.backgroundImage = `url('${directorio}${archivo.replace(
+              ".json",
+              ".png"
+            )}')`;
             container.appendChild(image);
+
             // Título
             const title = document.createElement("div");
-            title.classList.add("character-title");
-            title.textContent = raza.raceName;
-            content.appendChild(title);
+title.classList.add("character-title");
+title.textContent = raza.raceName.toUpperCase(); // Llama al método con paréntesis
+content.appendChild(title);
+
 
             // Descripción con saltos de línea
             const description = document.createElement("div");
@@ -470,29 +605,41 @@
 
             const attributes = document.createElement("div");
             attributes.classList.add("character-attributes");
-            const attributeColors = {
-                strength: "Red",
-                dexterity: "Lime",
-                constitution: "Gold",
-                intelligence: "SteelBlue",
-                wisdom: "DarkViolet",
-                charisma: "HotPink",
-            };
 
-            ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].forEach((key) => {
-                const value = raza.attributes[key] || "";
-                const attribute = document.createElement("div");
-                attribute.classList.add("character-attribute");
-                attribute.style.border = `5px solid ${attributeColors[key]}`;
-                attribute.style.marginInline = "5px";
-                attribute.style.marginBlockEnd = "10px";
-                attribute.style.color = attributeColors[key];
+            [
+              "strength",
+              "dexterity",
+              "constitution",
+              "intelligence",
+              "wisdom",
+              "charisma",
+            ].forEach((key) => {
+              const value = raza.attributes[key] || "";
+              const attribute = document.createElement("div");
+              attribute.classList.add("character-attribute");
+              attribute.style.border = `5px solid ${attributeColors[key]}`;
+              attribute.style.marginInline = "5px";
+              attribute.style.marginBlockEnd = "10px";
+              attribute.style.color = attributeColors[key];
 
-                const numberSpan = document.createElement("span");
-                numberSpan.textContent = value;
-                numberSpan.style.color = attributeColors[key];
-                attribute.appendChild(numberSpan);
-                attributes.appendChild(attribute);
+              // Inicial de la característica
+              const initialSpan = document.createElement("span");
+              initialSpan.textContent =
+                key[0].toUpperCase() + key[1].toUpperCase();
+              initialSpan.style.position = "absolute";
+              initialSpan.style.top = "5px";
+              initialSpan.style.marginLeft = "auto";
+              initialSpan.style.fontSize = "0.8rem";
+              initialSpan.style.color = attributeColors[key];
+              attribute.appendChild(initialSpan);
+
+              // Valor del atributo
+              const numberSpan = document.createElement("span");
+              numberSpan.textContent = value;
+              numberSpan.style.color = attributeColors[key];
+              attribute.appendChild(numberSpan);
+
+              attributes.appendChild(attribute);
             });
 
             bonusAttributesContainer.appendChild(attributes);
@@ -504,13 +651,36 @@
             sizeSpeedContainer.style.justifyContent = "space-between";
             sizeSpeedContainer.style.gap = "10px";
 
+            const sizeFontSizes = {
+              Diminuto: "0.8rem",
+              Pequeño: "1rem",
+              Mediano: "1.2rem",
+              Grande: "1.5rem",
+              Enorme: "2rem",
+            };
+
+            // Generar los tamaños
             const sizesDiv = document.createElement("div");
             sizesDiv.style.flex = "3";
             sizesDiv.style.padding = "10px";
+            sizesDiv.style.maxWidth = "80%";
+
             sizesDiv.style.backgroundColor = "#333";
             sizesDiv.style.borderRadius = "10px";
             sizesDiv.style.textAlign = "center";
-            sizesDiv.textContent = `${raza.sizes.join(", ")}`;
+            sizesDiv.style.display = "flex";
+            sizesDiv.style.gap = "10px";
+
+            raza.sizes.forEach((size) => {
+              const sizeSpan = document.createElement("span");
+              sizeSpan.textContent = size;
+              sizeSpan.style.fontSize = sizeFontSizes[size] || "1rem";
+              sizeSpan.style.color = "white";
+              sizeSpan.style.padding = "5px";
+              sizeSpan.style.borderRadius = "5px";
+              sizesDiv.appendChild(sizeSpan);
+            });
+
             sizeSpeedContainer.appendChild(sizesDiv);
 
             const speedDiv = document.createElement("div");
@@ -529,20 +699,22 @@
             const habilitiesContainer = document.createElement("div");
             habilitiesContainer.classList.add("habilities-container");
             raza.abilities.forEach((ability) => {
-                const abilityDiv = document.createElement("div");
-                abilityDiv.classList.add("hability");
-                abilityDiv.innerHTML = `<strong style="font-family: 'Cinzel'">${ability.name}</strong>: ${ability.description.replace(/\n/g, "<br>")}`;
-                habilitiesContainer.appendChild(abilityDiv);
+              const abilityDiv = document.createElement("div");
+              abilityDiv.classList.add("hability");
+              abilityDiv.innerHTML = `<strong style="font-family: 'Cinzel'; font-size: 1.3rem;">${
+                ability.name
+              }</strong>: ${ability.description.replace(/\n/g, "<br>")}`;
+              habilitiesContainer.appendChild(abilityDiv);
             });
 
             content.appendChild(habilitiesContainer);
             container.appendChild(content);
             charactersContainer.appendChild(container);
+          }
+        } catch (error) {
+          console.error("Error cargando razas:", error);
         }
-    } catch (error) {
-        console.error("Error cargando razas:", error);
-    }
-}
+      }
 
       async function generateJSON() {
         const raceName = document.getElementById("raceName").value.trim();
@@ -553,14 +725,41 @@
         const movementSpeed = document
           .getElementById("movementSpeed")
           .value.trim();
+
         const attributes = {
-          strength: document.getElementById("strength").value.trim(),
-          dexterity: document.getElementById("dexterity").value.trim(),
-          constitution: document.getElementById("constitution").value.trim(),
-          intelligence: document.getElementById("intelligence").value.trim(),
-          wisdom: document.getElementById("wisdom").value.trim(),
-          charisma: document.getElementById("charisma").value.trim(),
+          strength: formatAttribute(
+            document.getElementById("strength").value.trim()
+          ),
+          dexterity: formatAttribute(
+            document.getElementById("dexterity").value.trim()
+          ),
+          constitution: formatAttribute(
+            document.getElementById("constitution").value.trim()
+          ),
+          intelligence: formatAttribute(
+            document.getElementById("intelligence").value.trim()
+          ),
+          wisdom: formatAttribute(
+            document.getElementById("wisdom").value.trim()
+          ),
+          charisma: formatAttribute(
+            document.getElementById("charisma").value.trim()
+          ),
         };
+
+        // Función para formatear atributos
+        function formatAttribute(value) {
+          const num = parseInt(value, 10); // Convierte el valor a un número
+          if (!isNaN(num)) {
+            if (num > 0) {
+              return `+${num}`; // Añade "+" si es positivo
+            } else {
+              return `${num}`; // Devuelve "0" o el número negativo como está
+            }
+          }
+          return "0"; // Si el valor no es válido, devuelve "0" por defecto
+        }
+
         const sizes = Array.from(
           document.querySelectorAll(
             '.form-group input[type="checkbox"]:checked'
