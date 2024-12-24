@@ -20,6 +20,36 @@
     />
 
     <style>
+       header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    color: white;
+    font-family: 'Cinzel', serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+       header button {
+    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ff9f43, #ff6f00);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+header button:hover {
+    transform: translateY(-2px);
+}
+
+.filter-button.active {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+}
+
       body {
         font-family: "Playfair Display", serif;
         background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
@@ -45,7 +75,7 @@
       }
 
       .button:hover {
-        background: linear-gradient(135deg, #ff6f00, #ff9f43);
+        background: linear-gradient(135deg);
         transform: translateY(-2px);
       }
 
@@ -65,13 +95,12 @@
         width: 100%;
         background: #242424;
         border-radius: 15px;
-        overflow: hidden;
         box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
         border: 1px solid #444;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         position: relative; /* Necesario para los efectos */
         border-radius: 15px;
-        overflow: hidden;
+        overflow: auto;
       }
 
       .character-image {
@@ -102,7 +131,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.85); /* Oscurecimiento normal */
+        background-color: rgba(0, 0, 0, 0.70); /* Oscurecimiento normal */
         z-index: 1;
       }
 
@@ -125,8 +154,6 @@
         background-color: #444;
         color: white;
       }
-
- 
 
       .character-attributes {
         display: flex;
@@ -273,34 +300,38 @@
       }
 
       @media (max-width: 768px) {
-        body{
-          max-width: 760px;
-
-        }
         .character-container {
-          flex-direction: column; /* Organizar en columnas para móviles */
-          width: 95%;
+          width: 90%;
+        }
+
+        .character-content {
+          width: 19rem;
         }
 
         .character-image {
           display: none; /* Oculta el contenedor de imagen en móviles */
-        }
-
-        .character-content {
-          background-size: cover; /* Escalar la imagen para cubrir el fondo */
-          background-position: center; /* Centrar la imagen */
-          background-repeat: no-repeat; /* Evitar repeticiones */
-          border-radius: 15px; /* Bordes redondeados */
-          padding: 20px; /* Espaciado interno para el contenido */
-          color: #fff; /* Asegura legibilidad */
         }
       }
     </style>
   </head>
 
   <body>
-    <button class="button" onclick="mostrarFormulario()">Agregar Raza</button>
 
+    <header>
+      <button onclick="window.location.href='index.html'">Volver a </br> <span style="font-size: 2.5rem;">D&P</span></button>
+    
+  </header>
+  <button class="button" onclick="mostrarFormulario()">GENERAR RAZA</button>
+
+    <div id="filters" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button class="button filter-button" data-attribute="strength">Fuerza</button>
+      <button class="button filter-button" data-attribute="dexterity">Destreza</button>
+      <button class="button filter-button" data-attribute="constitution">Constitución</button>
+      <button class="button filter-button" data-attribute="intelligence">Inteligencia</button>
+      <button class="button filter-button" data-attribute="wisdom">Sabiduría</button>
+      <button class="button filter-button" data-attribute="charisma">Carisma</button>
+  </div>
+  
     <div id="overlay" onclick="cerrarFormulario()">
       <div id="form-container" onclick="event.stopPropagation()">
         <h2>Formulario de Razas</h2>
@@ -386,22 +417,28 @@
       </div>
     </div>
 
-    <input
-      type="text"
-      id="searchBar"
-      placeholder="Buscar por nombre de raza..."
-      style="
-        margin-top: 20px;
-        padding: 10px;
-        width: 90%;
-        max-width: 600px;
-        font-size: 1rem;
-        border: 1px solid #444;
-        border-radius: 10px;
-        background-color: #333;
-        color: #fff;
-      "
-    />
+    <div style="position: relative; width: 90%; max-width: 600px; margin-top: 20px;">
+      
+      
+      <input
+      
+          type="text"
+          id="searchBar"
+          placeholder=" 🔍 Buscar por nombre de raza..."
+          style="
+              padding: 10px 40px 10px 10px; /* Espacio extra para la lupa */
+              width: 100%;
+              font-size: 1rem;
+              border: 1px solid #444;
+              border-radius: 10px;
+              background-color: #333;
+              color: #fff;
+          "
+      />
+      
+          
+  </div>
+  
     <div id="characters"></div>
     <script>
       function mostrarFormulario() {
@@ -424,28 +461,26 @@
         container.appendChild(abilityGroup);
       }
 
-      
-      document.getElementById("characters").addEventListener("click", (event) => {
-    const container = event.target.closest(".character-container");
-    if (!container) return; // Si no se hizo clic en un contenedor, no hace nada
+      document
+        .getElementById("characters")
+        .addEventListener("click", (event) => {
+          const container = event.target.closest(".character-container");
+          if (!container) return; // Si no se hizo clic en un contenedor, no hace nada
 
-    const titleElement = container.querySelector(".character-title");
-    if (!titleElement) return; // Si no hay título, no continúa
+          const titleElement = container.querySelector(".character-title");
+          if (!titleElement) return; // Si no hay título, no continúa
 
-    const raza = titleElement.textContent.trim(); // Obtiene el nombre de la raza
-    const baseUrl = "https://www.google.com/search";
-    const query = `${raza} dnd`; // Permite caracteres especiales en la URL
-    const params = new URLSearchParams({
-        q: query,
-        tbm: "isch", // Habilita la búsqueda de imágenes
-        source: "lnms"
-    });
-    const url = `${baseUrl}?${params.toString()}`;
-    window.open(url, "_blank");
-});
-
-
-
+          const raza = titleElement.textContent.trim(); // Obtiene el nombre de la raza
+          const baseUrl = "https://www.google.com/search";
+          const query = `${raza} dnd`; // Permite caracteres especiales en la URL
+          const params = new URLSearchParams({
+            q: query,
+            tbm: "isch", // Habilita la búsqueda de imágenes
+            source: "lnms",
+          });
+          const url = `${baseUrl}?${params.toString()}`;
+          window.open(url, "_blank");
+        });
 
       // Función para determinar el color del borde basado en los atributos más altos
       function getBorderStyleForHighestAttributes(attributes, attributeColors) {
@@ -490,11 +525,14 @@
 
           for (const archivo of archivos) {
             const razaResponse = await fetch(`${directorio}${archivo}`);
-            if (!razaResponse.ok) continue;
-            const raza = await razaResponse.json();
+ if (!razaResponse.ok) continue;
+    const raza = await razaResponse.json();
 
-            const container = document.createElement("div");
-            container.classList.add("character-container");
+    const container = document.createElement("div");
+    container.classList.add("character-container");
+
+    // Añadir los atributos como un atributo de datos
+    container.setAttribute("data-attributes", JSON.stringify(raza.attributes));
 
             // Determinar el color del borde basado en los atributos más altos
             const attributeColors = {
@@ -509,45 +547,47 @@
             // Función para determinar el borde luminoso
 
             const getBorderStyleForHighestAttributes = (attributes) => {
-    const maxValue = Math.max(
-        ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
-    );
-    const highestAttributes = Object.keys(attributes).filter(
-        (key) => parseInt(attributes[key], 10) === maxValue
-    );
+              const maxValue = Math.max(
+                ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
+              );
+              const highestAttributes = Object.keys(attributes).filter(
+                (key) => parseInt(attributes[key], 10) === maxValue
+              );
 
-    if (highestAttributes.length > 1) {
-        let currentIndex = 0;
+              if (highestAttributes.length > 1) {
+                let currentIndex = 0;
 
-        // Crear una función para actualizar el box-shadow dinámicamente
-        const updateBoxShadow = () => {
-            const currentAttribute = highestAttributes[currentIndex];
-            const color = attributeColors[currentAttribute];
-            container.style.boxShadow = `0 0 15px ${color}`; // Actualizar el box-shadow del contenedor
-            currentIndex = (currentIndex + 1) % highestAttributes.length; // Avanzar al siguiente atributo
-        };
+                // Crear una función para actualizar el box-shadow dinámicamente
+                const updateBoxShadow = () => {
+                  const currentAttribute = highestAttributes[currentIndex];
+                  const color = attributeColors[currentAttribute];
+                  container.style.boxShadow = `0 0 15px ${color}`; // Actualizar el box-shadow del contenedor
+                  currentIndex = (currentIndex + 1) % highestAttributes.length; // Avanzar al siguiente atributo
+                };
 
-        // Ejecutar la función cada segundo
-        setInterval(updateBoxShadow, 1000);
+                // Ejecutar la función cada segundo
+                setInterval(updateBoxShadow, 1000);
 
-        // Devolver el estilo inicial
-        return {
-            border: `2px solid ${attributeColors[highestAttributes[0]]}`,
-            boxShadow: `0 0 15px ${attributeColors[highestAttributes[0]]}`,
-        };
-    }
+                // Devolver el estilo inicial
+                return {
+                  border: `2px solid ${attributeColors[highestAttributes[0]]}`,
+                  boxShadow: `0 0 15px ${
+                    attributeColors[highestAttributes[0]]
+                  }`,
+                };
+              }
 
-    return {
-        border: `2px solid ${attributeColors[highestAttributes[0]]}`,
-        boxShadow: `0 0 15px ${attributeColors[highestAttributes[0]]}`,
-    };
-};
+              return {
+                border: `2px solid ${attributeColors[highestAttributes[0]]}`,
+                boxShadow: `0 0 15px ${attributeColors[highestAttributes[0]]}`,
+              };
+            };
 
-            
-            const { border, boxShadow } = getBorderStyleForHighestAttributes(raza.attributes);
-container.style.border = border;
-container.style.boxShadow = boxShadow;
-
+            const { border, boxShadow } = getBorderStyleForHighestAttributes(
+              raza.attributes
+            );
+            container.style.border = border;
+            container.style.boxShadow = boxShadow;
 
             // Aplicar el borde luminoso al contenedor
             container.style.border = `5px solid transparent`;
@@ -575,10 +615,9 @@ container.style.boxShadow = boxShadow;
 
             // Título
             const title = document.createElement("div");
-title.classList.add("character-title");
-title.textContent = raza.raceName.toUpperCase(); // Llama al método con paréntesis
-content.appendChild(title);
-
+            title.classList.add("character-title");
+            title.textContent = raza.raceName.toUpperCase(); // Llama al método con paréntesis
+            content.appendChild(title);
 
             // Descripción con saltos de línea
             const description = document.createElement("div");
@@ -625,7 +664,7 @@ content.appendChild(title);
               // Inicial de la característica
               const initialSpan = document.createElement("span");
               initialSpan.textContent =
-                key[0].toUpperCase() + key[1].toUpperCase();
+                key[0].toUpperCase() + key[1].toUpperCase()+ key[2].toUpperCase();
               initialSpan.style.position = "absolute";
               initialSpan.style.top = "5px";
               initialSpan.style.marginLeft = "auto";
@@ -656,20 +695,22 @@ content.appendChild(title);
               Pequeño: "1rem",
               Mediano: "1.2rem",
               Grande: "1.5rem",
-              Enorme: "2rem",
+              Enorme: "1.8rem",
             };
 
             // Generar los tamaños
             const sizesDiv = document.createElement("div");
-            sizesDiv.style.flex = "3";
+            sizesDiv.style.flex = "4";
             sizesDiv.style.padding = "10px";
-            sizesDiv.style.maxWidth = "80%";
-
+            sizesDiv.style.maxWidth = "90%";
             sizesDiv.style.backgroundColor = "#333";
             sizesDiv.style.borderRadius = "10px";
             sizesDiv.style.textAlign = "center";
             sizesDiv.style.display = "flex";
+            sizesDiv.style.flexWrap = "wrap"; // Permitir que el contenido salte a una nueva línea
             sizesDiv.style.gap = "10px";
+            sizesDiv.style.wordWrap = "break-word"; // Ajustar palabras largas si no hay espacios
+            sizesDiv.style.overflowWrap = "break-word"; // Alternativa para navegadores más modernos
 
             raza.sizes.forEach((size) => {
               const sizeSpan = document.createElement("span");
@@ -684,7 +725,7 @@ content.appendChild(title);
             sizeSpeedContainer.appendChild(sizesDiv);
 
             const speedDiv = document.createElement("div");
-            speedDiv.style.flex = "2";
+            speedDiv.style.flex = "1";
             speedDiv.style.display = "flex";
             speedDiv.style.justifyContent = "center";
             speedDiv.style.alignItems = "center";
@@ -814,6 +855,38 @@ content.appendChild(title);
           });
         });
       document.addEventListener("DOMContentLoaded", cargarRazas);
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+    cargarRazas();
+
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const charactersContainer = document.getElementById("characters");
+
+    // Manejar los clics en los botones de filtro
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const attribute = button.getAttribute("data-attribute");
+
+            // Alternar el estado activo del botón
+            button.classList.toggle("active");
+
+            // Obtener los atributos activos
+            const activeFilters = Array.from(filterButtons)
+                .filter(btn => btn.classList.contains("active"))
+                .map(btn => btn.getAttribute("data-attribute"));
+
+            // Filtrar las razas
+            const characters = charactersContainer.querySelectorAll(".character-container");
+            characters.forEach(character => {
+                const attributes = JSON.parse(character.getAttribute("data-attributes"));
+                const isVisible = activeFilters.length === 0 || activeFilters.some(attr => parseInt(attributes[attr], 10) > 0);
+                character.style.display = isVisible ? "" : "none";
+            });
+        });
+    });
+});
+
     </script>
   </body>
 </html>
