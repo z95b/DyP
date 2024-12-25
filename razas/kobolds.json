@@ -1,0 +1,24 @@
+{
+    "raceName": "Kobolds",
+    "raceDescription": "Los Kobolds son frecuentemente confundidos con dracónidos jóvenes, pero no pueden ser más diferentes. Su agilidad y habilidad en el habla los hacen interesantes para aventuras.",
+    "attributes": {
+        "dexterity": "+2",
+        "constitution": "+1"
+    },
+    "movementSpeed": "7",
+    "sizes": [
+        "Pequeño",
+        "Mediano"
+    ],
+    "longevity": "60-80 años",
+    "abilities": [
+        {
+            "name": "Aliento alcohólico",
+            "description": "No te puedes emborrachar. Al beber alcohol, eres capaz de escupir fuego como acción. Este ataque toma diferentes formas dependiendo de la cantidad y calidad del alcohol."
+        },
+        {
+            "name": "Regeneración extrema",
+            "description": "Tus heridas, sean del tipo que sean, se regenerarán al cabo de 1 semana. Heridas mayores se regenerarán cuando el cuerpo pueda operar normalmente."
+        }
+    ]
+}

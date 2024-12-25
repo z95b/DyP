@@ -6,101 +6,113 @@
   <link rel="icon" href="media/ico.ico" type="image/x-icon">
   <title>Dragonas Y Perronas</title>
 
+  
   <style>
-/* General Styles */
-body {
-  font-family: 'Cinzel', serif;
-  background: linear-gradient(180deg, #f3e5f5, #e1bee7, #d1c4e9);
-  color: #4b0082;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-size: 16px; /* Base para rem */
-}
+    /* General Styles */
+    body {
+      font-family: 'Cinzel', serif;
+      background: linear-gradient(180deg, #f3e5f5, #e1bee7, #d1c4e9);
+      color: #4b0082;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-size: 16px;
+    }
+    
+    /* Fixed Background */
+    .background-image {
+      background-image: url('media/dyp.jpg');
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      margin-top: -10%;
+      width: 100%;
+      height: 120%;
+      z-index: -100;
+    }
+    
+    /* Spacer for the Background */
+    .spacer {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 60rem;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 0.2rem solid #a78bfa;
+      border-radius: 1rem;
+      box-shadow: 0 0 1.5rem rgba(147, 112, 219, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Heading */
+    h1 {
+      font-size: 3rem;
+      color: #6a1b9a;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+    
+    /* Menu Buttons */
+    .menu-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .menu-btn {
+      width: 12rem;
+      height: 12rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1rem;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('media/button-bg.jpg') center/cover;
+      border: 0.2rem solid #5e35b1;
+      border-radius: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.3);
+    }
+    
+    .menu-btn:hover {
+      transform: translateY(-0.3rem);
+      box-shadow: 0 0 1.2rem rgba(147, 112, 219, 0.7);
+    }
+    
+    /* Footer */
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    footer p {
+      font-size: 1rem;
+      color: #4b0082;
+    }
 
-/* Fixed Background */
-.background-image {
-  background-image: url('media/dyp.jpg');
-  background-size:cover;
-  background-position: center;
-  position: fixed; /* Fija la imagen */
-  margin-top: -10%;
-  width: 100%;
-  height: 120%; /* Ocupa toda la altura del viewport */
-  z-index: -100;
-}
-
-/* Spacer for the Background */
-.spacer {
-  height: 100vh; /* Ocupa una altura igual a la del viewport */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Container */
-.container {
-  max-width: 60rem; /* Ancho máximo */
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.85);
-  border: 0.2rem solid #a78bfa;
-  border-radius: 1rem;
-  box-shadow: 0 0 1.5rem rgba(147, 112, 219, 0.5);
-  position: relative;
-  z-index: 1;
-}
-
-/* Heading */
-h1 {
-  font-size: 3rem;
-  color: #6a1b9a;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  background-color:rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-/* Menu Buttons */
-.menu-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.menu-btn {
-  width: 18rem; /* Ancho fijo para botones */
-  padding: 1rem;
-  font-size: 1rem;
-  background: linear-gradient(90deg, #b39ddb, #9575cd);
-  border: 0.2rem solid #5e35b1;
-  border-radius: 1.5rem;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-}
-
-.menu-btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 0 1.2rem rgba(147, 112, 219, 0.7);
-  background: linear-gradient(90deg, #9575cd, #5e35b1);
-}
-
-/* Footer */
-footer {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-footer p {
-  font-size: 1rem;
-  color: #4b0082;
-}
-  </style>
+    @media screen {
+      .menu-btn {
+      width: 8rem;
+      height: 8rem;
+      }
+    }
+    </style>
+    
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -116,12 +128,13 @@ footer p {
 
     <div class="menu-container">
       <a href="stats.html" class="menu-btn" target="_blank">GENERADOR DE STATS</a>
-      <a onclick="descargarFitxa()" class="menu-btn">FICHA</a>
-      <a onclick="descargarFitxa2()" class="menu-btn">FICHA MEGA PRO </a>
+      <a onclick="descargarFitxa()" class="menu-btn">FICHA </a>
       <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="menu-btn" target="_blank">RAZAS DOC</a>
       <a href="razas.html" class="menu-btn" target="_blank">RAZAS NUEVO</a>
+
       <a href="https://docs.google.com/document/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit?usp=sharing" class="menu-btn" target="_blank">CLASES</a>
       <a href="https://nivel20.com/games/dnd-5/items" class="menu-btn" target="_blank">ARMAS</a>
+      <a href="aventuras.html" class="menu-btn" target="_blank">NUESTRAS AVENTURAS</a>
       <a href="https://docs.google.com/document/d/1AMj_ZXyBYFPHXMJBCPIUntG5cOepWFOA0cCoEsT6SNs/edit?usp=sharing" class="menu-btn" target="_blank">REGLAS</a>
     </div>
 
@@ -136,16 +149,11 @@ footer p {
 
   <script>
 
-function descargarFitxa() {
+
+    function descargarFitxa() {
       const enlace = document.createElement("a");
-        enlace.href = "FitxaDnD.pdf";
-        enlace.download = "FitxaDnD.pdf";
-        enlace.click();
-      }
-    function descargarFitxa2() {
-      const enlace = document.createElement("a");
-      enlace.href = "FitxaDnD2.pdf";
-      enlace.download = "FitxaDnD2.pdf";
+      enlace.href = "FitxaDnD.pdf";
+      enlace.download = "FitxaDnD.pdf";
       enlace.click();
     }
   </script>

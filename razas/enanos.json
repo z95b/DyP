@@ -1,0 +1,27 @@
+{
+    "raceName": "Enanos",
+    "raceDescription": "Los enanos son grandes guerreros e ingenieros que se adaptan a las peores situaciones.",
+    "attributes": {
+        "constitution": "+2",
+        "strength": "+1"
+    },
+    "movementSpeed": "5",
+    "sizes": [
+        "Mediano"
+    ],
+    "longevity": "Larga vida",
+    "abilities": [
+        {
+            "name": "Dureza de montaña",
+            "description": "Resistencia al daño de veneno (-50%) y ventaja en salvadas contra ser envenenado."
+        },
+        {
+            "name": "Valentía",
+            "description": "No se puede intimidar ni asustar."
+        },
+        {
+            "name": "Hierro en la sangre",
+            "description": "Competencia en herramientas de herrero y mejoras adicionales si ya la tienes."
+        }
+    ]
+}

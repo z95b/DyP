@@ -11,40 +11,50 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQABNz8sp5CC9HZoDkRjo2UBQtEwgPC5ldfZoz1bRWmgd8M2g4u9E9p1K" crossorigin="anonymous">
-
-
   <style>
-    header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
-      color: white;
-      font-family: 'Cinzel', serif;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
 
-    header button {
-      font-size: 1.5rem;
-      font-family: 'Cinzel', serif;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(135deg, #ff9f43, #ff6f00);
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
+    
+.menu-button {
+    background-color: transparent;
+    border: 5px solid purple;
+    color: rgb(171, 48, 171);
+    font-family: 'Cinzel', serif;
+  font-weight: bolder;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    header button:hover {
-      transform: translateY(-2px);
-    }
+  .menu-button:hover {
+    background-color: purple;
+    color: white;
+    transform: translateY(-2px);
+  }
 
-    .filter-button.active {
-      background: linear-gradient(135deg, #4CAF50, #388E3C);
-    }
+    
+  .generar-raza-button {
+    margin: 5px;
+    background-color: transparent;
+    border: 5px solid orange;
+    color: rgb(242, 166, 73);
+    font-family: 'Cinzel', serif;
+  font-weight: bolder;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .generar-raza-button:hover {
+    background-color: orange;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+   
 
     body {
       font-family: "Playfair Display", serif;
@@ -57,14 +67,26 @@
       align-items: center;
     }
 
- 
+    .button {
+      padding: 12px 24px;
+      background: rgba(0, 0, 0, 0.2);
+      border: solid 1px whitesmoke;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-
+     .filter-button:hover {
+      background: linear-gradient(135deg);
+      transform: translateY(-2px);
+    }
+ .filter-button.active {
+      background: linear-gradient(135deg, #4CAF50, #388E3C);
+    }
     #characters {
       display: flex;
       flex-wrap: wrap;
@@ -81,7 +103,7 @@
       width: 100%;
       background: #242424;
       border-radius: 15px;
-      box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 8px 30px rgba(0, 0, 0, 1);
       border: 1px solid #444;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
@@ -286,6 +308,7 @@
 
     .character-attribute {
       position: relative;
+      /* Necesario para posicionar el span con la inicial */
     }
 
     @media (max-width: 768px) {
@@ -299,6 +322,7 @@
 
       .character-image {
         display: none;
+        /* Oculta el contenedor de imagen en móviles */
       }
     }
   </style>
@@ -307,28 +331,13 @@
 <body>
 
   <header>
-    <button onclick="window.location.href='index.html'">Volver a </br> <span
-        style="font-size: 2.5rem;">D&P</span></button>
-
+    <button class="menu-button" onclick="window.location.href='index.html'">
+      Volver a </br> 
+      <span style="font-size: 2.5rem;">D&P</span>
+    </button>
   </header>
-
-  <button class="btn btn-outline-primary mt-3" onclick="mostrarFormulario()">GENERAR RAZA</button>
-
-  <div id="filters" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
-    <button class="btn btn-primary" data-attribute="strength">Fuerza</button>
-    <button class="btn btn-success" data-attribute="dexterity">Destreza</button>
-    <button class="btn btn-warning" data-attribute="constitution">Constitución</button>
-    <button class="btn btn-info" data-attribute="intelligence">Inteligencia</button>
-    <button class="btn btn-dark" data-attribute="wisdom">Sabiduría</button>
-    <button class="btn btn-danger" data-attribute="charisma">Carisma</button>
-  </div>
   
-  <!-- Botón para generar raza -->
-  
-  <!-- Botón dentro del formulario -->
-  
-  
-
+  <button class="generar-raza-button" onclick="mostrarFormulario()">GENERAR RAZA</button>
   <div id="overlay" onclick="cerrarFormulario()">
     <div id="form-container" onclick="event.stopPropagation()">
       <h2>Formulario de Razas</h2>
@@ -374,14 +383,25 @@
           </button>
         </div>
         <button type="button" class="button" onclick="generateJSON()">
-          Descargar JSON
+          Terminar y Descargar JSON
         </button>
       </form>
     </div>
   </div>
+  <hr>
+  <span > Filtrar por atributos: </span>
+  <div id="filters" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+    <button class="button filter-button" data-attribute="strength">Fuerza</button>
+    <button class="button filter-button" data-attribute="dexterity">Destreza</button>
+    <button class="button filter-button" data-attribute="constitution">Constitución</button>
+    <button class="button filter-button" data-attribute="intelligence">Inteligencia</button>
+    <button class="button filter-button" data-attribute="wisdom">Sabiduría</button>
+    <button class="button filter-button" data-attribute="charisma">Carisma</button>
+  </div>
+
+ 
 
   <div style="position: relative; width: 90%; max-width: 600px; margin-top: 20px;">
-
 
     <input type="text" id="searchBar" placeholder=" 🔍 Buscar por nombre de raza..." style="
               padding: 10px 40px 10px 10px; /* Espacio extra para la lupa */
@@ -392,7 +412,6 @@
               background-color: #333;
               color: #fff;
           " />
-
 
   </div>
 
@@ -417,37 +436,35 @@
 `;
       container.appendChild(abilityGroup);
     }
-
     document
       .getElementById("characters")
       .addEventListener("click", (event) => {
         const container = event.target.closest(".character-container");
-        if (!container) return; 
-
+        if (!container) return; // Si no se hizo clic en un contenedor, no hace nada
         const titleElement = container.querySelector(".character-title");
-        if (!titleElement) return; 
-
-        const raza = titleElement.textContent.trim(); 
+        if (!titleElement) return; // Si no hay título, no continúa
+        const raza = titleElement.textContent.trim(); // Obtiene el nombre de la raza
         const baseUrl = "https://www.google.com/search";
-        const query = `${raza} dungeons and dragons`; 
+        const query = `${raza} dungeons and dragons`; // Permite caracteres especiales en la URL
         const params = new URLSearchParams({
           q: query,
-          tbm: "isch", 
+          tbm: "isch", // Habilita la búsqueda de imágenes
           source: "lnms",
         });
         const url = `${baseUrl}?${params.toString()}`;
         window.open(url, "_blank");
       });
-
+    // Función para determinar el color del borde basado en los atributos más altos
     function getBorderStyleForHighestAttributes(attributes, attributeColors) {
+      // Encuentra el valor máximo entre los atributos
       const maxValue = Math.max(
         ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
       );
-
+      // Encuentra todos los atributos que tienen el valor máximo
       const highestAttributes = Object.keys(attributes).filter(
         (key) => parseInt(attributes[key], 10) === maxValue
       );
-
+      // Si hay más de un atributo con el valor máximo (empate), crea un gradiente
       if (highestAttributes.length > 1) {
         const gradientStops = highestAttributes
           .map((attr, index) => {
@@ -458,35 +475,27 @@
           .join(", ");
         return `linear-gradient(90deg, ${gradientStops})`;
       }
-
       // Si solo hay un atributo más alto, devuelve su color
       return attributeColors[highestAttributes[0]];
     }
-
     async function cargarRazas() {
       const charactersContainer = document.getElementById("characters");
       const directorio = "razas/";
-
       try {
         // Cargar el índice de razas desde index.json
         const indexResponse = await fetch(`razas_index.json`);
         if (!indexResponse.ok)
           throw new Error("No se pudo cargar el índice de razas.");
         const archivos = await indexResponse.json();
-
         // Iterar sobre los archivos listados en index.json
-
         for (const archivo of archivos) {
           const razaResponse = await fetch(`${directorio}${archivo}`);
           if (!razaResponse.ok) continue;
           const raza = await razaResponse.json();
-
           const container = document.createElement("div");
           container.classList.add("character-container");
-
           // Añadir los atributos como un atributo de datos
           container.setAttribute("data-attributes", JSON.stringify(raza.attributes));
-
           // Determinar el color del borde basado en los atributos más altos
           const attributeColors = {
             strength: "Tomato",
@@ -496,9 +505,7 @@
             wisdom: "MediumPurple",
             charisma: "HotPink",
           };
-
           // Función para determinar el borde luminoso
-
           const getBorderStyleForHighestAttributes = (attributes) => {
             const maxValue = Math.max(
               ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
@@ -506,77 +513,67 @@
             const highestAttributes = Object.keys(attributes).filter(
               (key) => parseInt(attributes[key], 10) === maxValue
             );
-
             if (highestAttributes.length > 1) {
               let currentIndex = 0;
 
-              // Crear una función para actualizar el box-shadow dinámicamente
               const updateBoxShadow = () => {
                 const currentAttribute = highestAttributes[currentIndex];
                 const color = attributeColors[currentAttribute];
-                container.style.boxShadow = `0 0 15px ${color}`; // Actualizar el box-shadow del contenedor
+                container.style.boxShadow = `0 0 30px ${color}`; // Actualizar el box-shadow del contenedor
                 currentIndex = (currentIndex + 1) % highestAttributes.length; // Avanzar al siguiente atributo
               };
-
-              // Ejecutar la función cada segundo
               setInterval(updateBoxShadow, 1000);
-
-              // Devolver el estilo inicial
               return {
                 border: `2px solid ${attributeColors[highestAttributes[0]]}`,
-                boxShadow: `0 0 15px ${attributeColors[highestAttributes[0]]
+                boxShadow: `0 0 30px ${
+                    attributeColors[highestAttributes[0]]
                   }`,
               };
             }
-
             return {
               border: `2px solid ${attributeColors[highestAttributes[0]]}`,
-              boxShadow: `0 0 15px ${attributeColors[highestAttributes[0]]}`,
+              boxShadow: `0 0 30px ${attributeColors[highestAttributes[0]]}`,
             };
           };
-
-          const { border, boxShadow } = getBorderStyleForHighestAttributes(
+          const {
+            border,
+            boxShadow
+          } = getBorderStyleForHighestAttributes(
             raza.attributes
           );
           container.style.border = border;
           container.style.boxShadow = boxShadow;
-
           // Aplicar el borde luminoso al contenedor
           container.style.border = `5px solid transparent`;
-          container.style.backgroundImage = border.includes("linear-gradient")
-            ? border
-            : `none`;
+          container.style.backgroundImage = border.includes("linear-gradient") ?
+            border :
+            `none`;
           container.style.boxShadow = `0 0 15px ${boxShadow}`;
-
           // Contenido textual
           const content = document.createElement("div");
           content.classList.add("character-content");
           content.style.backgroundImage = `url('${directorio}${archivo.replace(
-            ".json",
-            ".png"
-          )}')`;
-
+              ".json",
+              ".png"
+            )}')`;
           // Imagen
           const image = document.createElement("div");
           image.classList.add("character-image");
           image.style.backgroundImage = `url('${directorio}${archivo.replace(
-            ".json",
-            ".png"
-          )}')`;
+              ".json",
+              ".png"
+            )}')`;
           container.appendChild(image);
-
           // Título
           const title = document.createElement("div");
           title.classList.add("character-title");
           title.textContent = raza.raceName.toUpperCase(); // Llama al método con paréntesis
           content.appendChild(title);
-
           // Descripción con saltos de línea
           const description = document.createElement("div");
           description.classList.add("character-description");
           description.innerHTML = raza.raceDescription.replace(/\n/g, "<br>");
           content.appendChild(description);
-
           // Bonus y atributos
           const bonusAttributesContainer = document.createElement("div");
           bonusAttributesContainer.style.border = "1px solid LightSteelBlue";
@@ -586,62 +583,58 @@
           bonusAttributesContainer.style.display = "flex";
           bonusAttributesContainer.style.flexDirection = "column";
           bonusAttributesContainer.style.alignItems = "center";
-
           const bonusRulesText = document.createElement("div");
           bonusRulesText.style.marginBottom = "10px";
           bonusRulesText.style.textAlign = "center";
           bonusRulesText.style.fontSize = "14px";
           bonusRulesText.textContent = raza.bonusRules;
           bonusAttributesContainer.appendChild(bonusRulesText);
-
           const attributes = document.createElement("div");
           attributes.classList.add("character-attributes");
-
           [
-            "strength",
-            "dexterity",
-            "constitution",
-            "intelligence",
-            "wisdom",
-            "charisma",
-          ].forEach((key) => {
-            const value = raza.attributes[key] || "";
-            const attribute = document.createElement("div");
-            attribute.classList.add("character-attribute");
-            attribute.style.border = `5px solid ${attributeColors[key]}`;
-            attribute.style.marginInline = "5px";
-            attribute.style.marginBlockEnd = "10px";
-            attribute.style.color = attributeColors[key];
+  "strength",
+  "dexterity",
+  "constitution",
+  "intelligence",
+  "wisdom",
+  "charisma",
+].forEach((key) => {
+  // Si el valor no está definido, usa 0
+  const value = raza.attributes[key] || 0;
+  const attribute = document.createElement("div");
+  attribute.classList.add("character-attribute");
+  attribute.style.border = `5px solid ${attributeColors[key]}`;
+  attribute.style.marginInline = "5px";
+  attribute.style.marginBlockEnd = "10px";
+  attribute.style.color = attributeColors[key];
 
-            // Inicial de la característica
-            const initialSpan = document.createElement("span");
-            initialSpan.textContent =
-              key[0].toUpperCase() + key[1].toUpperCase() + key[2].toUpperCase();
-            initialSpan.style.position = "absolute";
-            initialSpan.style.top = "5px";
-            initialSpan.style.marginLeft = "auto";
-            initialSpan.style.fontSize = "0.8rem";
-            initialSpan.style.color = attributeColors[key];
-            attribute.appendChild(initialSpan);
+  // Inicial de la característica
+  const initialSpan = document.createElement("span");
+  initialSpan.textContent =
+    key[0].toUpperCase() + key[1].toUpperCase() + key[2].toUpperCase();
+  initialSpan.style.position = "absolute";
+  initialSpan.style.top = "5px";
+  initialSpan.style.marginLeft = "auto";
+  initialSpan.style.fontSize = "0.8rem";
+  initialSpan.style.color = attributeColors[key];
+  attribute.appendChild(initialSpan);
 
-            // Valor del atributo
-            const numberSpan = document.createElement("span");
-            numberSpan.textContent = value;
-            numberSpan.style.color = attributeColors[key];
-            attribute.appendChild(numberSpan);
+  // Valor del atributo
+  const numberSpan = document.createElement("span");
+  numberSpan.textContent = value;
+  numberSpan.style.color = attributeColors[key];
+  attribute.appendChild(numberSpan);
 
-            attributes.appendChild(attribute);
-          });
+  attributes.appendChild(attribute);
+});
 
           bonusAttributesContainer.appendChild(attributes);
           content.appendChild(bonusAttributesContainer);
-
           // Tamaños y Velocidad
           const sizeSpeedContainer = document.createElement("div");
           sizeSpeedContainer.style.display = "flex";
           sizeSpeedContainer.style.justifyContent = "space-between";
           sizeSpeedContainer.style.gap = "10px";
-
           const sizeFontSizes = {
             Diminuto: "0.8rem",
             Pequeño: "1rem",
@@ -649,7 +642,6 @@
             Grande: "1.5rem",
             Enorme: "1.8rem",
           };
-
           // Generar los tamaños
           const sizesDiv = document.createElement("div");
           sizesDiv.style.flex = "4";
@@ -663,7 +655,6 @@
           sizesDiv.style.gap = "10px";
           sizesDiv.style.wordWrap = "break-word"; // Ajustar palabras largas si no hay espacios
           sizesDiv.style.overflowWrap = "break-word"; // Alternativa para navegadores más modernos
-
           raza.sizes.forEach((size) => {
             const sizeSpan = document.createElement("span");
             sizeSpan.textContent = size;
@@ -673,9 +664,7 @@
             sizeSpan.style.borderRadius = "5px";
             sizesDiv.appendChild(sizeSpan);
           });
-
           sizeSpeedContainer.appendChild(sizesDiv);
-
           const speedDiv = document.createElement("div");
           speedDiv.style.flex = "1";
           speedDiv.style.display = "flex";
@@ -685,20 +674,18 @@
           speedDiv.style.borderRadius = "10px";
           speedDiv.textContent = `Vel. ${raza.movementSpeed} c`;
           sizeSpeedContainer.appendChild(speedDiv);
-
           content.appendChild(sizeSpeedContainer);
-
           // Habilidades con saltos de línea
           const habilitiesContainer = document.createElement("div");
           habilitiesContainer.classList.add("habilities-container");
           raza.abilities.forEach((ability) => {
             const abilityDiv = document.createElement("div");
             abilityDiv.classList.add("hability");
-            abilityDiv.innerHTML = `<strong style="font-family: 'Cinzel'; font-size: 1.3rem;">${ability.name
+            abilityDiv.innerHTML = `<strong style="font-family: 'Cinzel'; font-size: 1.3rem;">${
+                ability.name
               }</strong>: ${ability.description.replace(/\n/g, "<br>")}`;
             habilitiesContainer.appendChild(abilityDiv);
           });
-
           content.appendChild(habilitiesContainer);
           container.appendChild(content);
           charactersContainer.appendChild(container);
@@ -707,7 +694,6 @@
         console.error("Error cargando razas:", error);
       }
     }
-
     async function generateJSON() {
       const raceName = document.getElementById("raceName").value.trim();
       const raceDescription = document
@@ -717,7 +703,6 @@
       const movementSpeed = document
         .getElementById("movementSpeed")
         .value.trim();
-
       const attributes = {
         strength: formatAttribute(
           document.getElementById("strength").value.trim()
@@ -738,7 +723,6 @@
           document.getElementById("charisma").value.trim()
         ),
       };
-
       // Función para formatear atributos
       function formatAttribute(value) {
         const num = parseInt(value, 10); // Convierte el valor a un número
@@ -751,7 +735,6 @@
         }
         return "0"; // Si el valor no es válido, devuelve "0" por defecto
       }
-
       const sizes = Array.from(
         document.querySelectorAll(
           '.form-group input[type="checkbox"]:checked'
@@ -787,13 +770,11 @@
       URL.revokeObjectURL(url);
       cerrarFormulario();
     }
-
     document
       .getElementById("searchBar")
       .addEventListener("input", (event) => {
         const query = event.target.value.toLowerCase();
         const characters = document.querySelectorAll(".character-container");
-
         characters.forEach((character) => {
           const name = character
             .querySelector(".character-title")
@@ -805,39 +786,31 @@
           }
         });
       });
-    document.addEventListener("DOMContentLoaded", cargarRazas);
-
-
     document.addEventListener("DOMContentLoaded", () => {
       cargarRazas();
-
       const filterButtons = document.querySelectorAll(".filter-button");
       const charactersContainer = document.getElementById("characters");
-
       // Manejar los clics en los botones de filtro
       filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
-          const attribute = button.getAttribute("data-attribute");
-
-          // Alternar el estado activo del botón
-          button.classList.toggle("active");
-
-          // Obtener los atributos activos
-          const activeFilters = Array.from(filterButtons)
-            .filter(btn => btn.classList.contains("active"))
-            .map(btn => btn.getAttribute("data-attribute"));
-
-          // Filtrar las razas
-          const characters = charactersContainer.querySelectorAll(".character-container");
-          characters.forEach(character => {
-            const attributes = JSON.parse(character.getAttribute("data-attributes"));
-            const isVisible = activeFilters.length === 0 || activeFilters.some(attr => parseInt(attributes[attr], 10) > 0);
-            character.style.display = isVisible ? "" : "none";
-          });
-        });
-      });
+  button.addEventListener("click", () => {
+    const attribute = button.getAttribute("data-attribute");
+    // Alternar el estado activo del botón
+    button.classList.toggle("active");
+    // Obtener los atributos activos
+    const activeFilters = Array.from(filterButtons)
+      .filter(btn => btn.classList.contains("active"))
+      .map(btn => btn.getAttribute("data-attribute"));
+    // Filtrar las razas
+    const characters = charactersContainer.querySelectorAll(".character-container");
+    characters.forEach(character => {
+      const attributes = JSON.parse(character.getAttribute("data-attributes"));
+      const isVisible = activeFilters.length === 0 || activeFilters.every(attr => parseInt(attributes[attr], 10) > 0);
+      character.style.display = isVisible ? "" : "none";
     });
+  });
+});
 
+    });
   </script>
 </body>
 

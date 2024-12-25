@@ -1,0 +1,27 @@
+{
+    "raceName": "Gnomos",
+    "raceDescription": "Los gnomos son pequeños seres mágicos, curiosos y habilidosos en magia.",
+    "attributes": {
+        "intelligence": "+2",
+        "custom": "Bosques: +1 en Sabiduría; Rocas: +1 en Constitución"
+    },
+    "movementSpeed": "5",
+    "sizes": [
+        "Pequeño"
+    ],
+    "longevity": "Larga vida",
+    "abilities": [
+        {
+            "name": "Gnomos de los bosques",
+            "description": "Hablar con animales."
+        },
+        {
+            "name": "Gnomos de las rocas",
+            "description": "Puedes meterte en la roca y traspasarla lentamente (Máx 5m)."
+        },
+        {
+            "name": "Mente rápida",
+            "description": "Ventaja en salvadas de Carisma, Sabiduría o Inteligencia contra efectos mágicos."
+        }
+    ]
+}

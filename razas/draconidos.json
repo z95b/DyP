@@ -12,7 +12,6 @@
         "charisma": "0"
     },
     "sizes": [
-        "Diminuto","Pequeño","Enorme",
         "Mediano",
         "Grande"
     ],
@@ -25,9 +24,5 @@
             "name": "Herencia del Padre",
             "description": "Obtienes una de estas habilidades para usar como acción (Descanso Corto). Estas habilidades aumentan en 1 dado de daño a los niveles 5, 11 y 17: \n+Fuego (Manos Ardientes) (3d6)\n+Hielo (Ataque en cono) (3d6)\n+Veneno (Nube tóxica) (2d6 + 2T)\n+Eléctrico (Ola Atronadora) (2d8)\n+Ácido (Salpicadura ácida) (1d8 x2 Objetivos)"
         }
-    ],
-    "additionalInfo": {
-        "heightRange": "Suelen medir entre 1'50 a 2'30m",
-        "longevity": "90-150 años"
-    }
+    ]
 }

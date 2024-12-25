@@ -1,0 +1,27 @@
+{
+    "raceName": "Elfos",
+    "raceDescription": "Los elfos, aunque sofisticados y complejos, son comunes en ciudades saludables. Destacan en su intelecto y habilidades con el arco.",
+    "attributes": {
+        "dexterity": "+2",
+        "intelligence": "+1"
+    },
+    "movementSpeed": "6",
+    "sizes": [
+        "Mediano"
+    ],
+    "longevity": "Longevamente inmortales",
+    "abilities": [
+        {
+            "name": "Peso Pluma",
+            "description": "No activan trampas de presión ni se hunden en terrenos difíciles."
+        },
+        {
+            "name": "Raíces mágicas",
+            "description": "Ventaja en salvadas contra encantamientos y no se puede dormir contra su voluntad."
+        },
+        {
+            "name": "Trance",
+            "description": "Para descansar largo necesitan solo 4h interrumpidas."
+        }
+    ]
+}
