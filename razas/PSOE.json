@@ -4,11 +4,11 @@
     "bonusRules": "Perrito Sansex",
     "movementSpeed": "1",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "0",
+        "strength": "-20",
+        "dexterity": "-20",
+        "constitution": "-20",
+        "intelligence": "-20",
+        "wisdom": "-20",
         "charisma": "+10"
     },
     "sizes": [
