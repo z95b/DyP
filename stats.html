@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="media/casino.png" type="image/x-icon">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino de Dragonas y Perronas</title>
@@ -219,6 +221,10 @@
     </style>
 </head>
 <body>
+  <audio autoplay loop>
+    <source src="media/casino.mp3" type="audio/mpeg">
+  </audio>
+  
     <div class="casino-lights"></div>
     <div class="container">
         <div class="title-container">
@@ -289,6 +295,7 @@
             container.appendChild(group);
         }
 
+        const music = document.getElementById("tragaperras");
         function animateRolls(set1Container, set2Container) {
             set1Container.innerHTML = '';
             set2Container.innerHTML = '';
@@ -297,7 +304,11 @@
             let currentRoll = 0;
 
             function rollOne() {
+              music.play();
+
                 if (currentRoll < rollsPerSet) {
+                                music.play();
+
                     const roll1 = rollAbilityScore();
                     const roll2 = rollAbilityScore();
 
