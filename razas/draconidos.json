@@ -1,8 +1,9 @@
 {
     "raceName": "Dracónidos",
-    "raceDescription": "Descendientes de los dragones que alguna vez habitaron las tierras que ahora pisáis, llevan en su sangre herencia de lo que alguna vez fueron. Estos son seres con un comportamiento muy extremista: Son grandes defensores de la paz o los mayores señores de la guerra jamás vistos. La neutralidad no está en su sangre, buscarán decantarse por un lado u otro siguiendo sus instintos y lo que su sangre les impulse a hacer. Las gruesas escamas que recubren su piel son duras y resistentes, algunas tanto que son codiciadas para hacer cotas de malla.",
+    "raceDescription": "Descendientes de los dragones que alguna vez habitaron las tierras que ahora pisáis, llevan en su sangre herencia de lo que alguna vez fueron. Estos son seres con un comportamiento muy extremista: son grandes defensores de la paz o los mayores señores de la guerra jamás vistos. La neutralidad no está en su sangre, buscarán decantarse por un lado u otro siguiendo sus instintos y lo que su sangre les impulse a hacer. Las gruesas escamas que recubren su piel son duras y resistentes, algunas tanto que son codiciadas para hacer cotas de malla.",
     "bonusRules": "",
     "movementSpeed": "6",
+    "lifeSpan": "90-150",
     "attributes": {
         "strength": "+2",
         "dexterity": "0",
@@ -12,17 +13,17 @@
         "charisma": "0"
     },
     "sizes": [
-        "Mediano",
-        "Grande"
+        "Mediano (1.40 - 1.99m)",
+        "Grande (2.00 - 2.49m)"
     ],
     "abilities": [
         {
-            "name": "Armadura de dragón",
+            "name": "Armadura de Dragón",
             "description": "Tu CA base es de 13 + Destreza si no llevas armadura."
         },
         {
             "name": "Herencia del Padre",
-            "description": "Obtienes una de estas habilidades para usar como acción (Descanso Corto). Estas habilidades aumentan en 1 dado de daño a los niveles 5, 11 y 17: \n+Fuego (Manos Ardientes) (3d6)\n+Hielo (Ataque en cono) (3d6)\n+Veneno (Nube tóxica) (2d6 + 2T)\n+Eléctrico (Ola Atronadora) (2d8)\n+Ácido (Salpicadura ácida) (1d8 x2 Objetivos)"
+            "description": "Obtienes una de estas habilidades para usar como acción (Descanso Corto). Estas habilidades aumentan en 1 su dado de daño a los niveles 5, 11 y 17:\n- Fuego (Manos Ardientes): 3d6.\n- Hielo (Ataque en Cono): 3d6.\n- Veneno (Nube Tóxica): 2d6 x 2T.\n- Eléctrico (Ola Atronadora): 2d8.\n- Ácido (Salpicadura Ácida): 1d8 x 2 Objetivos."
         }
     ]
 }

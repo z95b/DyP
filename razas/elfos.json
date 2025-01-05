@@ -1,27 +1,32 @@
 {
     "raceName": "Elfos",
-    "raceDescription": "Los elfos, aunque sofisticados y complejos, son comunes en ciudades saludables. Destacan en su intelecto y habilidades con el arco.",
+    "raceDescription": "Los elfos, aunque sofisticados y complejos en sus costumbres, son comunes de encontrar en cualquier ciudad con buena salubridad de las tierras habitadas. Son finos, precisos y no buscan entretenerse en burdas banalidades. Ligeros y ágiles, son unos grandes combatientes que destacan en su intelecto y sus grandes dotes con el arco, además de su peculiar y curiosa habilidad de ser más ligeros que una pluma de cisne.",
+    "lifeSpan": "♾️",
+    "bonusRules": "",
+    "movementSpeed": 6,
     "attributes": {
+        "strength": "0",
         "dexterity": "+2",
-        "intelligence": "+1"
+        "constitution": "0",
+        "intelligence": "+1",
+        "wisdom": "0",
+        "charisma": "0"
     },
-    "movementSpeed": "6",
     "sizes": [
-        "Mediano"
+        "Mediano (1.40 - 1.99m)"
     ],
-    "longevity": "Longevamente inmortales",
     "abilities": [
         {
             "name": "Peso Pluma",
-            "description": "No activan trampas de presión ni se hunden en terrenos difíciles."
+            "description": "No activas trampas de presión ni te hundes en terrenos difíciles como la nieve o el barro."
         },
         {
-            "name": "Raíces mágicas",
-            "description": "Ventaja en salvadas contra encantamientos y no se puede dormir contra su voluntad."
+            "name": "Raíces Mágicas",
+            "description": "Tienes ventaja en tiradas de salvación contra Encantamientos y no puedes ser dormido contra tu voluntad."
         },
         {
             "name": "Trance",
-            "description": "Para descansar largo necesitan solo 4h interrumpidas."
+            "description": "Para realizar un descanso largo solo necesitas descansar 4 horas ininterrumpidas. Tampoco necesitas dormir, sino que entras en un estado de meditación."
         }
     ]
 }

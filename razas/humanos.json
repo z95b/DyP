@@ -1,32 +1,28 @@
-
-    {
-        "raceName": "Humanos",
-        "raceDescription": "Los humanos son extremadamente comunes en las tierras habitadas gracias a su gran adaptación al entorno, al medio y a la propia genética. No destacan en ningún aspecto pero tampoco se quedan atrás en ninguno, cada uno tiene sus fuerzas y debilidades.",
-        "bonusRules": "+2 en cualquier característica (O +1 a dos Características)",
-
-        "attributes": {
-            "strength": "+2/1",
-            "dexterity": "+2/1",
-            "constitution": "+2/1",
-            "intelligence": "+2/1",
-            "wisdom": "+2/1",
-            "charisma": "+2/1"
+{
+    "raceName": "Humanos",
+    "raceDescription": "Los humanos son extremadamente comunes en las tierras habitadas gracias a su gran adaptación al entorno, al medio y a la propia genética. No destacan en ningún aspecto pero tampoco se quedan atrás en ninguno, cada uno tiene sus fuerzas y debilidades, ventajas y desventajas.",
+    "bonusRules": "+2 en cualquier característica (o +1 a dos características).",
+    "movementSpeed": "6",
+    "lifeSpan": "70-100",
+    "attributes": {
+        "strength": "+1|2",
+        "dexterity": "+1|2",
+        "constitution": "+1|2",
+        "intelligence": "+1|2",
+        "wisdom": "+1|2",
+        "charisma": "+1|2"
+    },
+    "sizes": [
+        "Mediano (1.40 - 1.99m)"
+    ],
+    "abilities": [
+        {
+            "name": "Hibridación",
+            "description": "Los humanos pueden mezclarse genéticamente con cualquier otra raza humanoide conocida (exceptuando algunos casos)."
         },
-        "movementSpeed": "6",
-        "sizes": [
-            "Pequeño",
-            "Mediano",
-            "Grande"
-        ],
-        "longevity": "70-100 años",
-        "abilities": [
-            {
-                "name": "Hibridación",
-                "description": "Los humanos pueden mezclarse genéticamente con cualquier otra raza humanoide conocida (exceptuando algunos casos)."
-            },
-            {
-                "name": "Versatilidad",
-                "description": "Al nivel 1 obtienes un aumento de característica (+2) para distribuir como tú quieras. También eliges un arma, artefacto, herramientas o idioma en el que ser competente."
-            }
-        ]
-    }
+        {
+            "name": "Versatilidad",
+            "description": "A nivel 1 obtienes un aumento de característica (+2) para distribuir como tú quieras. También eliges un arma, artefacto, herramientas o idioma en el que ser competente."
+        }
+    ]
+}

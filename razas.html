@@ -2,9 +2,11 @@
 <html lang="es">
 
 <head>
+  <link rel="icon" href="media/ico.ico" type="image/x-icon">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Razas V.DyP</title>
+  <title>Razas DyP</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet" />
@@ -351,6 +353,13 @@
           <textarea id="raceDescription" rows="3" placeholder="Breve descripción de la raza" required></textarea>
         </div>
         <div class="form-group">
+          <label for="lifeSpan">Esperanza de Vida en Años</label>
+          <input type="text" id="lifeSpan" placeholder="Ej: 200" style="width: 40%; display: flex;" required />
+        </div>
+
+
+
+        <div class="form-group">
           <label for="bonusRules">Reglas de Bonificadores</label>
           <textarea id="bonusRules" rows="2" placeholder="Ej: Seleccionar solo 1 bonificador de +2"></textarea>
         </div>
@@ -364,16 +373,18 @@
           <input type="number" id="charisma" placeholder="Carisma" required />
         </div>
         <div class="form-group">
-          <label for="movementSpeed">Velocidad de Movimiento</label>
+          <label for="movementSpeed">Velocidad de Movimiento en Casillas</label>
           <input type="number" id="movementSpeed" placeholder="Ej: 7 casillas" required />
         </div>
         <div class="form-group">
           <label>Tamaños Disponibles</label>
-          <label><input type="checkbox" value="Diminuto" /> Diminuto</label>
-          <label><input type="checkbox" value="Pequeño" /> Pequeño</label>
-          <label><input type="checkbox" value="Mediano" /> Mediano</label>
-          <label><input type="checkbox" value="Grande" /> Grande</label>
-          <label><input type="checkbox" value="Enorme" /> Enorme</label>
+          <label><input type="checkbox" value="Diminuto (<0.60m)" /> Diminuto (<0.60m) </label>
+          <label><input type="checkbox" value="Pequeño (0.60 - 1.39m)" /> Pequeño (0.60 - 1.39m)</label>
+          <label><input type="checkbox" value="Mediano (1.40 - 1.99m)" /> Mediano (1.40 - 1.99m)</label>
+          <label><input type="checkbox" value="Grande (2.00 - 2.99m)" /> Grande (2.00 - 2.99m)</label>
+          <label><input type="checkbox" value="Enorme(3.00 - 6.00m)" /> Enorme(3.00 - 6.00m)</label>
+          <label><input type="checkbox" value="Gigantesco (>6.00m)" /> Gigantesco (>6.00m)</label>
+
         </div>
         <div class="form-group">
           <label>Habilidades</label>
@@ -565,6 +576,12 @@
           description.classList.add("character-description");
           description.innerHTML = raza.raceDescription.replace(/\n/g, "<br>");
           content.appendChild(description);
+
+          const lifeSpan = raza.lifeSpan || "Desconocido";
+
+
+
+
           // Bonus y atributos
           const bonusAttributesContainer = document.createElement("div");
           bonusAttributesContainer.style.border = "1px solid LightSteelBlue";
@@ -622,50 +639,75 @@
           bonusAttributesContainer.appendChild(attributes);
           content.appendChild(bonusAttributesContainer);
 
+
+
           const sizeSpeedContainer = document.createElement("div");
           sizeSpeedContainer.style.display = "flex";
           sizeSpeedContainer.style.justifyContent = "space-between";
+          sizeSpeedContainer.style.alignItems = "center";
           sizeSpeedContainer.style.gap = "10px";
-          const sizeFontSizes = {
-            Diminuto: "0.8rem",
-            Pequeño: "1rem",
-            Mediano: "1.2rem",
-            Grande: "1.5rem",
-            Enorme: "1.8rem",
-          };
+          sizeSpeedContainer.style.padding = "10px";
+          sizeSpeedContainer.style.background = "linear-gradient(90deg, rgba(50, 50, 50, 0.8), rgba(30, 30, 30, 0.8))";
+          sizeSpeedContainer.style.borderRadius = "10px";
+          sizeSpeedContainer.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.4)";
 
+          // Contenedor de tamaños
           const sizesDiv = document.createElement("div");
-          sizesDiv.style.flex = "4";
-          sizesDiv.style.padding = "10px";
-          sizesDiv.style.maxWidth = "90%";
-          sizesDiv.style.backgroundColor = "#333";
-          sizesDiv.style.borderRadius = "10px";
-          sizesDiv.style.textAlign = "center";
+          sizesDiv.style.flex = "5";
           sizesDiv.style.display = "flex";
-          sizesDiv.style.flexWrap = "wrap"; // Permitir que el contenido salte a una nueva línea
+          sizesDiv.style.flexWrap = "wrap";
           sizesDiv.style.gap = "10px";
-          sizesDiv.style.wordWrap = "break-word"; // Ajustar palabras largas si no hay espacios
-          sizesDiv.style.overflowWrap = "break-word"; // Alternativa para navegadores más modernos
+          sizesDiv.style.padding = "10px";
+          sizesDiv.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+          sizesDiv.style.borderRadius = "10px";
+
           raza.sizes.forEach((size) => {
             const sizeSpan = document.createElement("span");
             sizeSpan.textContent = size;
-            sizeSpan.style.fontSize = sizeFontSizes[size] || "1rem";
-            sizeSpan.style.color = "white";
-            sizeSpan.style.padding = "5px";
+            sizeSpan.style.fontSize = "1rem";
+            sizeSpan.style.color = "#fff";
+            sizeSpan.style.padding = "5px 10px";
+            sizeSpan.style.background = "rgba(0, 0, 0, 0.5)";
             sizeSpan.style.borderRadius = "5px";
+            sizeSpan.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
             sizesDiv.appendChild(sizeSpan);
           });
-          sizeSpeedContainer.appendChild(sizesDiv);
+
+          // Contenedor de esperanza de vida
+          const lifeSpanDiv = document.createElement("div");
+          lifeSpanDiv.textContent = `❤️ ${raza.lifeSpan || "?"} `;
+          lifeSpanDiv.style.flex = "1";
+          lifeSpanDiv.style.textAlign = "center";
+          lifeSpanDiv.style.color = "#fff";
+          lifeSpanDiv.style.fontWeight = "bold";
+          lifeSpanDiv.style.background = "rgba(255, 255, 255, 0.1)";
+          lifeSpanDiv.style.padding = "10px";
+          lifeSpanDiv.style.borderRadius = "10px";
+          lifeSpanDiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
+
+          // Contenedor de velocidad
           const speedDiv = document.createElement("div");
-          speedDiv.style.flex = "1";
-          speedDiv.style.display = "flex";
-          speedDiv.style.justifyContent = "center";
-          speedDiv.style.alignItems = "center";
-          speedDiv.style.backgroundColor = "#333";
-          speedDiv.style.borderRadius = "10px";
           speedDiv.textContent = `Vel. ${raza.movementSpeed} c`;
+          speedDiv.style.flex = "1";
+          speedDiv.style.textAlign = "center";
+          speedDiv.style.color = "#fff";
+          speedDiv.style.fontWeight = "bold";
+          speedDiv.style.background = "rgba(255, 255, 255, 0.1)";
+          speedDiv.style.padding = "10px";
+          speedDiv.style.borderRadius = "10px";
+          speedDiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
+
+          // Agregar los elementos al contenedor principal
+          sizeSpeedContainer.appendChild(sizesDiv);
+          sizeSpeedContainer.appendChild(lifeSpanDiv);
           sizeSpeedContainer.appendChild(speedDiv);
+
+          // Agregar el contenedor al contenido principal
           content.appendChild(sizeSpeedContainer);
+
+
+
+
           // Habilidades con saltos de línea
           const habilitiesContainer = document.createElement("div");
           habilitiesContainer.classList.add("habilities-container");
@@ -716,7 +758,7 @@
       };
 
 
-      
+
       // Función para formatear atributos
       function formatAttribute(value) {
         const num = parseInt(value, 10); // Convierte el valor a un número
@@ -743,15 +785,19 @@
           description: inputs[1].value.trim(),
         };
       });
+      const lifeSpan = document.getElementById("lifeSpan").value.trim();
+
       const jsonData = {
         raceName,
         raceDescription,
         bonusRules,
         movementSpeed,
+        lifeSpan,
         attributes,
         sizes,
         abilities,
       };
+
       const jsonString = JSON.stringify(jsonData, null, 4);
       const blob = new Blob([jsonString], {
         type: "application/json",

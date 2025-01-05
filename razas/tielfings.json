@@ -1,0 +1,36 @@
+{
+    "raceName": "Tieflings",
+    "raceDescription": "Los conocidos como 'Sin tierra' no proceden de este plano terrenal. Su verdadero origen está en el infierno, lugar del que sus gentes escaparon hace mucho y poblaron las tierras habitadas en búsqueda de un nuevo lugar al que llamar hogar, pero pocos han conseguido realmente ese objetivo. Debido a ello, muchos no destacan por su poder adquisitivo y se ven tentados por la delincuencia, razón por la que son mal vistos en algunos lugares.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "100-120",
+    "attributes": {
+        "strength": "0",
+        "dexterity": "+1",
+        "constitution": "0",
+        "intelligence": "0",
+        "wisdom": "0",
+        "charisma": "+1"
+    },
+    "sizes": [
+        "Mediano (1.40 - 1.99m)"
+    ],
+    "abilities": [
+        {
+            "name": "Taumaturgia",
+            "description": "Obtienes el truco 'Taumaturgia' a nivel 1."
+        },
+        {
+            "name": "Represión Infernal",
+            "description": "A nivel 3 puedes usar 'Represión Infernal' como conjuro de nivel 2, una vez por descanso largo."
+        },
+        {
+            "name": "Oscuridad",
+            "description": "A nivel 5 puedes usar 'Oscuridad' una vez por descanso largo."
+        },
+        {
+            "name": "Resistencia Ígnea",
+            "description": "El daño de fuego se reduce en un 50%."
+        }
+    ]
+}

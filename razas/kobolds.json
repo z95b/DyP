@@ -7,10 +7,10 @@
     },
     "movementSpeed": "7",
     "sizes": [
-        "Pequeño",
-        "Mediano"
+        "Pequeño (0.60 - 1.39m)",
+        "Mediano (1.40 - 1.99m)"
     ],
-    "longevity": "60-80 años",
+    "longevity": "60-80",
     "abilities": [
         {
             "name": "Aliento alcohólico",

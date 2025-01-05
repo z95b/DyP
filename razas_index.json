@@ -1,7 +1,7 @@
 [
-    "semi_humanos.json",
-    "draconidos.json",
     "humanos.json",
+    "semihumanos.json",
+    "draconidos.json",
     "kobolds.json",
     "elfos.json",
     "enanos.json",
@@ -10,7 +10,7 @@
     "semiorcos.json",
     "tieflings.json",
     "goblins.json",
-    "slime_inteligente.json",
+    "slimes.json",
     "tabaxis.json",
     "locahtah.json",
     "throthogas.json",
@@ -22,14 +22,14 @@
     "aasimar.json",
     "kenkus.json",
     "ursoi.json",
-    "yuhan_ti.json",
+    "yuhan-ti.json",
     "lamia.json",
     "grung.json",
-    "sucubo_incubo.json",
+    "sucubo-incubo.json",
     "harengon.json",
     "shura.json",
     "pixie.json",
-    "no_muerto.json",
+    "no-muerto.json",
     "kitsune.json",
     "drow.json",
     "foxfolks.json",
@@ -42,6 +42,9 @@
     "lizerins.json",
     "firbolgs.json",
     "goliats.json",
-    "PSOE.json",
-    "raza.json"
+    "vanaras.json",
+    "minotauros.json",
+    "sonares.json",
+  
+    "PSOE.json"
 ]

@@ -41,7 +41,8 @@
     
     /* Container */
     .container {
-      max-width: 60rem;
+      max-width: 80%;
+      max-height: 80%;
       margin: 2rem auto;
       padding: 2rem;
       background-color: rgba(255, 255, 255, 0.85);
@@ -64,6 +65,7 @@
     
     /* Menu Buttons */
     .menu-container {
+
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -71,13 +73,14 @@
     }
     
     .menu-btn {
-      width: 120rem;
-      height: 120rem;
+      height: 15rem;
+      width: 15rem;
+
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.5rem;
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('media/button-bg.jpg') center/cover;
       border: 0.2rem solid #5e35b1;
@@ -105,12 +108,7 @@
       color: #4b0082;
     }
 
-    @media screen {
-      .menu-btn {
-      width: 8rem;
-      height: 8rem;
-      }
-    }
+   
     </style>
     
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
@@ -127,7 +125,7 @@
     <h1>D & P</h1>
 
     <div class="menu-container">
-      <a href="stats.html" class="menu-btn" target="_blank">GENERADOR DE STATS</a>
+      <a href="stats.html" class="menu-btn" target="_blank">CASINO STATS</a>
       <a onclick="descargarFitxa()" class="menu-btn">FICHA </a>
       <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="menu-btn" target="_blank">RAZAS DOC</a>
       <a href="razas.html" class="menu-btn" target="_blank">RAZAS NUEVO</a>
@@ -135,7 +133,7 @@
       <a href="https://docs.google.com/document/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit?usp=sharing" class="menu-btn" target="_blank">CLASES</a>
       <a href="https://nivel20.com/games/dnd-5/items" class="menu-btn" target="_blank">ARMAS</a>
       <a href="aventuras.html" class="menu-btn" target="_blank">NUESTRAS AVENTURAS</a>
-      <a href="https://docs.google.com/document/d/1AMj_ZXyBYFPHXMJBCPIUntG5cOepWFOA0cCoEsT6SNs/edit?usp=sharing" class="menu-btn" target="_blank">REGLAS</a>
+      <a href="reglas.html" class="menu-btn" target="_blank">Guía DND</a>
     </div>
 
     <footer>
