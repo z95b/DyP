@@ -7,9 +7,9 @@
     "attributes": {
         "strength": "0",
         "dexterity": "0",
-        "constitution": "[1]",
+        "constitution": "+1|0",
         "intelligence": "+2",
-        "wisdom": "[1]",
+        "wisdom": "+1|0",
         "charisma": "0"
     },
     "sizes": [

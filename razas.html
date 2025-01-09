@@ -453,7 +453,6 @@
         const container = event.target.closest(".character-container");
         if (!container) return; // Si no se hizo clic en un contenedor, no hace nada
         const titleElement = container.querySelector(".character-title");
-        if (!titleElement) return; // Si no hay título, no continúa
         const raza = titleElement.textContent.trim(); // Obtiene el nombre de la raza
         const baseUrl = "https://www.google.com/search";
         const query = `${raza} dungeons and dragons`; // Permite caracteres especiales en la URL
