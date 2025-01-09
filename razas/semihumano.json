@@ -1,17 +1,28 @@
 {
-    "raceName": "",
-    "raceDescription": "",
-    "bonusRules": "",
-    "movementSpeed": "",
-    "lifeSpan": "",
+    "raceName": "Semi-Humanos",
+    "raceDescription": "Que hay más constante en el mundo que el sexo y las ganas de experimentar? Exacto, los embarazos fortuitos. Gracias a la gran capacidad humana de entremezclarse con razas humanoides, surgen diferentes híbridos con aspectos inusuales y características suaves que muestran su mezcla de linajes. Los Semi-Humanos son la muestra viviente de que en el fondo no somos tan diferentes. Y que follarse a un gato no es ilegal. Miau.",
+    "bonusRules": "Adquieres la primera característica de la raza y una negativa (si tiene) +1 característica a elección.",
+    "movementSpeed": "Varía según los padres.",
+    "lifeSpan": "Varía según los padres.",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "0",
-        "charisma": "0"
+        "strength": "1¿",
+        "dexterity": "1¿",
+        "constitution": "1¿",
+        "intelligence": "1¿",
+        "wisdom": "1¿",
+        "charisma": "1¿"
     },
-    "sizes": [],
-    "abilities": []
+    "sizes": [
+        "Varía según los padres"
+    ],
+    "abilities": [
+        {
+            "name": "Heredar Habilidades",
+            "description": "Adquieres 2 habilidades de tus padres. Estas habilidades dependen de las razas de origen y pueden incluir tanto habilidades positivas como negativas."
+        },
+        {
+            "name": "Límites de Mestizaje",
+            "description": "No pueden existir mestizos con: Pixies, Forjados, Lamias, Centauros, Shuras (solo si son fruto de un acto violento) y No Muertos."
+        }
+    ]
 }
