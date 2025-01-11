@@ -1,17 +1,37 @@
 {
-    "raceName": "centauro",
-    "raceDescription": "",
+    "raceName": "Centauro",
+    "raceDescription": "Los centauros son usualmente tribales, alejados de las ciudades y residiendo en comunidades de su propia especie, aunque eso no impide verlos frecuentemente por el mundo. Su robusto cuerpo les permite una gran versatilidad: ávidos guerreros, sabios lógicos o… ambas cosas. Incluso buenos amantes si te gustan las emociones fuertes… y duras.",
     "bonusRules": "",
-    "movementSpeed": "",
-    "lifeSpan": "",
+    "movementSpeed": "7",
+    "lifeSpan": "70-120",
     "attributes": {
         "strength": "0",
-        "dexterity": "0",
+        "dexterity": "+2",
         "constitution": "0",
         "intelligence": "0",
-        "wisdom": "0",
+        "wisdom": "+1",
         "charisma": "0"
     },
-    "sizes": [],
-    "abilities": []
+    "sizes": [
+        "Mediano (1.40 - 1.99m)",
+        "Grande (2.00 - 4.49m)"
+    ],
+    "abilities": [
+        {
+            "name": "Instintos Equinos",
+            "description": "Si un enemigo pasa por tus partes traseras, puedes realizar un golpe de oportunidad incluso si no se sale de tu rango de golpeo, sin usar tu reacción. (2d8 + Modificador de Fuerza)."
+        },
+        {
+            "name": "Correr como el Viento",
+            "description": "Tu velocidad de movimiento es mucho mayor en términos narrativos."
+        },
+        {
+            "name": "Puntería Certera",
+            "description": "+2 en tiradas con arco."
+        },
+        {
+            "name": "Competencias",
+            "description": "Eres competente en las habilidades de Medicina y Atletismo."
+        }
+    ]
 }

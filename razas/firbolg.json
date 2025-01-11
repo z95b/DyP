@@ -1,17 +1,34 @@
 {
-    "raceName": "firbolgs",
-    "raceDescription": "",
+    "raceName": "Firbolgs",
+    "raceDescription": "Los Firbolgs son humanoides vinculados profundamente con la naturaleza. Criados entre animales y plantas, poseen una afinidad natural para comunicarse con el entorno y un vasto conocimiento del mundo natural que los rodea.",
     "bonusRules": "",
-    "movementSpeed": "",
-    "lifeSpan": "",
+    "movementSpeed": "6",
+    "lifeSpan": "110-250",
     "attributes": {
         "strength": "0",
         "dexterity": "0",
-        "constitution": "0",
+        "constitution": "+1",
         "intelligence": "0",
-        "wisdom": "0",
+        "wisdom": "+2",
         "charisma": "0"
     },
-    "sizes": [],
-    "abilities": []
+    "sizes": [
+        "Pequeño (0.60 - 1.39m)",
+        "Mediano (1.40 - 1.99m)",
+        "Grande (2.00 - 4.49m)"
+    ],
+    "abilities": [
+        {
+            "name": "Nacido entre Animales",
+            "description": "Eres capaz de hablarle a los animales y que estos te entiendan, aunque tú no los entiendes a ellos."
+        },
+        {
+            "name": "Nacido entre Plantas",
+            "description": "Eres capaz de hablar con las plantas y que estas te puedan responder."
+        },
+        {
+            "name": "Conocimiento Arbóreo",
+            "description": "Tienes ventaja en tiradas de Naturaleza (Sabiduría) y Trato con Animales (Sabiduría) para identificar o conocer datos sobre plantas y bestias."
+        }
+    ]
 }

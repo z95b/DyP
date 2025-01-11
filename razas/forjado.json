@@ -1,17 +1,54 @@
 {
-    "raceName": "forjados",
-    "raceDescription": "",
-    "bonusRules": "",
-    "movementSpeed": "",
-    "lifeSpan": "",
+    "raceName": "Forjados",
+    "raceDescription": "Los Forjados son creaciones hechas por la mano mortal, potenciados por magia que sus creadores difícilmente pueden comprender. Estos tienen la ventaja de poder ser creados para un propósito, pudiéndose adaptar a sus expectativas. Pero, ¿acaso ese es un buen precio a pagar por la pérdida del disfrute de las cosas más sencillas?",
+    "bonusRules": "+2 en una característica elegida según el propósito de creación, +1 en Constitución.",
+    "movementSpeed": "Variable según propósito.",
+    "lifeSpan": "Indefinida, pero requieren mantenimiento regular.",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "0",
-        "charisma": "0"
+        "strength": "2¿",
+        "dexterity": "2¿",
+        "constitution": "2¿+1",
+        "intelligence": "2¿",
+        "wisdom": "2¿",
+        "charisma": "2¿"
     },
-    "sizes": [],
-    "abilities": []
+    "sizes": [
+        "Pequeño (0.60 - 1.39m)",
+        "Mediano (1.40 - 1.99m)",
+        "Grande (2.00 - 4.49m)"
+    ],
+    "abilities": [
+        {
+            "name": "Armadura Corporal",
+            "description": "Tu piel cuenta como una armadura ligera con la que eres competente (CA 12 + Modificador de Destreza). Puedes convertir cualquier armadura en tu Armadura Corporal, siempre y cuando seas competente con ella y alguien pueda implantarla. En ese caso, ya no añadirás tu Modificador de Destreza a tu CA."
+        },
+        {
+            "name": "Finalidad Última",
+            "description": "Obtienes habilidades específicas según el propósito para el que fuiste creado."
+        },
+        {
+            "name": "Propósito: Destreza (Movilidad)",
+            "description": "Velocidad: 7 casillas. Competencia en sigilo y acrobacias. Perfecto para tareas que requieren agilidad o maniobras rápidas."
+        },
+        {
+            "name": "Propósito: Fuerza (Combate y Carga)",
+            "description": "Velocidad: 6 casillas. Competencia en atletismo y armas contundentes. Eres ideal para tareas de combate cuerpo a cuerpo o transporte de carga pesada."
+        },
+        {
+            "name": "Propósito: Constitución (Resistencia)",
+            "description": "Velocidad: 6 casillas. Inamovible: no puedes ser empujado ni derribado fácilmente. Tu capacidad de carga es extremadamente alta. Competencia en resistencia y supervivencia."
+        },
+        {
+            "name": "Propósito: Inteligencia (Cálculo y Conocimiento)",
+            "description": "Velocidad: 5 casillas. Competencia en arcano e historia. Excelente para análisis, planificación estratégica o manejo de datos complejos."
+        },
+        {
+            "name": "Propósito: Sabiduría (Percepción y Juicio)",
+            "description": "Velocidad: 5 casillas. Competencia en percepción y medicina. Perfecto para tareas que requieren atención al detalle o cuidado."
+        },
+        {
+            "name": "Propósito: Carisma (Diplomacia y Persuasión)",
+            "description": "Velocidad: 5 casillas. Competencia en persuasión y actuación. Ideal para interacciones sociales o representación diplomática."
+        }
+    ]
 }
