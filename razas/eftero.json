@@ -1,5 +1,5 @@
 {
-    "raceName": "Éfteros",
+    "raceName": "Efteros",
     "raceDescription": "Los Éfteros son humanoides aviares que incluyen a una gran variedad de pájaros, desde majestuosos halcones hasta gallinas. Su naturaleza les otorga habilidades únicas relacionadas con su plumaje y su estilo de vida ágil y práctico.",
     "bonusRules": "+1 en Inteligencia, +1 en Destreza, +1 en Sabiduría.",
     "movementSpeed": "6",
@@ -12,11 +12,7 @@
         "wisdom": "+1",
         "charisma": "0"
     },
-    "sizes": [
-        "Pequeño (0.60 - 1.39m)",
-        "Mediano (1.40 - 1.99m)",
-        "Grande (2.00 - 4.49m)"
-    ],
+    "sizes": [2,3,4],
     "abilities": [
         {
             "name": "Despertar Matutino",

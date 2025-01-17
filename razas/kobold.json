@@ -1,20 +1,19 @@
 {
     "raceName": "Kobolds",
-    "raceDescription": "Los Kobols son frecuentemente confundidos con dracónidos jóvenes, pero no pueden ser más diferentes los unos de los otros. Estos son más bajos en general, y sus escamas cumplen más una función decorativa y reproductiva que defensiva. Su agilidad y gran habilidad en el habla los hacen contrapartes muy interesantes de sus feroces versiones dracónicas: Un Kobold puede que no sea el mejor luchador, pero sus grandes dotes de actuación y sus movimientos veloces pueden marcar la diferencia en una aventura.",
+    "raceDescription": "Los Kobolds son frecuentemente confundidos con dracónidos jóvenes, pero no pueden ser más diferentes los unos de los otros. Estos son más bajos en general, y sus escamas cumplen más una función decorativa y reproductiva que defensiva. Su agilidad y gran habilidad en el habla los hacen contrapartes muy interesantes de sus feroces versiones dracónicas: Un Kobold puede que no sea el mejor luchador, pero sus grandes dotes de actuación y sus movimientos veloces pueden marcar la diferencia en una aventura.",
     "attributes": {
         "dexterity": "+2",
         "constitution": "+1"
     },
     "movementSpeed": "7",
     "sizes": [
-        "Pequeño (0.60 - 1.39m)",
-        "Mediano (1.40 - 1.99m)"
+        2,3
     ],
     "longevity": "60-80",
     "abilities": [
         {
             "name": "Aliento alcohólico",
-            "description": "No te puedes emborrachar. Al beber alcohol, eres capaz de escupir fuego como acción. Este ataque toma diferentes formas dependiendo de la cantidad y calidad del alcohol. \n\n -Baja Calidad: Descarga de Fuego (Escala con los Niveles del truco)\n-Media Calidad: Bola de Fuego (Aumenta 1d6 a nivel 5,11 y 17)\n-Alta Calidad: Tormenta de Fuego \n\n Puedes usar este  rasgo una vez por Descanso Corto"
+            "description": "No sufre los afectos negativos del alcohol. Al beber alcohol, eres capaz de escupir fuego como acción. Este ataque toma diferentes formas dependiendo de la cantidad y calidad del alcohol. \n\n -Baja Calidad: Descarga de Fuego (Escala con los Niveles del truco)\n-Media Calidad: Bola de Fuego (Aumenta 1d6 a nivel 5,11 y 17)\n-Alta Calidad: Tormenta de Fuego \n\n Puedes usar este  rasgo una vez por Descanso Corto"
         },
         {
             "name": "Regeneración extrema",

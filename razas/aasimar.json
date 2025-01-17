@@ -12,11 +12,7 @@
         "wisdom": "0",
         "charisma": "+2"
     },
-    "sizes": [
-        "Pequeño (0.60 - 1.39m)",
-        "Mediano (1.40 - 1.99m)",
-        "Grande (2.00 - 4.49m)"
-    ],
+    "sizes": [2,3,4],
     "abilities": [
         {
             "name": "Infusión Celestial",

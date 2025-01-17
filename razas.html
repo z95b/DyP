@@ -177,7 +177,7 @@
       margin-bottom: 15px;
       flex-wrap: wrap;
       font-size: 1.2rem;
-      
+
     }
 
     .character-attribute {
@@ -191,14 +191,14 @@
       /* Forma de rombo */
       background: #333;
       color: #ffa726;
-      text-align:end;
-      position:sticky;
+      text-align: end;
+      position: sticky;
     }
 
     .character-attribute span {
-     margin-top: 10%;
+      margin-top: 10%;
     }
-    
+
 
     .habilities-container {
       display: flex;
@@ -311,7 +311,7 @@
       letter-spacing: 2px;
     }
 
-   
+
 
     @media (max-width: 768px) {
       .character-container {
@@ -378,14 +378,14 @@
         </div>
         <div class="form-group">
           <label>Tamaños Disponibles</label>
-          <label><input type="checkbox" value="Diminuto (<0.60m)" /> Diminuto (<0.60m) </label>
-          <label><input type="checkbox" value="Pequeño (0.60 - 1.39m)" /> Pequeño (0.60 - 1.39m)</label>
-          <label><input type="checkbox" value="Mediano (1.40 - 1.99m)" /> Mediano (1.40 - 1.99m)</label>
-          <label><input type="checkbox" value="Grande (2.00 - 2.99m)" /> Grande (2.00 - 2.99m)</label>
-          <label><input type="checkbox" value="Enorme(3.00 - 6.00m)" /> Enorme(3.00 - 6.00m)</label>
-          <label><input type="checkbox" value="Gigantesco (>6.00m)" /> Gigantesco (>6.00m)</label>
-
+          <label><input type="checkbox" value="1" /> Diminuto (0.05 - 0.50m)</label>
+          <label><input type="checkbox" value="2" /> Pequeño (0.50 - 1.40m)</label>
+          <label><input type="checkbox" value="3" /> Mediano (1.40 - 1.89m)</label>
+          <label><input type="checkbox" value="4" /> Grande (1.90 - 2.49m)</label>
+          <label><input type="checkbox" value="5" /> Enorme (2.50 - 4.49m)</label>
+          <label><input type="checkbox" value="6" /> Gargantuesco (>4.50m)</label>
         </div>
+
         <div class="form-group">
           <label>Habilidades</label>
           <div id="abilitiesContainer"></div>
@@ -650,6 +650,16 @@
           sizeSpeedContainer.style.borderRadius = "10px";
           sizeSpeedContainer.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.4)";
 
+
+          const sizeMap = {
+            1: "Diminuto (0.05 - 0.50m)",
+            2: "Pequeño (0.50 - 1.40m)",
+            3: "Mediano (1.40 - 1.89m)",
+            4: "Grande (1.90 - 2.49m)",
+            5: "Enorme (2.50 - 4.49m)",
+            6: "Gargantuesco (>4.50m)"
+          };
+
           // Contenedor de tamaños
           const sizesDiv = document.createElement("div");
           sizesDiv.style.flex = "5";
@@ -662,7 +672,7 @@
 
           raza.sizes.forEach((size) => {
             const sizeSpan = document.createElement("span");
-            sizeSpan.textContent = size;
+            sizeSpan.textContent = sizeMap[size]; // Convertir número a nombre de tamaño
             sizeSpan.style.fontSize = "1rem";
             sizeSpan.style.color = "#fff";
             sizeSpan.style.padding = "5px 10px";
@@ -771,10 +781,9 @@
         return "0"; // Si el valor no es válido, devuelve "0" por defecto
       }
       const sizes = Array.from(
-        document.querySelectorAll(
-          '.form-group input[type="checkbox"]:checked'
-        )
-      ).map((cb) => cb.value);
+        document.querySelectorAll('.form-group input[type="checkbox"]:checked')
+      ).map((cb) => parseInt(cb.value));
+
       const abilities = Array.from(
         document.getElementById("abilitiesContainer").children
       ).map((group) => {
