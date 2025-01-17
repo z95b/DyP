@@ -28,8 +28,8 @@
     "sucubo-incubo.json",
     "harengon.json",
     "shura.json",
-    "pixies.json",
-    "no-muertos.json",
+    "pixie.json",
+    "no-muerto.json",
     "kitsune.json",
     "drow.json",
     "foxfolk.json",
@@ -47,5 +47,5 @@
     "sonar.json",
     "insectoide.json",
     "miconido.json",
-    "PSOE.json"
+    "dol-hara.json"
 ]

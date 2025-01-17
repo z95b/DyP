@@ -1,17 +1,29 @@
 {
-    "raceName": "goliats",
-    "raceDescription": "",
+    "raceName": "Goliats",
+    "raceDescription": "Los Goliats son imponentes gigantes que habitan en las montañas más altas y en regiones inhóspitas. Su piel gruesa y áspera, a menudo comparada con la piedra, les otorga una resistencia física impresionante. Esta raza es conocida por su tenacidad y su espíritu competitivo, viéndose a sí mismos como pruebas vivientes de la fuerza y la perseverancia. Con una longevidad que puede extenderse por siglos, los Goliats suelen convertirse en guardianes de sus comunidades o en aventureros que buscan desafíos dignos de su poder.",
     "bonusRules": "",
-    "movementSpeed": "",
-    "lifeSpan": "",
+    "movementSpeed": "6",
     "attributes": {
         "strength": "0",
         "dexterity": "0",
-        "constitution": "0",
+        "constitution": "+3",
         "intelligence": "0",
         "wisdom": "0",
         "charisma": "0"
     },
-    "sizes": [],
-    "abilities": []
+    "sizes": [
+        "Pequeño (0.60 - 1.39m)",
+        "Mediano (1.40 - 1.99m)",
+        "Grande (2.00 - 4.49m)"
+    ],
+    "abilities": [
+        {
+            "name": "Gran tamaño",
+            "description": "Eres considerado 'Grande' contra los enemigos. Esto implica que no se te puede empujar, levantar ni mover por medio de la fuerza."
+        },
+        {
+            "name": "Piel pétrea",
+            "description": "Como reacción, puedes activar tu piel pétrea ante un ataque, reduciendo en un 50% el daño Cortante y Perforante durante 10 turnos. Sin embargo, eres vulnerable (+50%) al daño Contundente. Este efecto no puede desactivarse a voluntad y solo puede usarse 1 vez por descanso corto."
+        }
+    ]
 }

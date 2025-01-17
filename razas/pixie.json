@@ -1,17 +1,31 @@
 {
-    "raceName": "pixie",
-    "raceDescription": "",
+    "raceName": "Pixies",
+    "raceDescription": "Las pixies, aunque adorables, son extremadamente peligrosas. Ligadas a la naturaleza misma y a los dioses de esta, su afinidad con la magia es tan natural como respirar o ingerir alimentos para un humano. Las Pixies suelen tener carácteres explosivos, experimentan las emociones de manera muy ferviente y personal. No hay nada más intenso que el odio y el amor de una Pixie.",
     "bonusRules": "",
-    "movementSpeed": "",
-    "lifeSpan": "",
+    "movementSpeed": "6",
     "attributes": {
         "strength": "0",
         "dexterity": "0",
         "constitution": "0",
         "intelligence": "0",
-        "wisdom": "0",
-        "charisma": "0"
+        "wisdom": "+2",
+        "charisma": "+2"
     },
-    "sizes": [],
-    "abilities": []
+    "sizes": [
+        "Diminuto (<0.60m)"
+    ],
+    "abilities": [
+        {
+            "name": "Volar",
+            "description": "Tu movimiento base se representa volando."
+        },
+        {
+            "name": "Naturalmente competente",
+            "description": "Duplicas tu Bonus por Competencia a tus tiradas de ataque o tus Salvadas de hechizos."
+        },
+        {
+            "name": "Reservas arcanas",
+            "description": "Podrás recuperar una cantidad de Niveles de Espacios de Conjuro equivalentes a la mitad de tu Nivel. Ej: Nivel 6 → 3 Niveles de Espacios de Conjuro."
+        }
+    ]
 }

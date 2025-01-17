@@ -57,7 +57,7 @@
 
 
     body {
-      font-family: "Playfair Display", serif;
+      font-family: "Verdana", monospace;
       background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
       color: #f4f4f4;
       margin: 0;
@@ -176,10 +176,12 @@
       margin-top: 15px;
       margin-bottom: 15px;
       flex-wrap: wrap;
-      font-size: 1.8rem;
+      font-size: 1.2rem;
+      
     }
 
     .character-attribute {
+      margin-top: 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -189,14 +191,14 @@
       /* Forma de rombo */
       background: #333;
       color: #ffa726;
-      font-weight: bold;
-      text-align: center;
-      position: relative;
+      text-align:end;
+      position:sticky;
     }
 
     .character-attribute span {
-      margin-bottom: 15%;
+     margin-top: 10%;
     }
+    
 
     .habilities-container {
       display: flex;
@@ -211,7 +213,7 @@
       border-radius: 10px;
       color: AntiqueWhite;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-      font-family: "Courier New", Courier, monospace;
+      font-family: "Verdana", Courier, monospace;
     }
 
     #overlay {
@@ -309,10 +311,7 @@
       letter-spacing: 2px;
     }
 
-    .character-attribute {
-      position: relative;
-      /* Necesario para posicionar el span con la inicial */
-    }
+   
 
     @media (max-width: 768px) {
       .character-container {
