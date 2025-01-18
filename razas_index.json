@@ -1,6 +1,7 @@
 [
     "humano.json",
     "semihumano.json",
+    "no-muerto.json",
     "draconido.json",
     "kobold.json",
     "elfo.json",
@@ -29,7 +30,6 @@
     "harengon.json",
     "shura.json",
     "pixie.json",
-    "no-muerto.json",
     "kitsune.json",
     "drow.json",
     "foxfolk.json",
