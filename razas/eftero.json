@@ -15,8 +15,8 @@
     "sizes": [2,3,4],
     "abilities": [
         {
-            "name": "Despertar Matutino",
-            "description": "Al realizar un descanso largo, solo necesitas descansar 7 horas en lugar de 8 para recuperarte completamente. Puedes usar esa hora sobrante como un Descanso Corto (por ejemplo, cambiar conjuros si eres un Mago o realizar un apaño con un Kit de Zapatero)."
+            "name": "Morador del Cielo",
+            "description": "Como Acción Adicional puedes desplegar tus alas para volar. Recibir un crítico o quedar paralizado a mitad de vuelo te derribará."
         },
         {
             "name": "Plumaje",

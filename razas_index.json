@@ -2,6 +2,7 @@
     "humano.json",
     "semihumano.json",
     "no-muerto.json",
+    "shura.json",
     "draconido.json",
     "kobold.json",
     "elfo.json",
@@ -28,7 +29,6 @@
     "grung.json",
     "sucubo-incubo.json",
     "harengon.json",
-    "shura.json",
     "pixie.json",
     "kitsune.json",
     "drow.json",
@@ -47,5 +47,6 @@
     "sonar.json",
     "insectoide.json",
     "miconido.json",
-    "dol-hara.json"
+    "dol-hara.json",
+    "Universitario.json"
 ]
