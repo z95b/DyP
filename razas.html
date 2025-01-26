@@ -14,46 +14,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
-    .menu-button {
-      background-color: transparent;
-      border: 5px solid purple;
-      color: rgb(171, 48, 171);
-      font-family: 'Cinzel', serif;
-      font-weight: bolder;
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    :root {
+      --neon-red: #ff003c;
+      --neon-gold: #ffb300;
+      --chrome: #e8e8e8;
     }
-
-    .menu-button:hover {
-      background-color: purple;
-      color: white;
-      transform: translateY(-2px);
-    }
-
-
-    .generar-raza-button {
-      margin: 5px;
-      background-color: transparent;
-      border: 5px solid orange;
-      color: rgb(242, 166, 73);
-      font-family: 'Cinzel', serif;
-      font-weight: bolder;
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .generar-raza-button:hover {
-      background-color: orange;
-      color: white;
-      transform: translateY(-2px);
-    }
-
 
 
     body {
@@ -88,11 +53,14 @@
     .filter-button.active {
       background: linear-gradient(135deg, #4CAF50, #388E3C);
     }
+
     .sort-button.active {
-  background-color: #d784d2; /* Verde para botón activo */
-  color: white;
-  box-shadow: 0 0 10px rgba(255, 0, 225, 0.7); /* Resaltado */
-}
+      background-color: #d784d2;
+      /* Verde para botón activo */
+      color: white;
+      box-shadow: 0 0 10px rgba(255, 0, 225, 0.7);
+      /* Resaltado */
+    }
 
     #characters {
       display: flex;
@@ -317,6 +285,48 @@
     }
 
 
+    .title-container {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    @keyframes neonFlicker {
+
+      0%,
+      19%,
+      21%,
+      23%,
+      25%,
+      54%,
+      56%,
+      100% {
+        opacity: 1;
+      }
+
+      20%,
+      22%,
+      24%,
+      55% {
+        opacity: 0.5;
+      }
+    }
+
+    .neon-sign {
+      position: relative;
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--neon-gold);
+      text-shadow: 0 0 10px var(--neon-gold),
+        0 0 20px var(--neon-gold),
+        0 0 30px var(--neon-gold);
+      padding: 1rem;
+      animation: neonFlicker 5s infinite;
+      color: #ff6f00
+    }
+
+
 
     @media (max-width: 768px) {
       .character-container {
@@ -336,15 +346,21 @@
 </head>
 
 <body>
+  <div class="casino-lights"></div>
 
-  <header>
-    <button class="menu-button" onclick="window.location.href='index.html'">
-      Volver a </br>
-      <span style="font-size: 2.5rem;">D&P</span>
-    </button>
-  </header>
+  <div class="title-container">
+    <div class="neon-sign">
+      <a href="index.html">
+        Dragonas y Perronas
+      </a>
+    </div>
+  </div>
 
-  <button class="generar-raza-button" onclick="mostrarFormulario()">GENERAR RAZA</button>
+  <div id="div">
+    <button class="">Warning</button>
+    <button class="" onclick="mostrarFormulario()">GENERAR RAZA</button>
+  </div>
+
   <div id="overlay" onclick="cerrarFormulario()">
     <div id="form-container" onclick="event.stopPropagation()">
       <h2>Formulario de Razas</h2>
@@ -420,8 +436,8 @@
     <button class="button sort-button" data-field="movementSpeed" data-order="asc">Velocidad ↑</button>
     <button class="button sort-button" data-field="sizes" data-order="asc">Tamaño ↑</button>
   </div>
-  
-  
+
+
 
 
   <div style="position: relative; width: 90%; max-width: 600px; margin-top: 20px;">
@@ -463,14 +479,14 @@
       .getElementById("characters")
       .addEventListener("click", (event) => {
         const container = event.target.closest(".character-container");
-        if (!container) return; // Si no se hizo clic en un contenedor, no hace nada
+        if (!container) return;
         const titleElement = container.querySelector(".character-title");
-        const raza = titleElement.textContent.trim(); // Obtiene el nombre de la raza
+        const raza = titleElement.textContent.trim();
         const baseUrl = "https://www.google.com/search";
-        const query = `${raza} dungeons and dragons`; // Permite caracteres especiales en la URL
+        const query = `${raza} dungeons and dragons`;
         const params = new URLSearchParams({
           q: query,
-          tbm: "isch", // Habilita la búsqueda de imágenes
+          tbm: "isch",
           source: "lnms",
         });
         const url = `${baseUrl}?${params.toString()}`;
@@ -498,73 +514,57 @@
     }
 
     function sortCharacters(field, order) {
-  const charactersContainer = document.getElementById("characters");
-  const characters = Array.from(charactersContainer.querySelectorAll(".character-container"));
+      const charactersContainer = document.getElementById("characters");
+      const characters = Array.from(charactersContainer.querySelectorAll(".character-container"));
 
-  characters.sort((a, b) => {
-    const dataA = JSON.parse(a.getAttribute("data-attributes"));
-    const dataB = JSON.parse(b.getAttribute("data-attributes"));
+      characters.sort((a, b) => {
+        const dataA = JSON.parse(a.getAttribute("data-attributes"));
+        const dataB = JSON.parse(b.getAttribute("data-attributes"));
 
-    let valueA, valueB;
+        let valueA, valueB;
 
-    if (field === "raceName") {
-      // Orden alfabético
-      valueA = a.querySelector(".character-title").textContent.toLowerCase();
-      valueB = b.querySelector(".character-title").textContent.toLowerCase();
-    } else if (field === "lifeSpan") {
-      // Extraer el número después del guion en `lifeSpan`
-      const lifeSpanRegex = /-(\d+)/;
-      const matchA = lifeSpanRegex.exec(a.querySelector(".character-description").textContent) || [];
-      const matchB = lifeSpanRegex.exec(b.querySelector(".character-description").textContent) || [];
-      valueA = parseInt(matchA[1], 10) || 0;
-      valueB = parseInt(matchB[1], 10) || 0;
-    } else if (field === "movementSpeed") {
-      // Orden por velocidad de movimiento
-      valueA = parseInt(dataA.movementSpeed, 10) || 0;
-      valueB = parseInt(dataB.movementSpeed, 10) || 0;
-    } else if (field === "sizes") {
-      // Orden por tamaño mínimo
-      valueA = Math.min(...dataA.sizes);
-      valueB = Math.min(...dataB.sizes);
+        if (field === "raceName") {
+          valueA = a.querySelector(".character-title").textContent.toLowerCase();
+          valueB = b.querySelector(".character-title").textContent.toLowerCase();
+        } else if (field === "lifeSpan") {
+          const lifeSpanRegex = /-(\d+)/;
+          const matchA = lifeSpanRegex.exec(a.querySelector(".character-description").textContent) || [];
+          const matchB = lifeSpanRegex.exec(b.querySelector(".character-description").textContent) || [];
+          valueA = parseInt(matchA[1], 10) || 0;
+          valueB = parseInt(matchB[1], 10) || 0;
+        } else if (field === "movementSpeed") {
+          valueA = parseInt(dataA.movementSpeed, 10) || 0;
+          valueB = parseInt(dataB.movementSpeed, 10) || 0;
+        } else if (field === "sizes") {
+          valueA = Math.min(...dataA.sizes);
+          valueB = Math.min(...dataB.sizes);
+        }
+        if (order === "asc") return valueA > valueB ? 1 : -1;
+        if (order === "desc") return valueA < valueB ? 1 : -1;
+        return 0;
+      });
+      characters.forEach(character => charactersContainer.appendChild(character));
     }
 
-    // Orden ascendente o descendente
-    if (order === "asc") return valueA > valueB ? 1 : -1;
-    if (order === "desc") return valueA < valueB ? 1 : -1;
-    return 0;
-  });
+    document.querySelectorAll(".sort-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const field = button.getAttribute("data-field");
+        const currentOrder = button.getAttribute("data-order");
+        const newOrder = currentOrder === "asc" ? "desc" : "asc";
 
-  // Reorganizar los elementos en el contenedor
-  characters.forEach(character => charactersContainer.appendChild(character));
-}
+        button.setAttribute("data-order", newOrder);
 
-// Manejar clics en botones de ordenamiento
-document.querySelectorAll(".sort-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    // Obtener el campo y el orden actual
-    const field = button.getAttribute("data-field");
-    const currentOrder = button.getAttribute("data-order");
+        const baseText = button.textContent.split(" ")[0];
+        button.textContent = `${baseText} ${newOrder === "asc" ? "↑" : "↓"}`;
 
-    // Alternar entre "asc" y "desc"
-    const newOrder = currentOrder === "asc" ? "desc" : "asc";
+        sortCharacters(field, newOrder);
 
-    // Actualizar el atributo del botón
-    button.setAttribute("data-order", newOrder);
-
-    // Actualizar el texto del botón
-    const baseText = button.textContent.split(" ")[0]; // Obtiene el texto base antes de la flecha
-    button.textContent = `${baseText} ${newOrder === "asc" ? "↑" : "↓"}`;
-
-    // Llamar a la función de ordenamiento
-    sortCharacters(field, newOrder);
-
-    // Resaltar el botón activo (opcional)
-    document.querySelectorAll(".sort-button").forEach((btn) => {
-      btn.classList.remove("active");
+        document.querySelectorAll(".sort-button").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        button.classList.add("active");
+      });
     });
-    button.classList.add("active");
-  });
-});
 
 
     async function cargarRazas() {
@@ -582,7 +582,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
           const container = document.createElement("div");
           container.classList.add("character-container");
           container.setAttribute("data-attributes", JSON.stringify(raza.attributes));
-          // Determinar el color del borde basado en los atributos más altos
           const attributeColors = {
             strength: "Tomato",
             dexterity: "PaleGreen",
@@ -605,8 +604,8 @@ document.querySelectorAll(".sort-button").forEach((button) => {
               const updateBoxShadow = () => {
                 const currentAttribute = highestAttributes[currentIndex];
                 const color = attributeColors[currentAttribute];
-                container.style.boxShadow = `0 0 30px ${color}`; // Actualizar el box-shadow del contenedor
-                currentIndex = (currentIndex + 1) % highestAttributes.length; // Avanzar al siguiente atributo
+                container.style.boxShadow = `0 0 30px ${color}`;
+                currentIndex = (currentIndex + 1) % highestAttributes.length;
               };
               setInterval(updateBoxShadow, 1000);
               return {
@@ -648,7 +647,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
             ".png"
           )}')`;
           container.appendChild(image);
-          // Título
           const title = document.createElement("div");
           title.classList.add("character-title");
           title.textContent = raza.raceName.toUpperCase();
@@ -664,7 +662,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
 
 
 
-          // Bonus y atributos
           const bonusAttributesContainer = document.createElement("div");
           bonusAttributesContainer.style.border = "1px solid LightSteelBlue";
           bonusAttributesContainer.style.borderRadius = "10px";
@@ -689,7 +686,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
             "wisdom",
             "charisma",
           ].forEach((key) => {
-            // Si el valor no está definido, usa 0
             const value = raza.attributes[key] || 0;
             const attribute = document.createElement("div");
             attribute.classList.add("character-attribute");
@@ -698,7 +694,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
             attribute.style.marginBlockEnd = "10px";
             attribute.style.color = attributeColors[key];
 
-            // Inicial de la característica
             const initialSpan = document.createElement("span");
             initialSpan.textContent =
               key[0].toUpperCase() + key[1].toUpperCase() + key[2].toUpperCase();
@@ -709,7 +704,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
             initialSpan.style.color = attributeColors[key];
             attribute.appendChild(initialSpan);
 
-            // Valor del atributo
             const numberSpan = document.createElement("span");
             numberSpan.textContent = value;
             numberSpan.style.color = attributeColors[key];
@@ -743,7 +737,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
             6: "Gargantuesco (>4.50m)"
           };
 
-          // Contenedor de tamaños
           const sizesDiv = document.createElement("div");
           sizesDiv.style.flex = "5";
           sizesDiv.style.display = "flex";
@@ -755,7 +748,7 @@ document.querySelectorAll(".sort-button").forEach((button) => {
 
           raza.sizes.forEach((size) => {
             const sizeSpan = document.createElement("span");
-            sizeSpan.textContent = sizeMap[size]; // Convertir número a nombre de tamaño
+            sizeSpan.textContent = sizeMap[size];
             sizeSpan.style.fontSize = "1rem";
             sizeSpan.style.color = "#fff";
             sizeSpan.style.padding = "5px 10px";
@@ -765,7 +758,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
             sizesDiv.appendChild(sizeSpan);
           });
 
-          // Contenedor de esperanza de vida
           const lifeSpanDiv = document.createElement("div");
           lifeSpanDiv.textContent = ` ᴇ.ᴠ. ${raza.lifeSpan || "?"}  `;
           lifeSpanDiv.style.flex = "1";
@@ -777,7 +769,6 @@ document.querySelectorAll(".sort-button").forEach((button) => {
           lifeSpanDiv.style.borderRadius = "10px";
           lifeSpanDiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
 
-          // Contenedor de velocidad
           const speedDiv = document.createElement("div");
           speedDiv.textContent = `ᴠᴇʟ. ${raza.movementSpeed} c`;
           speedDiv.style.flex = "1";
@@ -789,18 +780,14 @@ document.querySelectorAll(".sort-button").forEach((button) => {
           speedDiv.style.borderRadius = "10px";
           speedDiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
 
-          // Agregar los elementos al contenedor principal
           sizeSpeedContainer.appendChild(sizesDiv);
           sizeSpeedContainer.appendChild(lifeSpanDiv);
           sizeSpeedContainer.appendChild(speedDiv);
 
-          // Agregar el contenedor al contenido principal
           content.appendChild(sizeSpeedContainer);
 
 
 
-
-          // Habilidades con saltos de línea
           const habilitiesContainer = document.createElement("div");
           habilitiesContainer.classList.add("habilities-container");
           raza.abilities.forEach((ability) => {
@@ -849,19 +836,16 @@ document.querySelectorAll(".sort-button").forEach((button) => {
         ),
       };
 
-
-
-      // Función para formatear atributos
       function formatAttribute(value) {
-        const num = parseInt(value, 10); // Convierte el valor a un número
+        const num = parseInt(value, 10);
         if (!isNaN(num)) {
           if (num > 0) {
-            return `+${num}`; // Añade "+" si es positivo
+            return `+${num}`;
           } else {
-            return `${num}`; // Devuelve "0" o el número negativo como está
+            return `${num}`;
           }
         }
-        return "0"; // Si el valor no es válido, devuelve "0" por defecto
+        return "0";
       }
       const sizes = Array.from(
         document.querySelectorAll('.form-group input[type="checkbox"]:checked')
@@ -911,9 +895,9 @@ document.querySelectorAll(".sort-button").forEach((button) => {
             .querySelector(".character-title")
             .textContent.toLowerCase();
           if (name.includes(query)) {
-            character.style.display = ""; // Mostrar el contenedor (restaura el estilo por defecto)
+            character.style.display = "";
           } else {
-            character.style.display = "none"; // Ocultar el contenedor
+            character.style.display = "none";
           }
         });
       });
@@ -921,17 +905,13 @@ document.querySelectorAll(".sort-button").forEach((button) => {
       cargarRazas();
       const filterButtons = document.querySelectorAll(".filter-button");
       const charactersContainer = document.getElementById("characters");
-      // Manejar los clics en los botones de filtro
       filterButtons.forEach(button => {
         button.addEventListener("click", () => {
           const attribute = button.getAttribute("data-attribute");
-          // Alternar el estado activo del botón
           button.classList.toggle("active");
-          // Obtener los atributos activos
           const activeFilters = Array.from(filterButtons)
             .filter(btn => btn.classList.contains("active"))
             .map(btn => btn.getAttribute("data-attribute"));
-          // Filtrar las razas
           const characters = charactersContainer.querySelectorAll(".character-container");
           characters.forEach(character => {
             const attributes = JSON.parse(character.getAttribute("data-attributes"));

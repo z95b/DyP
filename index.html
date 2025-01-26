@@ -8,7 +8,11 @@
 
   
   <style>
-    /* General Styles */
+ :root {
+            --neon-red: #ff003c;
+            --neon-gold: #ffb300;
+            --chrome: #e8e8e8;
+        }
     body {
       font-family: 'Cinzel', serif;
       background: linear-gradient(180deg, #f3e5f5, #e1bee7, #d1c4e9);
@@ -31,7 +35,7 @@
       z-index: -100;
     }
     
-    /* Spacer for the Background */
+ 
     .spacer {
       height: 100vh;
       display: flex;
@@ -63,7 +67,7 @@
       border-radius: 4px;
     }
     
-    /* Menu Buttons */
+    /* Menu  */
     .menu-container {
 
       display: flex;
@@ -115,20 +119,17 @@
 </head>
 <body>
 
-  <!-- Fixed Background Image -->
   <div class="background-image">  </div>
 
-  <!-- Spacer to view the background -->
+
  
-  <!-- Content starts below the background -->
   <div class="container">
     <h1>D & P</h1>
 
     <div class="menu-container">
       <a href="stats.html" class="menu-btn" target="_blank">CASINO STATS</a>
       <a onclick="descargarFitxa()" class="menu-btn">FICHA </a>
-      <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?usp=sharing" class="menu-btn" target="_blank">RAZAS DOC</a>
-      <a href="razas.html" class="menu-btn" target="_blank">RAZAS NUEVO</a>
+      <a href="razas.html" class="menu-btn" target="_blank">RAZAS</a>
       <a href="https://docs.google.com/document/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit?usp=sharing" class="menu-btn" target="_blank">CLASES</a>
       <a href="https://nivel20.com/games/dnd-5/items" class="menu-btn" target="_blank">ARMAS Y ARMADURAS</a>
       <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=&level=&school=&list=&tag=&order=level" class="menu-btn" target="_blank">CONJUROS Y TRUCOS</a>
@@ -137,7 +138,7 @@
 
     <footer>
       <hr>
-      <p>V1.1 RAZAAAS :)</p>
+      <p>V2. CASINO + RAZAS ACABADO </p>
     </footer>
   </div>
   <div class="spacer">
@@ -149,7 +150,7 @@
 
     function descargarFitxa() {
       const enlace = document.createElement("a");
-      enlace.href = "FitxaDnD2.pdf";
+      enlace.href = "FitxaDnD.pdf";
       enlace.download = "FitxaDnD.pdf";
       enlace.click();
     }
