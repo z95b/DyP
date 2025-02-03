@@ -1,7 +1,7 @@
 # Brujo
 
 ## Dados de Golpe
-- **1d8** por nivel
+- **1d8** Por Nivel
 
 ### PG Nivel 1
 - 8 + Modificador de Constitución
@@ -68,7 +68,7 @@
   - **Salvaguardia Entrópica:** Usas tu reacción para dar desventaja a quien te ataque. Si falla, tienes ventaja en tu próximo ataque (descanso corto).
 - **Nivel 10:**
   - **Escudo Mental:** Inmunidad a que lean tus pensamientos sin consentimiento y resistencia al daño psíquico. Reflejas el daño psíquico recibido.
-  
+
 ### **Señor Feérico**
 - **Nivel 1:**
   - **Presencia Feérica:** Como acción, puedes encantar o asustar a los seres a 10 metros. Salvación de Sabiduría (descanso corto).
@@ -76,6 +76,8 @@
   - **Escape Brumoso:** Al recibir daño, usas tu reacción para teletransportarte 60 metros e invisibilizarte hasta tu próximo turno (descanso corto).
 - **Nivel 10:**
   - **Defensas Seductoras:** No puedes ser hechizado o hipnotizado. Si lo intentan, el hechicero queda hechizado durante 1 minuto si falla la salvación.
+
+---
 
 ### Desbloqueos Generales
 - **Nivel 14:**
@@ -90,7 +92,7 @@
 - Invocas un familiar con opciones adicionales según tu patrón.
   - **Señor Infernal:** Diablillo, Quasit
   - **Señor Feérico:** Duende, Pseudodragón
-  - **Gran Antiguo:** Todos los anteriores
+  - **Gran Antiguo:** Los anteriores
 
 ### **Pacto del Filo**
 - Convocas un arma mágica relacionada con tu patrón. Puedes convertir otras armas mágicas en tu arma de pacto.
@@ -101,7 +103,6 @@
 ---
 
 ## Arcanum Místico
-
 - **Nivel 11:** Conjuro de nivel 6, una vez por descanso corto
 - **Nivel 13:** Conjuro de nivel 7, una vez por descanso corto
 - **Nivel 15:** Conjuro de nivel 8, una vez por descanso corto
@@ -110,7 +111,7 @@
 ---
 
 ## Maestro Sobrenatural (Nivel 20)
-- Recuperas todos tus espacios de conjuro de brujo tras un minuto de súplica al patrón (descanso largo).
+- Rogando a tu patrón por 1 minuto, recuperas todos tus espacios de conjuro de brujo tras un descanso largo.
 
 ---
 
@@ -118,62 +119,62 @@
 
 ### Ejemplos de Invocaciones
 
-- **Cadenas de Carceri:** Inmoviliza monstruos una vez por descanso largo. Requisito: Nivel 15, Pacto de la Cadena.
-- **Capa de Sombras:** Lanza "Armadura de mago" como acción.
-- **Descarga Agónica:** Añade tu modificador de Carisma al daño de la Descarga Sobrenatural.
-- **Descarga Ahuyentadora:** Al impactar con la Descarga Sobrenatural, puedes empujar al objetivo 10 metros.
-- **Devorador de Vida:** Daño necrótico adicional en tu arma de pacto. Requisito: Nivel 12, Pacto del Filo.
-- **Enfangar la Mente:** Lanza "Ralentizar" gastando un espacio de conjuro (descanso largo).
-- **Esbirros del Caos:** Conjura un elemental una vez por descanso largo.
-- **Escultor de la Carne:** Obtienes el conjuro "Polimorfar".
-- **Filo Sediento:** Puedes atacar dos veces con tu arma de pacto.
-- **Influencia Seductora:** Competencia en Engaño y Persuasión.
-- **Ladrón de los 5 Sentidos:** Lanza "Perdición" usando un espacio de conjuro de brujo.
-- **Lanza Sobrenatural:** Incrementa el alcance de la Descarga Sobrenatural a todo el tablero.
-- **Libro de los Secretos:** Añade 2 rituales de cualquier lista de clase al libro.
-- **Maestro de Formas Innumerables:** Lanza "Alterar Aspecto" como acción.
-- **Marca del Mal Augurio:** Lanza "Imponer Maldición".
-- **Máscara de Mil Rostros:** Lanza "Disfrazarse" a voluntad.
-- **Mirada Conectada:** Toca a una persona para ver a través de sus sentidos.
-- **Ojos del Guardián Rúnico:** Lees cualquier escrito.
-- **Palabra Aterradora:** Lanza "Confusión" gastando un espacio de conjuro.
-- **Paso Ascendente:** Lanza "Levitar" sobre ti mismo a voluntad.
-- **Salto Sobrenatural:** Lanza "Salto" sobre ti mismo.
-- **Susurro del Sepulcro:** Lanza "Hablar con los Muertos".
-- **Susurros Embrujados:** Lanza "Compulsión".
-- **Uno con las Sombras:** Te vuelves invisible en la penumbra si no te mueves.
-- **Vigor Infernal:** Lanza "Falsa Vida" como conjuro de brujo.
-- **Visión de Bruja:** Detecta formas cambiadas mágicamente a tu alrededor.
-- **Visión Sobrenatural:** Lanza "Detectar Magia" a voluntad.
-- **Visiones de Reinos Remotos:** Lanza "Ojo Arcano" a voluntad.
-- **Visiones Brumosas:** Lanza "Imagen Silenciosa" a voluntad.
-- **Vista Demoníaca:** Ve en la oscuridad, mágica o no.
-- **Voz del Amo de la Cadena:** Puedes percibir y hablar a través de tu familiar.
+- **Cadenas de Carceria** Inmoviliza monstruos una vez por descanso largo. Requisito Nivel 15, Pacto de la Cadena.
+- **Capa de Sombras** Lanza "Armadura de mago" como acción.
+- **Descarga Agónica** Añade tu modificador de Carisma al daño de la Descarga Sobrenatural.
+- **Descarga Ahuyentadora** Al impactar con la Descarga Sobrenatural, puedes empujar al objetivo 10 metros.
+- **Devorador de Vida** Daño necrótico adicional en tu arma de pacto. Requisito Nivel 12, Pacto del Filo.
+- **Enfangar la Mente** Lanza "Ralentizar" gastando un espacio de conjuro (descanso largo).
+- **Esbirros del Caos** Conjura un elemental una vez por descanso largo.
+- **Escultor de la Carne** Obtienes el conjuro "Polimorfar".
+- **Filo Sediento** Puedes atacar dos veces con tu arma de pacto.
+- **Influencia Seductora** Competencia en Engaño y Persuasión.
+- **Ladrón de los 5 Sentidos** Lanza "Perdición" usando un espacio de conjuro de brujo.
+- **Lanza Sobrenatural** Incrementa el alcance de la Descarga Sobrenatural a todo el tablero.
+- **Libro de los Secretos** Añade 2 rituales de cualquier lista de clase al libro.
+- **Maestro de Formas Innumerables** Lanza "Alterar Aspecto" como acción.
+- **Marca del Mal Augurio** Lanza "Imponer Maldición".
+- **Máscara de Mil Rostros** Lanza "Disfrazarse" a voluntad.
+- **Mirada Conectada** Toca a una persona para ver a través de sus sentidos.
+- **Ojos del Guardián Rúnico** Lees cualquier escrito.
+- **Palabra Aterradora** Lanza "Confusión" gastando un espacio de conjuro.
+- **Paso Ascendente** Lanza "Levitar" sobre ti mismo a voluntad.
+- **Salto Sobrenatural** Lanza "Salto" sobre ti mismo.
+- **Susurro del Sepulcro** Lanza "Hablar con los Muertos".
+- **Susurros Embrujados** Lanza "Compulsión".
+- **Uno con las Sombras** Te vuelves invisible en la penumbra si no te mueves.
+- **Vigor Infernal** Lanza "Falsa Vida" como conjuro de brujo.
+- **Visión de Bruja** Detecta formas cambiadas mágicamente a tu alrededor.
+- **Visión Sobrenatural** Lanza "Detectar Magia" a voluntad.
+- **Visiones de Reinos Remotos** Lanza "Ojo Arcano" a voluntad.
+- **Visiones Brumosas** Lanza "Imagen Silenciosa" a voluntad.
+- **Vista Demoníaca** Ve en la oscuridad, mágica o no.
+- **Voz del Amo de la Cadena** Puedes percibir y hablar a través de tu familiar.
 
 ---
 
 ## Conjuros por Nivel y Patrón
 
 ### Conjuros Extra del Señor Infernal
-- **Nivel 1:** Manos Ardientes, Orden Imperiosa
-- **Nivel 2:** Rayo Abrasador, Sordera/Ceguera
-- **Nivel 3:** Bola de Fuego, Nube Apestosa
-- **Nivel 4:** Escudo de Fuego, Muro de Fuego
-- **Nivel 5:** Consagrar, Golpe Flamígero
+- **Nivel 1** Manos Ardientes, Orden Imperiosa
+- **Nivel 2** Rayo Abrasador, Sordera/Ceguera
+- **Nivel 3** Bola de Fuego, Nube Apestosa
+- **Nivel 4** Escudo de Fuego, Muro de Fuego
+- **Nivel 5** Consagrar, Golpe Flamígero
 
 ### Conjuros Extra del Gran Antiguo
-- **Nivel 1:** Risa Horrible de Tasha, Susurros Discordantes
-- **Nivel 2:** Detectar Pensamientos, Fuerza Fantasmal
-- **Nivel 3:** Clarividencia, Recado
-- **Nivel 4:** Dominar Bestia, Tentáculos Negros de Evard
-- **Nivel 5:** Dominar Persona, Telequinesis
+- **Nivel 1** Risa Horrible de Tasha, Susurros Discordantes
+- **Nivel 2** Detectar Pensamientos, Fuerza Fantasmal
+- **Nivel 3** Clarividencia, Recado
+- **Nivel 4** Dominar Bestia, Tentáculos Negros de Evard
+- **Nivel 5** Dominar Persona, Telequinesis
 
 ### Conjuros Extra del Señor Feérico
-- **Nivel 1:** Dormir, Fuego Feérico
-- **Nivel 2:** Calmar Emociones, Fuerza Fantasmal
-- **Nivel 3:** Crecimiento Vegetal, Desplazamiento
-- **Nivel 4:** Dominar Bestia, Invisibilidad Mejorada
-- **Nivel 5:** Apariencia, Dominar Persona
+- **Nivel 1** Dormir, Fuego Feérico
+- **Nivel 2** Calmar Emociones, Fuerza Fantasmal
+- **Nivel 3** Crecimiento Vegetal, Desplazamiento
+- **Nivel 4** Dominar Bestia, Invisibilidad Mejorada
+- **Nivel 5** Apariencia, Dominar Persona
 
 ---
 
@@ -240,7 +241,7 @@
 - Crear Muerto Viviente
 - De la Carne a la Piedra
 - Mal de Ojo
-- Sugerencia en Masa
+- Sugestión en Masa
 - Visión Veraz
 
 ### Conjuros de Nivel 7
@@ -262,3 +263,4 @@
 - Polimorfar Verdadero
 - Presagio
 - Proyección Astral
+
