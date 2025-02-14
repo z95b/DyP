@@ -45,40 +45,72 @@
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    #divBtnTop button{
+    #divBtnTop button {
       background: rgba(0, 0, 0, 0.2);
       border: solid 1px whitesmoke;
       color: #fff;
       margin: 0;
       padding: 0;
       border-radius: 0px;
-      height:7.5rem;
-      width:7.5rem;
+      height: 7.5rem;
+      width: 7.5rem;
 
     }
 
-    #divBtnTop button:hover{
+    #divBtnTop button:hover {
       background: rgba(45, 45, 45, 0.2);
 
     }
 
 
-    .filter-button:hover {
-      background: linear-gradient(135deg);
+    /* Estilos para los botones de filtro y ordenación */
+    .filter-button,
+    .sort-button {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--neon-gold);
+      color: var(--neon-gold);
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .filter-button:hover,
+    .sort-button:hover {
+      background: rgba(255, 179, 0, 0.2);
       transform: translateY(-2px);
+      box-shadow: 0 0 10px var(--neon-gold);
     }
 
-    .filter-button.active {
-      background: linear-gradient(135deg, #4CAF50, #388E3C);
-    }
-
+    .filter-button.active,
     .sort-button.active {
-      background-color: #d784d2;
-      /* Verde para botón activo */
-      color: white;
-      box-shadow: 0 0 10px rgba(255, 0, 225, 0.7);
-      /* Resaltado */
+      background: rgba(255, 179, 0, 0.4);
+      border-color: var(--neon-red);
+      color: var(--neon-red);
+      box-shadow: 0 0 15px var(--neon-red);
     }
+
+    /* Estilos para la barra de búsqueda */
+    #searchBar {
+      padding: 10px 40px 10px 10px;
+      width: 100%;
+      font-size: 1rem;
+      border: 1px solid var(--neon-gold);
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: var(--neon-gold);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #searchBar:focus {
+      border-color: var(--neon-red);
+      box-shadow: 0 0 10px var(--neon-red);
+      outline: none;
+    }
+
+    
 
     #characters {
       display: flex;
@@ -439,6 +471,7 @@
   </div>
   <hr>
   <span> Filtrar: </span>
+  <!-- Filtros y ordenación -->
   <div id="filters" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
     <button class="button filter-button" data-attribute="strength">Fuerza</button>
     <button class="button filter-button" data-attribute="dexterity">Destreza</button>
@@ -447,6 +480,7 @@
     <button class="button filter-button" data-attribute="wisdom">Sabiduría</button>
     <button class="button filter-button" data-attribute="charisma">Carisma</button>
   </div>
+
   <div id="sort-options" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
     <button class="button sort-button" data-field="raceName" data-order="asc">A-Z ↑</button>
     <button class="button sort-button" data-field="lifeSpan" data-order="asc">Esperanza de Vida ↑</button>
@@ -454,22 +488,15 @@
     <button class="button sort-button" data-field="sizes" data-order="asc">Tamaño ↑</button>
   </div>
 
-
-
-
+  <!-- Barra de búsqueda -->
   <div style="position: relative; width: 90%; max-width: 600px; margin-top: 20px;">
-
-    <input type="text" id="searchBar" placeholder=" 🔍 Buscar por nombre de raza..." style="
-              padding: 10px 40px 10px 10px; /* Espacio extra para la lupa */
-              width: 100%;
-              font-size: 1rem;
-              border: 1px solid #444;
-              border-radius: 10px;
-              background-color: #333;
-              color: #fff;
-          " />
-
+    <input type="text" id="searchBar" placeholder=" 🔍 Buscar por nombre de raza..." />
   </div>
+
+
+
+
+
 
   <div id="characters"></div>
   <script>
@@ -530,6 +557,21 @@
       return attributeColors[highestAttributes[0]];
     }
 
+
+    // Función para filtrar por atributos
+    function filterCharacters() {
+      const activeFilters = Array.from(document.querySelectorAll(".filter-button.active"))
+        .map(button => button.getAttribute("data-attribute"));
+      const characters = document.querySelectorAll(".character-container");
+
+      characters.forEach(character => {
+        const attributes = JSON.parse(character.getAttribute("data-attributes"));
+        const isVisible = activeFilters.length === 0 || activeFilters.some(attr => parseInt(attributes[attr], 10) > 0);
+        character.style.display = isVisible ? "" : "none";
+      });
+    }
+
+    // Función para ordenar personajes
     function sortCharacters(field, order) {
       const charactersContainer = document.getElementById("characters");
       const characters = Array.from(charactersContainer.querySelectorAll(".character-container"));
@@ -556,32 +598,51 @@
           valueA = Math.min(...dataA.sizes);
           valueB = Math.min(...dataB.sizes);
         }
+
         if (order === "asc") return valueA > valueB ? 1 : -1;
         if (order === "desc") return valueA < valueB ? 1 : -1;
         return 0;
       });
+
       characters.forEach(character => charactersContainer.appendChild(character));
     }
 
-    document.querySelectorAll(".sort-button").forEach((button) => {
+    // Event listeners para los botones de filtro
+    document.querySelectorAll(".filter-button").forEach(button => {
+      button.addEventListener("click", () => {
+        button.classList.toggle("active");
+        filterCharacters();
+      });
+    });
+
+    // Event listeners para los botones de ordenación
+    document.querySelectorAll(".sort-button").forEach(button => {
       button.addEventListener("click", () => {
         const field = button.getAttribute("data-field");
         const currentOrder = button.getAttribute("data-order");
         const newOrder = currentOrder === "asc" ? "desc" : "asc";
 
         button.setAttribute("data-order", newOrder);
-
-        const baseText = button.textContent.split(" ")[0];
-        button.textContent = `${baseText} ${newOrder === "asc" ? "↑" : "↓"}`;
+        button.textContent = `${button.textContent.split(" ")[0]} ${newOrder === "asc" ? "↑" : "↓"}`;
 
         sortCharacters(field, newOrder);
 
-        document.querySelectorAll(".sort-button").forEach((btn) => {
-          btn.classList.remove("active");
-        });
+        document.querySelectorAll(".sort-button").forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
       });
     });
+
+    // Event listener para la barra de búsqueda
+    document.getElementById("searchBar").addEventListener("input", (event) => {
+      const query = event.target.value.toLowerCase();
+      const characters = document.querySelectorAll(".character-container");
+
+      characters.forEach(character => {
+        const name = character.querySelector(".character-title").textContent.toLowerCase();
+        character.style.display = name.includes(query) ? "" : "none";
+      });
+    });
+
 
 
     async function cargarRazas() {

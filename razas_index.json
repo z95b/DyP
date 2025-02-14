@@ -1,8 +1,10 @@
 [
-    "humano.json",
+    "separador1.json",
     "semihumano.json",
     "no-muerto.json",
     "shura.json",
+    "separador2.json",
+    "humano.json",
     "draconido.json",
     "kobold.json",
     "elfo.json",
