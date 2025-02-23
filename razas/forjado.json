@@ -5,15 +5,17 @@
     "movementSpeed": "Variable según propósito.",
     "lifeSpan": "Indefinida, pero requieren mantenimiento regular.",
     "attributes": {
-        "strength": "2¿",
-        "dexterity": "2¿",
-        "constitution": "2¿+1",
-        "intelligence": "2¿",
-        "wisdom": "2¿",
-        "charisma": "2¿"
+        "Fuerza": "2¿",
+        "Destreza": "2¿",
+        "Constitución": "2¿+1",
+        "Inteligencia": "2¿",
+        "Sabiduría": "2¿",
+        "Carisma": "2¿"
     },
     "sizes": [
-        2,3,4
+        2,
+        3,
+        4
     ],
     "abilities": [
         {

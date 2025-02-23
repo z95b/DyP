@@ -5,15 +5,12 @@
     "movementSpeed": "7",
     "lifeSpan": "30-50",
     "attributes": {
-        "strength": "0",
-        "dexterity": "+2",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "+1",
-        "charisma": "0"
+        "Destreza": "+2",
+        "Sabiduría": "+1"
     },
     "sizes": [
-      2],
+        2
+    ],
     "abilities": [
         {
             "name": "Visión en la Oscuridad",

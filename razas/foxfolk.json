@@ -5,15 +5,12 @@
     "movementSpeed": "6",
     "lifeSpan": "80-120",
     "attributes": {
-        "strength": "0",
-        "dexterity": "+2",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "0",
-        "charisma": "+1"
+        "Destreza": "+2",
+        "Carisma": "+1"
     },
     "sizes": [
-        2,3
+        2,
+        3
     ],
     "abilities": [
         {

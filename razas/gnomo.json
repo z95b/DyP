@@ -5,15 +5,13 @@
     "movementSpeed": "5",
     "lifeSpan": "200-500",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "+1|0",
-        "intelligence": "+2",
-        "wisdom": "+1|0",
-        "charisma": "0"
+        "Constitución": "+1|0",
+        "Inteligencia": "+2",
+        "Sabiduría": "+1|0"
     },
     "sizes": [
-2    ],
+        2
+    ],
     "abilities": [
         {
             "name": "GNOMOS DE LOS BOSQUES: Hablar con Animales",

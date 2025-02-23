@@ -5,15 +5,12 @@
     "movementSpeed": "7",
     "lifeSpan": "70-120",
     "attributes": {
-        "strength": "0",
-        "dexterity": "+2",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "+1",
-        "charisma": "0"
+        "Destreza": "+2",
+        "Sabiduría": "+1"
     },
     "sizes": [
-        3,4
+        3,
+        4
     ],
     "abilities": [
         {
@@ -32,5 +29,12 @@
             "name": "Competencias",
             "description": "Eres competente en las habilidades de Medicina y Atletismo."
         }
-    ]
+    ],
+    "relations": {},
+    "languages": [
+        "Silvano",
+        "Élfico"
+    ],
+    "nightVision": false,
+    "referenceLink": "https://www.skullsplitterdice.com/blogs/dnd/centaur-5e#:~:text=Alignment%3A%20Centaurs%20are%20inclined%20toward,slightly%20larger%20than%20Lagonna%20centaurs."
 }

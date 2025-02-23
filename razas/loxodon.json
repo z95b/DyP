@@ -5,15 +5,14 @@
     "movementSpeed": "6",
     "lifeSpan": "120-200",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "+2",
-        "intelligence": "0",
-        "wisdom": "+1",
-        "charisma": "0"
+        "Constitución": "+2",
+        "Sabiduría": "+1"
     },
     "sizes": [
-3,4,5    ],
+        3,
+        4,
+        5
+    ],
     "abilities": [
         {
             "name": "Piel Dura",

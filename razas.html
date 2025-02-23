@@ -2,1004 +2,1024 @@
 <html lang="es">
 
 <head>
-  <link rel="icon" href="media/ico.ico" type="image/x-icon">
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Razas DyP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
-      --neon-red: #ff003c;
-      --neon-gold: #ffb300;
-      --chrome: #e8e8e8;
+      --primary: #2a2d3e;
+      --secondary: #1a1b26;
+      --accent: #7aa2f7;
+      --text: #c0caf5;
+      --muted: #565f89;
+      --card-bg: #1f2335;
+      --hover: #3b4261;
+      --neon-blue: #00f3ff;
+      --neon-purple: #9d00ff;
+      --neon-pink: #ff00f7;
     }
 
-
-    body {
-      font-family: "Verdana", monospace;
-      background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
-      color: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .button {
-      padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.2);
-      border: solid 1px whitesmoke;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    #divBtnTop button {
-      background: rgba(0, 0, 0, 0.2);
-      border: solid 1px whitesmoke;
-      color: #fff;
+    * {
       margin: 0;
       padding: 0;
-      border-radius: 0px;
-      height: 7.5rem;
-      width: 7.5rem;
-
+      box-sizing: border-box;
     }
 
-    #divBtnTop button:hover {
-      background: rgba(45, 45, 45, 0.2);
-
+    body {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, var(--secondary), #000);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
-
-    /* Estilos para los botones de filtro y ordenación */
-    .filter-button,
-    .sort-button {
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--neon-gold);
-      color: var(--neon-gold);
-      font-weight: bold;
-      border-radius: 25px;
+    .img-preview {
+      width: 150px;
+      height: auto;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    }
-
-    .filter-button:hover,
-    .sort-button:hover {
-      background: rgba(255, 179, 0, 0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 0 10px var(--neon-gold);
-    }
-
-    .filter-button.active,
-    .sort-button.active {
-      background: rgba(255, 179, 0, 0.4);
-      border-color: var(--neon-red);
-      color: var(--neon-red);
-      box-shadow: 0 0 15px var(--neon-red);
-    }
-
-    /* Estilos para la barra de búsqueda */
-    #searchBar {
-      padding: 10px 40px 10px 10px;
-      width: 100%;
-      font-size: 1rem;
-      border: 1px solid var(--neon-gold);
-      border-radius: 10px;
-      background-color: rgba(0, 0, 0, 0.3);
-      color: var(--neon-gold);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    #searchBar:focus {
-      border-color: var(--neon-red);
-      box-shadow: 0 0 10px var(--neon-red);
-      outline: none;
-    }
-
-    
-
-    #characters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 30px;
-      justify-content: center;
-      max-width: 1200px;
-    }
-
-    .character-container {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      width: 100%;
-      background: #242424;
-      border-radius: 15px;
-      box-shadow: 0px 8px 30px rgba(0, 0, 0, 1);
-      border: 1px solid #444;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      /* Necesario para los efectos */
-      border-radius: 15px;
-      overflow: auto;
-    }
-
-    .character-image {
-      flex: 1;
-      width: 33%;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .character-content {
-      flex: 2;
-      padding: 20px;
-      color: #f4f4f4;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-    }
-
-    /* Superposición para oscurecer el fondo */
-    .character-content::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.70);
-      /* Oscurecimiento normal */
-      z-index: 1;
-    }
-
-    /* Contenido sobre el fondo */
-    .character-content>* {
-      position: relative;
-      z-index: 2;
-    }
-
-    .character-description {
-      color: #ccc;
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    .character-size {
-      display: inline-block;
       margin: 5px;
-      padding: 5px 10px;
-      border: 1px solid white;
-      border-radius: 5px;
-      text-align: center;
-      background-color: #444;
-      color: white;
     }
 
-    .character-attributes {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-top: 15px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-      font-size: 1.2rem;
-
-    }
-
-    .character-attribute {
-      margin-top: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 60px;
-      height: 60px;
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      /* Forma de rombo */
-      background: #333;
-      color: #ffa726;
-      text-align: end;
-      position: sticky;
-    }
-
-    .character-attribute span {
-      margin-top: 10%;
-    }
-
-
-    .habilities-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .hability {
-      background: #333;
-      padding: 10px;
-      border-radius: 10px;
-      color: AntiqueWhite;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-      font-family: "Verdana", Courier, monospace;
-    }
-
-    #overlay {
+    .lightbox {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       background: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
+      display: flex;
       align-items: center;
-      z-index: 1000;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    #form-container {
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      max-width: 80vw;
+      max-height: 80vh;
+      position: relative;
+    }
+
+    .lightbox img {
       width: 100%;
-      max-width: 600px;
-      background: #242424;
-      padding: 3%;
-      border-radius: 15px;
-      color: #fff;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-      max-height: 90vh;
-      overflow-y: auto;
+      height: auto;
+      cursor: grab;
     }
 
-    #form-container h2 {
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .prev-btn {
+      left: 10px;
+    }
+
+    .next-btn {
+      right: 10px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .header {
       text-align: center;
-      margin-bottom: 20px;
-      color: #ffa726;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: rgba(42, 45, 62, 0.8);
+      border-radius: 1rem;
+      box-shadow: 0 0 20px var(--neon-blue);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(122, 162, 247, 0.2);
+      position: relative;
+      overflow: hidden;
     }
 
-    .form-group {
-      margin-bottom: 15px;
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg,
+          transparent,
+          rgba(122, 162, 247, 0.1),
+          transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(122, 162, 247, 0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px var(--neon-blue),
+          0 0 20px var(--neon-blue),
+          0 0 30px var(--neon-purple);
+      }
+
+      to {
+        text-shadow: 0 0 20px var(--neon-blue),
+          0 0 30px var(--neon-purple),
+          0 0 40px var(--neon-pink);
+      }
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: rgba(42, 45, 62, 0.8);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(122, 162, 247, 0.2);
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    }
+
+    .filter-group {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 1rem;
     }
 
-    .form-group label {
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 10px;
-      background: #333;
-      border: 1px solid #444;
-      border-radius: 5px;
-      color: #fff;
-    }
-
-    .form-group input[type="checkbox"] {
-      width: auto;
-    }
-
-    #abilitiesContainer .ability-group {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    #abilitiesContainer .ability-group input,
-    #abilitiesContainer .ability-group textarea {
-      flex: 1;
-    }
-
-    #abilitiesContainer .ability-group button {
-      background: #ff9f43;
-      border: none;
-      color: #fff;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    #abilitiesContainer .ability-group button:hover {
-      background: #ff6f00;
-    }
-
-    #form-container button[type="button"] {
-      margin-top: 15px;
-      width: 100%;
-    }
-
-    .character-title {
-      font-family: "Cinzel Decorative", serif;
-      font-size: 2rem;
-      color: #ffd700;
-      text-align: center;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-      letter-spacing: 2px;
-    }
-
-
-    .title-container {
-      text-align: center;
-    }
-
-    @keyframes neonFlicker {
-
-      0%,
-      19%,
-      21%,
-      23%,
-      25%,
-      54%,
-      56%,
-      100% {
-        opacity: 1;
-      }
-
-      20%,
-      22%,
-      24%,
-      55% {
-        opacity: 0.5;
-      }
-    }
-
-    .neon-sign {
-      position: relative;
-      display: inline-block;
+    .filter-title {
       font-family: 'Cinzel', serif;
-      font-size: 4rem;
-      font-weight: bold;
-      color: var(--neon-gold);
-      text-shadow: 0 0 10px var(--neon-gold),
-        0 0 20px var(--neon-gold),
-        0 0 30px var(--neon-gold);
-      padding: 1rem;
-      animation: neonFlicker 5s infinite;
-      color: #ff6f00
+      color: var(--neon-blue);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 5px var(--neon-blue);
     }
 
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
 
+    .filter-select {
+      background: rgba(31, 35, 53, 0.8);
+      border: 1px solid var(--neon-blue);
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      width: 100%;
+    }
 
-    @media (max-width: 768px) {
-      .character-container {
-        width: 90%;
+    .filter-select option {
+      background: var(--secondary);
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background: rgba(31, 35, 53, 0.8);
+      border: 1px solid var(--neon-blue);
+      color: var(--text);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(0, 243, 255, 0.2),
+          transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: rgba(59, 66, 97, 0.8);
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    .btn.active {
+      background: var(--neon-blue);
+      color: var(--secondary);
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(31, 35, 53, 0.8);
+      border: 1px solid var(--neon-blue);
+      color: var(--text);
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .thumbnails-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .thumbnail {
+      aspect-ratio: 1;
+      background-size: cover;
+      background-position: center;
+      border-radius: 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 2px solid var(--neon-blue);
+      overflow: hidden;
+    }
+
+    .thumbnail::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom,
+          transparent 50%,
+          rgba(0, 0, 0, 0.8));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .thumbnail:hover::before {
+      opacity: 1;
+    }
+
+    .thumbnail:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 0 20px var(--neon-blue);
+    }
+
+    .thumbnail-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(26, 27, 38, 0.9);
+      color: var(--neon-blue);
+      font-size: 1rem;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .thumbnail:hover .thumbnail-title {
+      transform: translateY(0);
+    }
+
+    .races-container {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .race-card {
+      background: rgba(31, 35, 53, 0.8);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      transition: all 0.3s ease;
+      border: 1px solid var(--neon-blue);
+      backdrop-filter: blur(10px);
+    }
+
+    .race-card.variant {
+      background: rgba(157, 0, 255, 0.1);
+      border: 2px solid var(--neon-purple);
+      box-shadow: 0 0 30px var(--neon-purple);
+    }
+
+    .race-card.variant .race-title {
+      background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .race-card.variant .attribute {
+      border-color: var(--neon-purple);
+    }
+
+    .race-image {
+      background-size: cover;
+      background-position: center;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .race-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg,
+          rgba(157, 0, 255, 0.1));
+    }
+
+    .race-content {
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .race-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+
+    .race-description {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .attributes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .attribute {
+      background: rgba(42, 45, 62, 0.8);
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid var(--neon-blue);
+    }
+
+    .attribute:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .attribute-name {
+      color: var(--neon-blue);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .attribute-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .abilities {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .ability {
+      background: rgba(42, 45, 62, 0.8);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--neon-blue);
+      transition: all 0.3s ease;
+    }
+
+    .ability:hover {
+      transform: translateX(5px);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .ability-name {
+      color: var(--neon-blue);
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ability-description {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .meta-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(42, 45, 62, 0.8);
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      border: 1px solid var(--neon-blue);
+      color: var(--neon-blue);
+      transition: all 0.3s ease;
+    }
+
+    .meta-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .size-indicator {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .size-box {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--neon-blue);
+      border-radius: 4px;
+    }
+
+    .size-box.active {
+      background: var(--neon-blue);
+    }
+
+    @media (max-width: 1200px) {
+      .race-card {
+        grid-template-columns: 300px 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .race-card {
+        grid-template-columns: 1fr;
       }
 
-      .character-content {
-        width: 19rem;
+      .race-image {
+        height: 300px;
       }
 
-      .character-image {
-        display: none;
-        /* Oculta el contenedor de imagen en móviles */
+      .thumbnails-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .title {
+        font-size: 2.5rem;
+      }
+
+      .filter-group {
+        min-width: 100%;
+      }
+
+      .meta-info {
+        flex-direction: column;
+      }
+
+      .meta-item {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="casino-lights"></div>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Dragonas y Perronas</h1>
+    </header>
 
-  <div class="title-container">
-    <div class="neon-sign">
-      <a href="index.html">
-        Dragonas y Perronas
-      </a>
+    <div class="filters">
+      <div class="filter-group">
+        <h3 class="filter-title">Atributos</h3>
+        <div class="filter-buttons" id="attribute-filters">
+          <button class="btn" data-filter="Fuerza">Fuerza</button>
+          <button class="btn" data-filter="Destreza">Destreza</button>
+          <button class="btn" data-filter="Constitucion">Constitución</button>
+          <button class="btn" data-filter="Inteligencia">Inteligencia</button>
+          <button class="btn" data-filter="Sabiduria">Sabiduría</button>
+          <button class="btn" data-filter="Carisma">Carisma</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h3 class="filter-title">Ordenar</h3>
+        <select class="filter-select" id="sortSelect">
+          <option value="">Sin ordenar</option>
+          <option value="name-asc">Nombre A-Z</option>
+          <option value="name-desc">Nombre Z-A</option>
+          <option value="speed-asc">Velocidad (Menor a Mayor)</option>
+          <option value="speed-desc">Velocidad (Mayor a Menor)</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <h3 class="filter-title">Tamaño</h3>
+        <select class="filter-select" id="sizeSelect" multiple>
+          <option value="1">Diminuto</option>
+          <option value="2">Pequeño</option>
+          <option value="3">Mediano</option>
+          <option value="4">Grande</option>
+          <option value="5">Enorme</option>
+          <option value="6">Gigantesco</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <h3 class="filter-title">Idiomas</h3>
+        <select class="filter-select" id="languageSelect" multiple>
+        </select>
+      </div>
+    </div>
+
+    <input type="text" class="search-bar" placeholder="🔍 Buscar razas..." id="searchInput">
+
+    <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+    <div class="races-container" id="racesContainer"></div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <span class="close-btn" onclick="closeLightbox()">&times;</span>
+      <span class="nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</span>
+      <span class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</span>
+      <img id="lightbox-img">
     </div>
   </div>
 
-  <!-- <div id="divBtnTop">
-    <a href="https://docs.google.com/document/d/1Dlcji8oR8gjisp-Uua9jirKSnK_iLwy97cX9NxeJq94/edit?tab=t.0"><button class="">DOCUMENTO</button></a>
-    <button class="" onclick="mostrarFormulario()">GENERAR RAZA</button>
-  </div> -->
 
-  <div id="overlay" onclick="cerrarFormulario()">
-    <div id="form-container" onclick="event.stopPropagation()">
-      <h2>Formulario de Razas</h2>
-      <form id="raceForm">
-        <div class="form-group">
-          <label for="raceName">Nombre de la Raza</label>
-          <input type="text" id="raceName" placeholder="Ej: Humanos" required />
-        </div>
-        <div class="form-group">
-          <label for="raceDescription">Descripción</label>
-          <textarea id="raceDescription" rows="3" placeholder="Breve descripción de la raza" required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="lifeSpan">Esperanza de Vida en Años</label>
-          <input type="text" id="lifeSpan" placeholder="Ej: 200" style="width: 40%; display: flex;" required />
-        </div>
-
-
-
-        <div class="form-group">
-          <label for="bonusRules">Reglas de Bonificadores</label>
-          <textarea id="bonusRules" rows="2" placeholder="Ej: Seleccionar solo 1 bonificador de +2"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Bonificadores de Atributos</label>
-          <input type="number" id="strength" placeholder="Fuerza" required />
-          <input type="number" id="dexterity" placeholder="Destreza" required />
-          <input type="number" id="constitution" placeholder="Constitución" required />
-          <input type="number" id="intelligence" placeholder="Inteligencia" required />
-          <input type="number" id="wisdom" placeholder="Sabiduría" required />
-          <input type="number" id="charisma" placeholder="Carisma" required />
-        </div>
-        <div class="form-group">
-          <label for="movementSpeed">Velocidad de Movimiento en Casillas</label>
-          <input type="number" id="movementSpeed" placeholder="Ej: 7 casillas" required />
-        </div>
-        <div class="form-group">
-          <label>Tamaños Disponibles</label>
-          <label><input type="checkbox" value="1" /> Diminuto (0.05 - 0.50m)</label>
-          <label><input type="checkbox" value="2" /> Pequeño (0.50 - 1.40m)</label>
-          <label><input type="checkbox" value="3" /> Mediano (1.40 - 1.89m)</label>
-          <label><input type="checkbox" value="4" /> Grande (1.90 - 2.49m)</label>
-          <label><input type="checkbox" value="5" /> Enorme (2.50 - 4.49m)</label>
-          <label><input type="checkbox" value="6" /> Gargantuesco (>4.50m)</label>
-        </div>
-
-        <div class="form-group">
-          <label>Habilidades</label>
-          <div id="abilitiesContainer"></div>
-          <button type="button" onclick="addAbility()">
-            + Añadir Habilidad
-          </button>
-        </div>
-        <button type="button" class="button" onclick="generateJSON()">
-          Terminar y Descargar JSON
-        </button>
-      </form>
-    </div>
-  </div>
-  <hr>
-  <span> Filtrar: </span>
-  <!-- Filtros y ordenación -->
-  <div id="filters" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
-    <button class="button filter-button" data-attribute="strength">Fuerza</button>
-    <button class="button filter-button" data-attribute="dexterity">Destreza</button>
-    <button class="button filter-button" data-attribute="constitution">Constitución</button>
-    <button class="button filter-button" data-attribute="intelligence">Inteligencia</button>
-    <button class="button filter-button" data-attribute="wisdom">Sabiduría</button>
-    <button class="button filter-button" data-attribute="charisma">Carisma</button>
-  </div>
-
-  <div id="sort-options" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
-    <button class="button sort-button" data-field="raceName" data-order="asc">A-Z ↑</button>
-    <button class="button sort-button" data-field="lifeSpan" data-order="asc">Esperanza de Vida ↑</button>
-    <button class="button sort-button" data-field="movementSpeed" data-order="asc">Velocidad ↑</button>
-    <button class="button sort-button" data-field="sizes" data-order="asc">Tamaño ↑</button>
-  </div>
-
-  <!-- Barra de búsqueda -->
-  <div style="position: relative; width: 90%; max-width: 600px; margin-top: 20px;">
-    <input type="text" id="searchBar" placeholder=" 🔍 Buscar por nombre de raza..." />
-  </div>
-
-
-
-
-
-
-  <div id="characters"></div>
   <script>
-    function mostrarFormulario() {
-      document.getElementById("overlay").style.display = "flex";
-    }
+    const attributeColors = {
+      Fuerza: '#ff7675',
+      Destreza: '#55efc4',
+      Constitucion: '#ffeaa7',
+      Inteligencia: '#74b9ff',
+      Sabiduria: '#a29bfe',
+      Carisma: '#fd79a8'
+    };
 
-    function cerrarFormulario() {
-      document.getElementById("overlay").style.display = "none";
-    }
+    let races = [];
 
-    function addAbility() {
-      const container = document.getElementById("abilitiesContainer");
-      const abilityGroup = document.createElement("div");
-      abilityGroup.classList.add("ability-group");
-      abilityGroup.innerHTML = `
-        <input type="text" placeholder="Nombre de habilidad" required style="flex: 20; ">
-        <textarea placeholder="Descripción de habilidad" rows="4" required style="flex: 60;"></textarea>
-        <button type="button" onclick="this.closest('.ability-group').remove()" style="background: none; border: none; cursor: pointer; color: #ff6f00; font-size: 1.5rem;flex: 1;">&times;</button>
-`;
-      container.appendChild(abilityGroup);
-    }
-    document
-      .getElementById("characters")
-      .addEventListener("click", (event) => {
-        const container = event.target.closest(".character-container");
-        if (!container) return;
-        const titleElement = container.querySelector(".character-title");
-        const raza = titleElement.textContent.trim();
-        const baseUrl = "https://www.google.com/search";
-        const query = `${raza} dungeons and dragons`;
-        const params = new URLSearchParams({
-          q: query,
-          tbm: "isch",
-          source: "lnms",
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let images = document.querySelectorAll('.race-image');
+      let lightbox = document.getElementById('lightbox');
+      let lightboxImg = document.getElementById('lightbox-img');
+      let currentIndex = 0;
+      let imageUrls = [];
+
+      // Recollim les imatges de les races
+      images.forEach((img, index) => {
+        let bgImage = img.style.backgroundImage;
+        let url = bgImage.slice(5, -2); // Extreure la URL
+        imageUrls.push(url);
+        img.dataset.index = index;
+
+        img.addEventListener('click', function () {
+          openLightbox(index);
         });
-        const url = `${baseUrl}?${params.toString()}`;
-        window.open(url, "_blank");
       });
 
-    function getBorderStyleForHighestAttributes(attributes, attributeColors) {
-      const maxValue = Math.max(
-        ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
-      );
-      const highestAttributes = Object.keys(attributes).filter(
-        (key) => parseInt(attributes[key], 10) === maxValue
-      );
-      if (highestAttributes.length > 1) {
-        const gradientStops = highestAttributes
-          .map((attr, index) => {
-            const color = attributeColors[attr];
-            const percentage = (100 / highestAttributes.length) * (index + 1);
-            return `${color} ${percentage}%`;
-          })
-          .join(", ");
-        return `linear-gradient(90deg, ${gradientStops})`;
+      function openLightbox(index) {
+        currentIndex = index;
+        lightboxImg.src = imageUrls[currentIndex];
+        lightbox.classList.add('active');
       }
-      return attributeColors[highestAttributes[0]];
-    }
 
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+      }
 
-    // Función para filtrar por atributos
-    function filterCharacters() {
-      const activeFilters = Array.from(document.querySelectorAll(".filter-button.active"))
-        .map(button => button.getAttribute("data-attribute"));
-      const characters = document.querySelectorAll(".character-container");
+      function changeImage(direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = imageUrls.length - 1;
+        if (currentIndex >= imageUrls.length) currentIndex = 0;
+        lightboxImg.src = imageUrls[currentIndex];
+      }
 
-      characters.forEach(character => {
-        const attributes = JSON.parse(character.getAttribute("data-attributes"));
-        const isVisible = activeFilters.length === 0 || activeFilters.some(attr => parseInt(attributes[attr], 10) > 0);
-        character.style.display = isVisible ? "" : "none";
-      });
-    }
-
-    // Función para ordenar personajes
-    function sortCharacters(field, order) {
-      const charactersContainer = document.getElementById("characters");
-      const characters = Array.from(charactersContainer.querySelectorAll(".character-container"));
-
-      characters.sort((a, b) => {
-        const dataA = JSON.parse(a.getAttribute("data-attributes"));
-        const dataB = JSON.parse(b.getAttribute("data-attributes"));
-
-        let valueA, valueB;
-
-        if (field === "raceName") {
-          valueA = a.querySelector(".character-title").textContent.toLowerCase();
-          valueB = b.querySelector(".character-title").textContent.toLowerCase();
-        } else if (field === "lifeSpan") {
-          const lifeSpanRegex = /-(\d+)/;
-          const matchA = lifeSpanRegex.exec(a.querySelector(".character-description").textContent) || [];
-          const matchB = lifeSpanRegex.exec(b.querySelector(".character-description").textContent) || [];
-          valueA = parseInt(matchA[1], 10) || 0;
-          valueB = parseInt(matchB[1], 10) || 0;
-        } else if (field === "movementSpeed") {
-          valueA = parseInt(dataA.movementSpeed, 10) || 0;
-          valueB = parseInt(dataB.movementSpeed, 10) || 0;
-        } else if (field === "sizes") {
-          valueA = Math.min(...dataA.sizes);
-          valueB = Math.min(...dataB.sizes);
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) {
+          closeLightbox();
         }
-
-        if (order === "asc") return valueA > valueB ? 1 : -1;
-        if (order === "desc") return valueA < valueB ? 1 : -1;
-        return 0;
       });
 
-      characters.forEach(character => charactersContainer.appendChild(character));
+      // Zoom i moviment de la imatge
+      let isDragging = false;
+      let startX, startY;
+
+      lightboxImg.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        lightboxImg.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        lightboxImg.style.cursor = 'grab';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        let x = e.clientX - startX;
+        let y = e.clientY - startY;
+        lightboxImg.style.transform = `translate(${x}px, ${y}px)`;
+      });
+
+      lightboxImg.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        let scale = Math.max(0.5, Math.min(2, 1 + e.deltaY * -0.01));
+        lightboxImg.style.transform = `scale(${scale})`;
+      });
+    });
+
+    let activeFilters = {
+      attributes: new Set(),
+      sizes: new Set(),
+      languages: new Set()
+    };
+    let currentSort = { field: null, direction: 'asc' };
+
+    function getHighestAttribute(attributes) {
+      let highest = { attr: null, value: -Infinity };
+      for (const [attr, value] of Object.entries(attributes)) {
+        const numValue = parseInt(value.replace('+', ''));
+        if (numValue > highest.value) {
+          highest = { attr, value: numValue };
+        }
+      }
+      return highest.attr;
     }
 
-    // Event listeners para los botones de filtro
-    document.querySelectorAll(".filter-button").forEach(button => {
-      button.addEventListener("click", () => {
-        button.classList.toggle("active");
-        filterCharacters();
-      });
-    });
+    function getSizeLabel(size) {
+      const sizes = ['Diminuto', 'Pequeño', 'Mediano', 'Grande', 'Enorme', 'Gigantesco'];
+      return sizes[size - 1];
+    }
 
-    // Event listeners para los botones de ordenación
-    document.querySelectorAll(".sort-button").forEach(button => {
-      button.addEventListener("click", () => {
-        const field = button.getAttribute("data-field");
-        const currentOrder = button.getAttribute("data-order");
-        const newOrder = currentOrder === "asc" ? "desc" : "asc";
-
-        button.setAttribute("data-order", newOrder);
-        button.textContent = `${button.textContent.split(" ")[0]} ${newOrder === "asc" ? "↑" : "↓"}`;
-
-        sortCharacters(field, newOrder);
-
-        document.querySelectorAll(".sort-button").forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-      });
-    });
-
-    // Event listener para la barra de búsqueda
-    document.getElementById("searchBar").addEventListener("input", (event) => {
-      const query = event.target.value.toLowerCase();
-      const characters = document.querySelectorAll(".character-container");
-
-      characters.forEach(character => {
-        const name = character.querySelector(".character-title").textContent.toLowerCase();
-        character.style.display = name.includes(query) ? "" : "none";
-      });
-    });
-
-
-
-    async function cargarRazas() {
-      const charactersContainer = document.getElementById("characters");
-      const directorio = "razas/";
+    async function loadRaces() {
       try {
-        const indexResponse = await fetch(`razas_index.json`);
-        if (!indexResponse.ok)
-          throw new Error("No se pudo cargar el índice de razas.");
-        const archivos = await indexResponse.json();
-        for (const archivo of archivos) {
-          const razaResponse = await fetch(`${directorio}${archivo}`);
-          if (!razaResponse.ok) continue;
-          const raza = await razaResponse.json();
-          const container = document.createElement("div");
-          container.classList.add("character-container");
-          container.setAttribute("data-attributes", JSON.stringify(raza.attributes));
-          const attributeColors = {
-            strength: "Tomato",
-            dexterity: "PaleGreen",
-            constitution: "Gold",
-            intelligence: "SkyBlue",
-            wisdom: "MediumPurple",
-            charisma: "HotPink",
-          };
+        const indexResponse = await fetch('razas_index.json');
+        const files = await indexResponse.json();
 
-          const getBorderStyleForHighestAttributes = (attributes) => {
-            const maxValue = Math.max(
-              ...Object.values(attributes).map((v) => parseInt(v, 10) || 0)
-            );
-            const highestAttributes = Object.keys(attributes).filter(
-              (key) => parseInt(attributes[key], 10) === maxValue
-            );
-            if (highestAttributes.length > 1) {
-              let currentIndex = 0;
-
-              const updateBoxShadow = () => {
-                const currentAttribute = highestAttributes[currentIndex];
-                const color = attributeColors[currentAttribute];
-                container.style.boxShadow = `0 0 30px ${color}`;
-                currentIndex = (currentIndex + 1) % highestAttributes.length;
-              };
-              setInterval(updateBoxShadow, 1000);
-              return {
-                border: `2px solid ${attributeColors[highestAttributes[0]]}`,
-                boxShadow: `0 0 30px ${attributeColors[highestAttributes[0]]
-                  }`,
-              };
-            }
-            return {
-              border: `2px solid ${attributeColors[highestAttributes[0]]}`,
-              boxShadow: `0 0 30px ${attributeColors[highestAttributes[0]]}`,
-            };
-          };
-          const {
-            border,
-            boxShadow
-          } = getBorderStyleForHighestAttributes(
-            raza.attributes
-          );
-          container.style.border = border;
-          container.style.boxShadow = boxShadow;
-          container.style.border = `5px solid transparent`;
-          container.style.backgroundImage = border.includes("linear-gradient") ?
-            border :
-            `none`;
-          container.style.boxShadow = `0 0 15px ${boxShadow}`;
-
-          const content = document.createElement("div");
-          content.classList.add("character-content");
-          content.style.backgroundImage = `url('${directorio}${archivo.replace(
-            ".json",
-            ".png"
-          )}')`;
-
-          const image = document.createElement("div");
-          image.classList.add("character-image");
-          image.style.backgroundImage = `url('${directorio}${archivo.replace(
-            ".json",
-            ".png"
-          )}')`;
-          container.appendChild(image);
-          const title = document.createElement("div");
-          title.classList.add("character-title");
-          title.textContent = raza.raceName.toUpperCase();
-          content.appendChild(title);
-
-          const description = document.createElement("div");
-          description.classList.add("character-description");
-          description.innerHTML = raza.raceDescription.replace(/\n/g, "<br>");
-          content.appendChild(description);
-
-          const lifeSpan = raza.lifeSpan || "Desconocido";
-
-
-
-
-          const bonusAttributesContainer = document.createElement("div");
-          bonusAttributesContainer.style.border = "1px solid LightSteelBlue";
-          bonusAttributesContainer.style.borderRadius = "10px";
-          bonusAttributesContainer.style.padding = "10px";
-          bonusAttributesContainer.style.margin = "10px 0";
-          bonusAttributesContainer.style.display = "flex";
-          bonusAttributesContainer.style.flexDirection = "column";
-          bonusAttributesContainer.style.alignItems = "center";
-          const bonusRulesText = document.createElement("div");
-          bonusRulesText.style.marginBottom = "10px";
-          bonusRulesText.style.textAlign = "center";
-          bonusRulesText.style.fontSize = "14px";
-          bonusRulesText.textContent = raza.bonusRules;
-          bonusAttributesContainer.appendChild(bonusRulesText);
-          const attributes = document.createElement("div");
-          attributes.classList.add("character-attributes");
-          [
-            "strength",
-            "dexterity",
-            "constitution",
-            "intelligence",
-            "wisdom",
-            "charisma",
-          ].forEach((key) => {
-            const value = raza.attributes[key] || 0;
-            const attribute = document.createElement("div");
-            attribute.classList.add("character-attribute");
-            attribute.style.border = `5px solid ${attributeColors[key]}`;
-            attribute.style.marginInline = "5px";
-            attribute.style.marginBlockEnd = "10px";
-            attribute.style.color = attributeColors[key];
-
-            const initialSpan = document.createElement("span");
-            initialSpan.textContent =
-              key[0].toUpperCase() + key[1].toUpperCase() + key[2].toUpperCase();
-            initialSpan.style.position = "absolute";
-            initialSpan.style.top = "5px";
-            initialSpan.style.marginLeft = "auto";
-            initialSpan.style.fontSize = "0.8rem";
-            initialSpan.style.color = attributeColors[key];
-            attribute.appendChild(initialSpan);
-
-            const numberSpan = document.createElement("span");
-            numberSpan.textContent = value;
-            numberSpan.style.color = attributeColors[key];
-            attribute.appendChild(numberSpan);
-
-            attributes.appendChild(attribute);
+        for (const file of files) {
+          const raceResponse = await fetch(`razas/${file}`);
+          const race = await raceResponse.json();
+          races.push({
+            ...race,
+            imageUrl: `razas/${file.replace('.json', '.png')}`
           });
-
-          bonusAttributesContainer.appendChild(attributes);
-          content.appendChild(bonusAttributesContainer);
-
-
-
-          const sizeSpeedContainer = document.createElement("div");
-          sizeSpeedContainer.style.display = "flex";
-          sizeSpeedContainer.style.justifyContent = "space-between";
-          sizeSpeedContainer.style.alignItems = "center";
-          sizeSpeedContainer.style.gap = "10px";
-          sizeSpeedContainer.style.padding = "10px";
-          sizeSpeedContainer.style.background = "linear-gradient(90deg, rgba(50, 50, 50, 0.8), rgba(30, 30, 30, 0.8))";
-          sizeSpeedContainer.style.borderRadius = "10px";
-          sizeSpeedContainer.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.4)";
-
-
-          const sizeMap = {
-            1: "Diminuto (0.05 - 0.50m)",
-            2: "Pequeño (0.50 - 1.40m)",
-            3: "Mediano (1.40 - 1.89m)",
-            4: "Grande (1.90 - 2.49m)",
-            5: "Enorme (2.50 - 4.49m)",
-            6: "Gargantuesco (>4.50m)"
-          };
-
-          const sizesDiv = document.createElement("div");
-          sizesDiv.style.flex = "5";
-          sizesDiv.style.display = "flex";
-          sizesDiv.style.flexWrap = "wrap";
-          sizesDiv.style.gap = "10px";
-          sizesDiv.style.padding = "10px";
-          sizesDiv.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-          sizesDiv.style.borderRadius = "10px";
-
-          raza.sizes.forEach((size) => {
-            const sizeSpan = document.createElement("span");
-            sizeSpan.textContent = sizeMap[size];
-            sizeSpan.style.fontSize = "1rem";
-            sizeSpan.style.color = "#fff";
-            sizeSpan.style.padding = "5px 10px";
-            sizeSpan.style.background = "rgba(0, 0, 0, 0.5)";
-            sizeSpan.style.borderRadius = "5px";
-            sizeSpan.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
-            sizesDiv.appendChild(sizeSpan);
-          });
-
-          const lifeSpanDiv = document.createElement("div");
-          lifeSpanDiv.textContent = ` ᴇ.ᴠ. ${raza.lifeSpan || "?"}  `;
-          lifeSpanDiv.style.flex = "1";
-          lifeSpanDiv.style.textAlign = "center";
-          lifeSpanDiv.style.color = "#fff";
-          lifeSpanDiv.style.fontWeight = "bold";
-          lifeSpanDiv.style.background = "rgba(255, 255, 255, 0.1)";
-          lifeSpanDiv.style.padding = "10px";
-          lifeSpanDiv.style.borderRadius = "10px";
-          lifeSpanDiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
-
-          const speedDiv = document.createElement("div");
-          speedDiv.textContent = `ᴠᴇʟ. ${raza.movementSpeed} c`;
-          speedDiv.style.flex = "1";
-          speedDiv.style.textAlign = "center";
-          speedDiv.style.color = "#fff";
-          speedDiv.style.fontWeight = "bold";
-          speedDiv.style.background = "rgba(255, 255, 255, 0.1)";
-          speedDiv.style.padding = "10px";
-          speedDiv.style.borderRadius = "10px";
-          speedDiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
-
-          sizeSpeedContainer.appendChild(sizesDiv);
-          sizeSpeedContainer.appendChild(lifeSpanDiv);
-          sizeSpeedContainer.appendChild(speedDiv);
-
-          content.appendChild(sizeSpeedContainer);
-
-
-
-          const habilitiesContainer = document.createElement("div");
-          habilitiesContainer.classList.add("habilities-container");
-          raza.abilities.forEach((ability) => {
-            const abilityDiv = document.createElement("div");
-            abilityDiv.classList.add("hability");
-            abilityDiv.innerHTML = `<strong style="font-family: 'Cinzel'; font-size: 1.3rem;">${ability.name
-              }</strong>: ${ability.description.replace(/\n/g, "<br>")}`;
-            habilitiesContainer.appendChild(abilityDiv);
-          });
-          content.appendChild(habilitiesContainer);
-          container.appendChild(content);
-          charactersContainer.appendChild(container);
         }
+
+        populateLanguageFilter();
+        renderThumbnails();
+        renderRaces();
       } catch (error) {
-        console.error("Error cargando razas:", error);
+        console.error('Error loading races:', error);
       }
     }
 
-    async function generateJSON() {
-      const raceName = document.getElementById("raceName").value.trim();
-      const raceDescription = document
-        .getElementById("raceDescription")
-        .value.trim();
-      const bonusRules = document.getElementById("bonusRules").value.trim();
-      const movementSpeed = document
-        .getElementById("movementSpeed")
-        .value.trim();
-      const attributes = {
-        strength: formatAttribute(
-          document.getElementById("strength").value.trim()
-        ),
-        dexterity: formatAttribute(
-          document.getElementById("dexterity").value.trim()
-        ),
-        constitution: formatAttribute(
-          document.getElementById("constitution").value.trim()
-        ),
-        intelligence: formatAttribute(
-          document.getElementById("intelligence").value.trim()
-        ),
-        wisdom: formatAttribute(
-          document.getElementById("wisdom").value.trim()
-        ),
-        charisma: formatAttribute(
-          document.getElementById("charisma").value.trim()
-        ),
-      };
-
-      function formatAttribute(value) {
-        const num = parseInt(value, 10);
-        if (!isNaN(num)) {
-          if (num > 0) {
-            return `+${num}`;
-          } else {
-            return `${num}`;
-          }
+    function populateLanguageFilter() {
+      const languages = new Set();
+      races.forEach(race => {
+        if (race.languages) {
+          race.languages.forEach(lang => languages.add(lang));
         }
-        return "0";
-      }
-      const sizes = Array.from(
-        document.querySelectorAll('.form-group input[type="checkbox"]:checked')
-      ).map((cb) => parseInt(cb.value));
-
-      const abilities = Array.from(
-        document.getElementById("abilitiesContainer").children
-      ).map((group) => {
-        const inputs = group.querySelectorAll("input, textarea");
-        return {
-          name: inputs[0].value.trim(),
-          description: inputs[1].value.trim(),
-        };
       });
-      const lifeSpan = document.getElementById("lifeSpan").value.trim();
 
-      const jsonData = {
-        raceName,
-        raceDescription,
-        bonusRules,
-        movementSpeed,
-        lifeSpan,
-        attributes,
-        sizes,
-        abilities,
-      };
-
-      const jsonString = JSON.stringify(jsonData, null, 4);
-      const blob = new Blob([jsonString], {
-        type: "application/json",
+      const select = document.getElementById('languageSelect');
+      Array.from(languages).sort().forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang;
+        option.textContent = lang;
+        select.appendChild(option);
       });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `${raceName || "raza"}.json`;
-      link.click();
-      URL.revokeObjectURL(url);
-      cerrarFormulario();
     }
-    document
-      .getElementById("searchBar")
-      .addEventListener("input", (event) => {
-        const query = event.target.value.toLowerCase();
-        const characters = document.querySelectorAll(".character-container");
-        characters.forEach((character) => {
-          const name = character
-            .querySelector(".character-title")
-            .textContent.toLowerCase();
-          if (name.includes(query)) {
-            character.style.display = "";
-          } else {
-            character.style.display = "none";
-          }
-        });
-      });
-    document.addEventListener("DOMContentLoaded", () => {
-      cargarRazas();
-      const filterButtons = document.querySelectorAll(".filter-button");
-      const charactersContainer = document.getElementById("characters");
-      filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
-          const attribute = button.getAttribute("data-attribute");
-          button.classList.toggle("active");
-          const activeFilters = Array.from(filterButtons)
-            .filter(btn => btn.classList.contains("active"))
-            .map(btn => btn.getAttribute("data-attribute"));
-          const characters = charactersContainer.querySelectorAll(".character-container");
-          characters.forEach(character => {
-            const attributes = JSON.parse(character.getAttribute("data-attributes"));
-            const isVisible = activeFilters.length === 0 || activeFilters.every(attr => parseInt(attributes[attr], 10) > 0);
-            character.style.display = isVisible ? "" : "none";
-          });
-        });
-      });
 
+    function renderThumbnails() {
+      const grid = document.getElementById('thumbnailsGrid');
+      const filteredRaces = filterRaces(races);
+      const dominantAttr = race => getHighestAttribute(race.attributes);
+
+      grid.innerHTML = filteredRaces.map((race, index) => `
+        <div class="thumbnail" 
+             style="background-image: url('${race.imageUrl}'); border-color: ${attributeColors[dominantAttr(race)]}; box-shadow: 0 0 15px ${attributeColors[dominantAttr(race)]}"
+             onclick="scrollToRace(${index})">
+          <div class="thumbnail-title">${race.raceName}</div>
+        </div>
+      `).join('');
+    }
+
+    function scrollToRace(index) {
+      const raceElements = document.querySelectorAll('.race-card');
+      if (raceElements[index]) {
+        raceElements[index].scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function renderRaces() {
+    const container = document.getElementById('racesContainer');
+    const filteredRaces = filterRaces(races);
+    const sortedRaces = sortRaces(filteredRaces);
+
+    container.innerHTML = sortedRaces.map((race, index) => {
+        const dominantAttr = getHighestAttribute(race.attributes);
+        const cardStyle = `border-color: ${attributeColors[dominantAttr]}; box-shadow: 0 0 20px ${attributeColors[dominantAttr]}`;
+
+        return `
+          <div class="race-card ${race.isAVariant ? 'variant' : ''}" style="${cardStyle}">
+            <div class="race-image" style="background-image: url('${race.imageUrl}')" data-index="${index}"></div>
+            <div class="race-content">
+              <h2 class="race-title">${race.raceName}</h2>
+              
+              <div class="meta-info">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M2 12h20"/>
+                  </svg>
+                  Esperanza de Vida: ${race.lifeSpan}
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                  </svg>
+                  Velocidad: ${race.movementSpeed} casillas
+                </span>
+                ${race.languages ? `
+                  <span class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    Idiomas: ${race.languages.join(', ')}
+                  </span>
+                ` : ''}
+                ${race.nightVision ? `
+                  <span class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    Visión Nocturna
+                  </span>
+                ` : ''}
+              </div>
+
+              <p class="race-description">${race.raceDescription}</p>
+
+              <div class="attributes-grid">
+                ${Object.entries(race.attributes).map(([attr, value]) => `
+                  <div class="attribute" style="border-color: ${attributeColors[attr]}">
+                    <div class="attribute-name">${attr.charAt(0).toUpperCase() + attr.slice(1)}</div>
+                    <div class="attribute-value">${value}</div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="abilities">
+                ${race.abilities.map(ability => `
+                  <div class="ability">
+                    <div class="ability-name">${ability.name}</div>
+                    <div class="ability-description">${ability.description}</div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="size-indicator">
+                Tamaños disponibles:
+                ${Array.from({ length: 6 }, (_, i) => i + 1).map(size => `
+                  <div class="size-box ${race.sizes.includes(size) ? 'active' : ''}" 
+                       title="${getSizeLabel(size)}"></div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+    }).join('');
+
+    // 📌 Ara afegim la funcionalitat del lightbox després de renderitzar les races
+    addLightboxFunctionality();
+}
+
+function addLightboxFunctionality() {
+    let images = document.querySelectorAll('.race-image');
+    let lightbox = document.getElementById('lightbox');
+    let lightboxImg = document.getElementById('lightbox-img');
+    let currentIndex = 0;
+    let imageUrls = [];
+
+    // Recollim les imatges i assignem els events de click
+    images.forEach((img, index) => {
+        let url = img.style.backgroundImage.replace(/url\(["']?/, '').replace(/["']?\)$/, '');
+        imageUrls.push(url);
+        img.dataset.index = index;
+
+        img.addEventListener('click', function () {
+            openLightbox(index);
+        });
     });
+
+    function openLightbox(index) {
+        currentIndex = index;
+        lightboxImg.src = imageUrls[currentIndex];
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+    }
+
+    function changeImage(direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = imageUrls.length - 1;
+        if (currentIndex >= imageUrls.length) currentIndex = 0;
+        lightboxImg.src = imageUrls[currentIndex];
+    }
+
+    lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.querySelector('.prev-btn').addEventListener('click', () => changeImage(-1));
+    document.querySelector('.next-btn').addEventListener('click', () => changeImage(1));
+}
+
+    function filterRaces(races) {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+      return races.filter(race => {
+        const matchesSearch = race.raceName.toLowerCase().includes(searchTerm);
+        const matchesAttributes = activeFilters.attributes.size === 0 ||
+          Array.from(activeFilters.attributes).some(attr => {
+            const value = race.attributes[attr];
+            return value && value.toString().includes('+');
+          });
+        const matchesSizes = activeFilters.sizes.size === 0 ||
+          race.sizes.some(size => activeFilters.sizes.has(size.toString()));
+        const matchesLanguages = activeFilters.languages.size === 0 ||
+          race.languages.some(lang => activeFilters.languages.has(lang));
+
+        return matchesSearch && matchesAttributes && matchesSizes && matchesLanguages;
+      });
+    }
+
+    function sortRaces(races) {
+      if (!currentSort.field) return races;
+
+      return [...races].sort((a, b) => {
+        let comparison = 0;
+
+        switch (currentSort.field) {
+          case 'name':
+            comparison = a.raceName.localeCompare(b.raceName);
+            break;
+          case 'speed':
+            comparison = parseInt(a.movementSpeed) - parseInt(b.movementSpeed);
+            break;
+        }
+
+        return currentSort.direction === 'asc' ? comparison : -comparison;
+      });
+    }
+
+    // Event Listeners
+    document.getElementById('attribute-filters').addEventListener('click', (e) => {
+      if (!e.target.matches('.btn')) return;
+
+      e.target.classList.toggle('active');
+      const filter = e.target.dataset.filter;
+
+      if (activeFilters.attributes.has(filter)) {
+        activeFilters.attributes.delete(filter);
+      } else {
+        activeFilters.attributes.add(filter);
+      }
+
+      renderThumbnails();
+      renderRaces();
+    });
+
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      const [field, direction] = e.target.value.split('-');
+      currentSort.field = field || null;
+      currentSort.direction = direction || 'asc';
+      renderThumbnails();
+      renderRaces();
+    });
+
+    document.getElementById('sizeSelect').addEventListener('change', (e) => {
+      activeFilters.sizes.clear();
+      Array.from(e.target.selectedOptions).forEach(option => {
+        activeFilters.sizes.add(option.value);
+      });
+      renderThumbnails();
+      renderRaces();
+    });
+
+    document.getElementById('languageSelect').addEventListener('change', (e) => {
+      activeFilters.languages.clear();
+      Array.from(e.target.selectedOptions).forEach(option => {
+        activeFilters.languages.add(option.value);
+      });
+      renderThumbnails();
+      renderRaces();
+    });
+
+    document.getElementById('searchInput').addEventListener('input', () => {
+      renderThumbnails();
+      renderRaces();
+    });
+
+    // Initialize
+    loadRaces();
+
+
+
+
+
+
   </script>
 </body>
 

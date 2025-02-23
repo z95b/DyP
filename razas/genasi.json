@@ -5,15 +5,15 @@
     "movementSpeed": "6",
     "lifeSpan": "100-150",
     "attributes": {
-        "strength": "2¿",
-        "dexterity": "2¿",
-        "constitution": "0",
-        "intelligence": "2¿",
-        "wisdom": "2¿",
-        "charisma": "+1"
+        "Fuerza": "2¿",
+        "Destreza": "2¿",
+        "Inteligencia": "2¿",
+        "Sabiduría": "2¿",
+        "Carisma": "+1"
     },
     "sizes": [
-3    ],
+        3
+    ],
     "abilities": [
         {
             "name": "El Arcanum Dentro de Mí",

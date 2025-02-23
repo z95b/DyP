@@ -5,14 +5,14 @@
     "bonusRules": "",
     "movementSpeed": 6,
     "attributes": {
-        "strength": "0",
-        "dexterity": "+2",
-        "constitution": "0",
-        "intelligence": "+1",
-        "wisdom": "0",
-        "charisma": "0"
+        "Destreza": "+2",
+        "Inteligencia": "+1"
     },
-    "sizes": [2,3,4],
+    "sizes": [
+        2,
+        3,
+        4
+    ],
     "abilities": [
         {
             "name": "Peso Pluma",

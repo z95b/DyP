@@ -5,15 +5,14 @@
     "movementSpeed": "6",
     "lifeSpan": "100-150",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "+2",
-        "wisdom": "+1",
-        "charisma": "0"
+        "Inteligencia": "+2",
+        "Sabiduría": "+1"
     },
     "sizes": [
-2,3,4    ],
+        2,
+        3,
+        4
+    ],
     "abilities": [
         {
             "name": "Concentración Arcana",

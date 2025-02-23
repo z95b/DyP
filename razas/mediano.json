@@ -5,15 +5,12 @@
     "movementSpeed": "5",
     "lifeSpan": "150-250",
     "attributes": {
-        "strength": "0",
-        "dexterity": "+1",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "0",
-        "charisma": "+2"
+        "Destreza": "+1",
+        "Carisma": "+2"
     },
     "sizes": [
-2    ],
+        2
+    ],
     "abilities": [
         {
             "name": "Suerte",

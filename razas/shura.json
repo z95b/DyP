@@ -1,19 +1,21 @@
 {
-    "raceName": "Shura",
+    "raceName": "🟦 VARIANTE: Shura",
     "raceDescription": "Los Shura son producto de tragedias como una violación, un asesinato o una venganza. Nacen de madres que murieron embarazadas y cercanas a dar a luz. Estos mal llamados 'espíritus de la venganza' suelen ser personas que buscan apagar una insaciable sed de violencia que eventualmente los consume. Algunos Shura se aíslan para evitar dañar a otros, mientras que otros sucumben a su naturaleza, encontrando placer en arrebatar vidas para intentar llenar un vacío infinito. Los Shura no tienen alma, pero poseen un fuego interno que se alimenta de sus emociones.",
     "bonusRules": "Elegir +2 en Fuerza o Destreza",
     "movementSpeed": "7",
     "lifeSpan": "Indefinida.",
     "attributes": {
-        "strength": "+2?",
-        "dexterity": "+2?",
-        "constitution": "+2",
-        "intelligence": "0",
-        "wisdom": "0",
-        "charisma": "0"
+        "Fuerza": "+2?",
+        "Destreza": "+2?",
+        "Constitución": "+2"
     },
     "sizes": [
-        2,3,4
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
     ],
     "abilities": [
         {

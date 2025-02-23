@@ -5,15 +5,12 @@
     "movementSpeed": "6",
     "lifeSpan": "100-200",
     "attributes": {
-        "strength": "+2",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "+1",
-        "wisdom": "0",
-        "charisma": "0"
+        "Fuerza": "+2",
+        "Inteligencia": "+1"
     },
     "sizes": [
-3    ],
+        3
+    ],
     "abilities": [
         {
             "name": "Biblioteca del Conocimiento",

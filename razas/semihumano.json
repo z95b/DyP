@@ -1,19 +1,24 @@
 {
-    "raceName": "Semi-Humanos",
+    "raceName": "🟦 VARIANTE: Semi-Humanos",
     "raceDescription": "Que hay más constante en el mundo que el sexo y las ganas de experimentar? Exacto, los embarazos fortuitos. Gracias a la gran capacidad humana de entremezclarse con razas humanoides, surgen diferentes híbridos con aspectos inusuales y características suaves que muestran su mezcla de linajes. Los Semi-Humanos son la muestra viviente de que en el fondo no somos tan diferentes. Y que follarse a un gato no es ilegal. Miau.",
     "bonusRules": "Adquieres la primera característica de la raza y una negativa (si tiene) +1 característica a elección.",
     "movementSpeed": "(a+b)/2 ",
     "lifeSpan": "(a+b)/2 ",
     "attributes": {
-        "strength": "1?",
-        "dexterity": "1?",
-        "constitution": "1?",
-        "intelligence": "1?",
-        "wisdom": "1?",
-        "charisma": "1?"
+        "Fuerza": "1?",
+        "Destreza": "1?",
+        "Constitución": "1?",
+        "Inteligencia": "1?",
+        "Sabiduría": "1?",
+        "Carisma": "1?"
     },
     "sizes": [
-        1,2,3,4,5,6
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
     ],
     "abilities": [
         {

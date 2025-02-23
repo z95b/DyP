@@ -4,15 +4,14 @@
     "bonusRules": "+2 en Sabiduría, +1 en Constitución.",
     "movementSpeed": "6",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "+1",
-        "intelligence": "0",
-        "wisdom": "+2",
-        "charisma": "0"
+        "Constitución": "+1",
+        "Sabiduría": "+2"
     },
     "sizes": [
-        1,2,3,4
+        1,
+        2,
+        3,
+        4
     ],
     "abilities": [
         {

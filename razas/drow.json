@@ -5,15 +5,13 @@
     "movementSpeed": "6",
     "lifeSpan": "700-1000",
     "attributes": {
-        "strength": "+1",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "+2",
-        "wisdom": "0",
-        "charisma": "0"
+        "Fuerza": "+1",
+        "Inteligencia": "+2"
     },
     "sizes": [
-3,4    ],
+        3,
+        4
+    ],
     "abilities": [
         {
             "name": "Visión en la Oscuridad",
@@ -23,7 +21,5 @@
             "name": "Runa del Miedo",
             "description": "Marcas a un enemigo. Si falla una tirada de salvación de Sabiduría, ese enemigo siempre tratará de alejarse de ti, pues para él representas el mayor de sus temores."
         }
-        
-
     ]
 }

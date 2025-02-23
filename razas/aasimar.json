@@ -5,14 +5,14 @@
     "movementSpeed": "6",
     "lifeSpan": "200-300",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "+1",
-        "wisdom": "0",
-        "charisma": "+2"
+        "INT": "+1",
+        "Carisma": "+2"
     },
-    "sizes": [2,3,4],
+    "sizes": [
+        2,
+        3,
+        4
+    ],
     "abilities": [
         {
             "name": "Infusión Celestial",

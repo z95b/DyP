@@ -4,15 +4,12 @@
     "bonusRules": "",
     "movementSpeed": "6",
     "attributes": {
-        "strength": "0",
-        "dexterity": "0",
-        "constitution": "0",
-        "intelligence": "0",
-        "wisdom": "+2",
-        "charisma": "+2"
+        "Sabiduría": "+2",
+        "Carisma": "+2"
     },
     "sizes": [
-1    ],
+        1
+    ],
     "abilities": [
         {
             "name": "Volar",

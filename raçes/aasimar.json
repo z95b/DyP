@@ -1,11 +1,12 @@
 {
-    "raceName": "Universitario",
-    "raceDescription": "OMG Gerard Mesquida, que coño es un hígado sano 🗣️🗣️🗣️🔥🔥???????????",
+    "raceName": "Aasimar",
+    "raceDescription": "Los Aasimar son seres muy poco comunes. Son semi deidades enviadas por los dioses del cosmos para cumplir con su voluntad en la tierra. Estos usualmente esgrimen la justicia y la bondad como sus mayores armas, otorgando el perdón a quien lo pida y actuando con un gran sentido inquebrantable de la moral… Aunque siempre hay ovejas descarriadas.",
     "bonusRules": "",
-    "movementSpeed": "Lo que necesite para ir a la cerveza más cercana",
-    "lifeSpan": "23",
+    "movementSpeed": "6",
+    "lifeSpan": "200-300",
     "attributes": {
-        "Constitución": "+5"
+        "Inteligencia": "+1",
+        "Carisma": "+2"
     },
     "sizes": [
         2,

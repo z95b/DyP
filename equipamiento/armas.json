@@ -1,0 +1,30 @@
+
+{
+    "equipment": [
+      {
+        "id": 1,
+        "name": "Ballesta ligera",
+        "origin": "Reglas básicas",
+        "type": "Armas",
+        "category": "Armas sencillas",
+        "range": 15,
+        "damageType": "perforante",
+        "attackMod": "DES",
+        "damage": "1d8 + DES",
+        "properties": ["De carga", "Distancia", "Dos manos", "Munición"],
+        "image": ""
+      },
+      {
+        "id": 2,
+        "name": "Espada larga",
+        "origin": "Reglas básicas",
+        "type": "Armas",
+        "category": "Armas marciales",
+        "damageType": "cortante",
+        "attackMod": "FUE",
+        "damage": "1d8 + FUE",
+        "properties": ["Versátil (1d10)"],
+        "image": ""
+      }
+    ]
+  }
