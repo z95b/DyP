@@ -1,152 +1,289 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="media/ico.ico" type="image/x-icon">
-  <title>Dragonas Y Perronas</title>
-
-  
+  <title>D & P - Menú Kawaii</title>
   <style>
- :root {
-            --neon-red: #ff003c;
-            --neon-gold: #ffb300;
-            --chrome: #e8e8e8;
-        }
-    body {
-      font-family: 'Cinzel', serif;
-      background: linear-gradient(180deg, #f3e5f5, #e1bee7, #d1c4e9);
-      color: #4b0082;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --kawaii-pink: #FFB7C5;
+      --kawaii-purple: #E0B0FF;
+      --kawaii-blue: #B7E5FF;
+      --kawaii-yellow: #FFF4BD;
+      --kawaii-mint: #BDFFF3;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #6a4876;
       overflow-x: hidden;
-      font-size: 16px;
+      min-height: 100vh;
+      position: relative;
     }
-    
-    /* Fixed Background */
-    .background-image {
-      background-image: url('media/dyp.jpg');
-      background-size: cover;
-      background-position: center;
-      position: fixed;
-      margin-top: -10%;
-      width: 100%;
-      height: 120%;
-      z-index: -100;
-    }
-    
- 
-    .spacer {
+
+    .hero-section {
       height: 100vh;
+      background: linear-gradient(to bottom,
+          rgba(255, 183, 197, 0.9),
+          rgba(224, 176, 255, 0.9));
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      position: relative;
     }
-    
-    /* Container */
+
+    .scroll-arrow {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      color: white;
+      text-decoration: none;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .background-section {
+      height: 100vh;
+      background: url('media/dyp.jpg') center/cover no-repeat;
+      position: relative;
+    }
+
     .container {
-      max-width: 80%;
-      max-height: 80%;
-      margin: 2rem auto;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 2rem;
-      background-color: rgba(255, 255, 255, 0.85);
-      border: 0.2rem solid #a78bfa;
-      border-radius: 1rem;
-      box-shadow: 0 0 1.5rem rgba(147, 112, 219, 0.5);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 4rem;
+      margin-bottom: 3rem;
+      animation: float 4s ease-in-out infinite;
+      color: white;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
       position: relative;
       z-index: 1;
     }
-    
-    /* Heading */
-    h1 {
-      font-size: 3rem;
-      color: #6a1b9a;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 4px;
-    }
-    
-    /* Menu  */
-    .menu-container {
 
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    
-    .menu-btn {
-      height: 15rem;
-      width: 15rem;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .menu-button {
+      position: relative;
+      padding: 2rem;
       text-align: center;
-      font-size: 1.5rem;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('media/button-bg.jpg') center/cover;
-      border: 0.2rem solid #5e35b1;
-      border-radius: 0.5rem;
-      color: white;
       text-decoration: none;
+      color: #6a4876;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 3px solid white;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+      box-shadow: 0 8px 32px rgba(255, 183, 197, 0.2);
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05) translateY(-5px);
+      background: white;
+      border-color: var(--kawaii-pink);
+      box-shadow: 0 15px 40px rgba(255, 183, 197, 0.4);
+    }
+
+    .menu-button span {
+      position: relative;
+      z-index: 1;
+      font-size: 1.3rem;
       font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.3);
-    }
-    
-    .menu-btn:hover {
-      transform: translateY(-0.3rem);
-      box-shadow: 0 0 1.2rem rgba(147, 112, 219, 0.7);
-    }
-    
-    /* Footer */
-    footer {
-      margin-top: 2rem;
-      text-align: center;
-    }
-    
-    footer p {
-      font-size: 1rem;
-      color: #4b0082;
     }
 
-   
-    </style>
-    
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    .floating-element {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      width: 48px;
+      height: 48px;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+      will-change: transform;
+      opacity: 1 !important;
+
+    }
+
+    .floating-element svg {
+      width: 100%;
+      height: 100%;
+    }
+
+  
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      40% {
+        transform: translateX(-50%) translateY(-30px);
+      }
+
+      60% {
+        transform: translateX(-50%) translateY(-15px);
+      }
+    }
+
+    @keyframes floatAcross {
+      0% {
+        transform: translate(var(--startX), var(--startY)) scale(var(--scale)) rotate(0deg);
+        opacity: 1;
+        /* Modificat */
+      }
+
+      100% {
+        transform: translate(var(--endX), var(--endY)) scale(var(--scale)) rotate(var(--rotation));
+        opacity: 1;
+        /* Modificat */
+      }
+    }
+
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .menu-button {
+        min-height: 120px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-  <div class="background-image">  </div>
-
-
- 
-  <div class="container">
+  <section class="hero-section" id="menu">
     <h1>D & P</h1>
-
-    <div class="menu-container">
-      <a href="stats.html" class="menu-btn" target="_blank">CASINO STATS</a>
-      <a onclick="descargarFitxa()" class="menu-btn">FICHA </a>
-      <a href="razas.html" class="menu-btn" target="_blank">RAZAS</a>
-      <a href="https://docs.google.com/document/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit?usp=sharing" class="menu-btn" target="_blank">CLASES</a>
-      <a href="https://nivel20.com/games/dnd-5/items" class="menu-btn" target="_blank">ARMAS Y ARMADURAS</a>
-      <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=&level=&school=&list=&tag=&order=level" class="menu-btn" target="_blank">CONJUROS Y TRUCOS</a>
-      <a href="reglas.html" class="menu-btn" target="_blank">GUÍA DND</a>
+    <div class="menu-grid">
+      <a href="stats.html" class="menu-button" target="_blank">
+        <span>CASINO STATS</span>
+      </a>
+      <a href="#" class="menu-button" onclick="descargarFitxa()">
+        <span>FICHA</span>
+      </a>
+      <a href="razas.html" class="menu-button" target="_blank">
+        <span>RAZAS</span>
+      </a>
+      <a href="https://docs.google.com/document/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit?usp=sharing"
+        class="menu-button" target="_blank">
+        <span>CLASES</span>
+      </a>
+      <a href="https://nivel20.com/games/dnd-5/items" class="menu-button" target="_blank">
+        <span>ARMAS Y ARMADURAS</span>
+      </a>
+      <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=&level=&school=&list=&tag=&order=level"
+        class="menu-button" target="_blank">
+        <span>CONJUROS Y TRUCOS</span>
+      </a>
+      <a href="reglas.html" class="menu-button" target="_blank">
+        <span>GUÍA DND</span>
+      </a>
     </div>
+    <a href="#background" class="scroll-arrow">↓</a>
+  </section>
 
-    <footer>
-      <hr>
-      <p>V2. CASINO + RAZAS ACABADO </p>
-    </footer>
-  </div>
-  <div class="spacer">
-    <h1>Dragonas Y Perronas</h1>
-  </div>
+  <section id="background" class="background-section">
+  </section>
 
   <script>
+    const svgElements = {
+      heart: `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+      star: `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`,
+      cloud: `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>`,
+      music: `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`
+    };
 
+    const colors = [
+      '#FFB7C5', // kawaii pink
+      '#E0B0FF', // kawaii purple
+      '#B7E5FF', // kawaii blue
+      '#FFF4BD', // kawaii yellow
+      '#BDFFF3'  // kawaii mint
+    ];
+
+    function createFloatingElement() {
+      const element = document.createElement('div');
+      element.className = 'floating-element';
+
+      // Randomly select SVG and color
+      const svgKeys = Object.keys(svgElements);
+      const randomSvg = svgElements[svgKeys[Math.floor(Math.random() * svgKeys.length)]];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      element.innerHTML = randomSvg;
+      element.style.color = randomColor;
+
+      // Random starting position and animation properties
+      const padding = 50; // Padding from the edges
+      const maxWidth = window.innerWidth - padding * 2;
+      const maxHeight = window.innerHeight - padding * 2;
+
+      const startX = padding + Math.random() * maxWidth;
+      const startY = maxHeight + padding;
+      const endX = padding + Math.random() * maxWidth;
+      const endY = -padding;
+      const scale = 0.5 + Math.random() * 1;
+      const rotation = 180 + Math.random() * 180;
+      const duration = 4 + Math.random() * 3;
+
+      // Set CSS custom properties for animation
+      element.style.setProperty('--startX', `${startX}px`);
+      element.style.setProperty('--startY', `${startY}px`);
+      element.style.setProperty('--endX', `${endX}px`);
+      element.style.setProperty('--endY', `${endY}px`);
+      element.style.setProperty('--scale', scale);
+      element.style.setProperty('--rotation', `${rotation}deg`);
+
+      // Apply animation
+      element.style.animation = `floatAcross ${duration}s linear forwards`;
+
+      document.body.appendChild(element);
+
+      // Clean up after animation
+      element.addEventListener('animationend', () => {
+        element.remove();
+      });
+    }
 
     function descargarFitxa() {
       const enlace = document.createElement("a");
@@ -154,6 +291,15 @@
       enlace.download = "FitxaDnD.pdf";
       enlace.click();
     }
+
+    // Create new elements periodically
+    setInterval(createFloatingElement, 500);
+
+    // Create initial batch of elements
+    for (let i = 0; i < 10; i++) {
+      setTimeout(createFloatingElement, i * 200);
+    }
   </script>
 </body>
+
 </html>
