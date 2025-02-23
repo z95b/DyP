@@ -5,12 +5,9 @@
     "movementSpeed": "(a+b)/2 ",
     "lifeSpan": "(a+b)/2 ",
     "attributes": {
-        "Fuerza": "1?",
-        "Destreza": "1?",
-        "Constitución": "1?",
-        "Inteligencia": "1?",
-        "Sabiduría": "1?",
-        "Carisma": "1?"
+        "🔷": "Adquieres la primera característica de la raza y una negativa (si tiene).",
+        " 🔷":"+1 característica a elección"
+      
     },
     "sizes": [
         1,

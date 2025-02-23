@@ -5,8 +5,7 @@
     "movementSpeed": "7",
     "lifeSpan": "Indefinida.",
     "attributes": {
-        "Fuerza": "+2?",
-        "Destreza": "+2?",
+        "Fuerza o Destreza": "Elegir +2",
         "Constitución": "+2"
     },
     "sizes": [

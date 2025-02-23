@@ -5,12 +5,7 @@
     "movementSpeed": "?",
     "lifeSpan": "? ",
     "attributes": {
-        "Fuerza": "0?",
-        "Destreza": "0?",
-        "Constitución": "0?",
-        "Inteligencia": "0?",
-        "Sabiduría": "0?",
-        "Carisma": "0?"
+        "": "Características de tu raza original."
     },
     "sizes": [
         1,

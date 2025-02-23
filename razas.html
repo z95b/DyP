@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="media/ico.ico"/>
+
   <title>Razas DyP</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
@@ -569,7 +571,7 @@
 <body>
   <div class="container">
     <header class="header">
-      <h1 class="title">Dragonas y Perronas</h1>
+      <a href="../"><h1 class="title">Dragonas y Perronas</h1></a>
     </header>
 
     <div class="filters">
@@ -578,9 +580,9 @@
         <div class="filter-buttons" id="attribute-filters">
           <button class="btn" data-filter="Fuerza">Fuerza</button>
           <button class="btn" data-filter="Destreza">Destreza</button>
-          <button class="btn" data-filter="Constitucion">Constitución</button>
+          <button class="btn" data-filter="Constitución">Constitución</button>
           <button class="btn" data-filter="Inteligencia">Inteligencia</button>
-          <button class="btn" data-filter="Sabiduria">Sabiduría</button>
+          <button class="btn" data-filter="Sabiduría">Sabiduría</button>
           <button class="btn" data-filter="Carisma">Carisma</button>
         </div>
       </div>
@@ -645,6 +647,7 @@
 
 
     document.addEventListener("DOMContentLoaded", function () {
+      loadRaces();
       let images = document.querySelectorAll('.race-image');
       let lightbox = document.getElementById('lightbox');
       let lightboxImg = document.getElementById('lightbox-img');
@@ -1012,8 +1015,7 @@ function addLightboxFunctionality() {
       renderRaces();
     });
 
-    // Initialize
-    loadRaces();
+    
 
 
 
