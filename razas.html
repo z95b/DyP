@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="media/ico.ico"/>
+  <link rel="icon" type="image/x-icon" href="media/ico.ico" />
 
   <title>Razas DyP</title>
   <link
@@ -31,7 +31,7 @@
     }
 
     body {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Trebuchet MS', sans-serif;
       background: linear-gradient(135deg, var(--secondary), #000);
       color: var(--text);
       line-height: 1.6;
@@ -40,7 +40,7 @@
 
     .img-preview {
       width: 150px;
-      height: auto;
+      height: 100%;
       cursor: pointer;
       margin: 5px;
     }
@@ -105,7 +105,7 @@
     }
 
     .container {
-      max-width: 1400px;
+      max-width: 90%;
       margin: 0 auto;
       padding: 2rem;
     }
@@ -149,7 +149,7 @@
 
     .title {
       font-family: 'Cinzel', serif;
-      font-size: 3.5rem;
+      font-size: 5.5rem;
       background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
       -webkit-background-clip: text;
       background-clip: text;
@@ -286,9 +286,10 @@
     }
 
     .thumbnail {
-      aspect-ratio: 1;
+      aspect-ratio: 0.9;
+
       background-size: cover;
-      background-position: center;
+      background-position: top;
       border-radius: 1rem;
       cursor: pointer;
       position: relative;
@@ -298,7 +299,6 @@
     }
 
     .thumbnail::before {
-      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -310,6 +310,14 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
+
+    .thumbnail img {
+      width: 80%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
 
     .thumbnail:hover::before {
       opacity: 1;
@@ -349,7 +357,7 @@
       overflow: hidden;
       box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
       display: grid;
-      grid-template-columns: 400px 1fr;
+      grid-template-columns: 500px 1fr;
       transition: all 0.3s ease;
       border: 1px solid var(--neon-blue);
       backdrop-filter: blur(10px);
@@ -571,7 +579,9 @@
 <body>
   <div class="container">
     <header class="header">
-      <a href="../"><h1 class="title">Dragonas y Perronas</h1></a>
+      <a href="../">
+        <h1 class="title">Dragonas y Perronas</h1>
+      </a>
     </header>
 
     <div class="filters">
@@ -608,16 +618,19 @@
           <option value="5">Enorme</option>
           <option value="6">Gigantesco</option>
         </select>
+
       </div>
 
-      <div class="filter-group">
+      <!-- <div class="filter-group">
         <h3 class="filter-title">Idiomas</h3>
         <select class="filter-select" id="languageSelect" multiple>
         </select>
-      </div>
+      </div>-->
+      <button class="btn" style="width: 100%;" id="resetFilters">Resetear Filtros</button>
+
     </div>
 
-    <input type="text" class="search-bar" placeholder="🔍 Buscar razas..." id="searchInput">
+    <input type="text" class="search-bar" placeholder="🔍 Buscar razas..." id="searchInput" style="display:none;">
 
     <div class="thumbnails-grid" id="thumbnailsGrid"></div>
     <div class="races-container" id="racesContainer"></div>
@@ -634,6 +647,10 @@
 
 
   <script>
+
+    setTimeout(renderThumbnails, 500);
+    setTimeout(renderRaces, 600);
+
     const attributeColors = {
       Fuerza: '#ff7675',
       Destreza: '#55efc4',
@@ -647,7 +664,10 @@
 
 
     document.addEventListener("DOMContentLoaded", function () {
+
       loadRaces();
+      renderThumbnails();
+      renderRaces();
       let images = document.querySelectorAll('.race-image');
       let lightbox = document.getElementById('lightbox');
       let lightboxImg = document.getElementById('lightbox-img');
@@ -803,11 +823,12 @@
     }
 
     function renderRaces() {
-    const container = document.getElementById('racesContainer');
-    const filteredRaces = filterRaces(races);
-    const sortedRaces = sortRaces(filteredRaces);
 
-    container.innerHTML = sortedRaces.map((race, index) => {
+      const container = document.getElementById('racesContainer');
+      const filteredRaces = filterRaces(races);
+      const sortedRaces = sortRaces(filteredRaces);
+
+      container.innerHTML = sortedRaces.map((race, index) => {
         const dominantAttr = getHighestAttribute(race.attributes);
         const cardStyle = `border-color: ${attributeColors[dominantAttr]}; box-shadow: 0 0 20px ${attributeColors[dominantAttr]}`;
 
@@ -815,7 +836,7 @@
           <div class="race-card ${race.isAVariant ? 'variant' : ''}" style="${cardStyle}">
             <div class="race-image" style="background-image: url('${race.imageUrl}')" data-index="${index}"></div>
             <div class="race-content">
-              <h2 class="race-title">${race.raceName}</h2>
+              <h2 class="race-title" style="color:${attributeColors[dominantAttr]}">${race.raceName}</h2>
               
               <div class="meta-info">
                 <span class="meta-item">
@@ -871,63 +892,63 @@
               <div class="size-indicator">
                 Tamaños disponibles:
                 ${Array.from({ length: 6 }, (_, i) => i + 1).map(size => `
-                  <div class="size-box ${race.sizes.includes(size) ? 'active' : ''}" 
+                  <div style="height:${size * 10}px" class="size-box ${race.sizes.includes(size) ? 'active' : ''}" 
                        title="${getSizeLabel(size)}"></div>
                 `).join('')}
               </div>
             </div>
           </div>
         `;
-    }).join('');
+      }).join('');
 
-    // 📌 Ara afegim la funcionalitat del lightbox després de renderitzar les races
-    addLightboxFunctionality();
-}
+      // 📌 Ara afegim la funcionalitat del lightbox després de renderitzar les races
+      addLightboxFunctionality();
+    }
 
-function addLightboxFunctionality() {
-    let images = document.querySelectorAll('.race-image');
-    let lightbox = document.getElementById('lightbox');
-    let lightboxImg = document.getElementById('lightbox-img');
-    let currentIndex = 0;
-    let imageUrls = [];
+    function addLightboxFunctionality() {
+      let images = document.querySelectorAll('.race-image');
+      let lightbox = document.getElementById('lightbox');
+      let lightboxImg = document.getElementById('lightbox-img');
+      let currentIndex = 0;
+      let imageUrls = [];
 
-    // Recollim les imatges i assignem els events de click
-    images.forEach((img, index) => {
+      // Recollim les imatges i assignem els events de click
+      images.forEach((img, index) => {
         let url = img.style.backgroundImage.replace(/url\(["']?/, '').replace(/["']?\)$/, '');
         imageUrls.push(url);
         img.dataset.index = index;
 
         img.addEventListener('click', function () {
-            openLightbox(index);
+          openLightbox(index);
         });
-    });
+      });
 
-    function openLightbox(index) {
+      function openLightbox(index) {
         currentIndex = index;
         lightboxImg.src = imageUrls[currentIndex];
         lightbox.classList.add('active');
-    }
+      }
 
-    function closeLightbox() {
+      function closeLightbox() {
         lightbox.classList.remove('active');
-    }
+      }
 
-    function changeImage(direction) {
+      function changeImage(direction) {
         currentIndex += direction;
         if (currentIndex < 0) currentIndex = imageUrls.length - 1;
         if (currentIndex >= imageUrls.length) currentIndex = 0;
         lightboxImg.src = imageUrls[currentIndex];
-    }
+      }
 
-    lightbox.addEventListener('click', function (e) {
+      lightbox.addEventListener('click', function (e) {
         if (e.target === lightbox) {
-            closeLightbox();
+          closeLightbox();
         }
-    });
+      });
 
-    document.querySelector('.prev-btn').addEventListener('click', () => changeImage(-1));
-    document.querySelector('.next-btn').addEventListener('click', () => changeImage(1));
-}
+      document.querySelector('.prev-btn').addEventListener('click', () => changeImage(-1));
+      document.querySelector('.next-btn').addEventListener('click', () => changeImage(1));
+    }
 
     function filterRaces(races) {
       const searchTerm = document.getElementById('searchInput').value.toLowerCase();
@@ -1015,10 +1036,31 @@ function addLightboxFunctionality() {
       renderRaces();
     });
 
-    
 
 
 
+
+    document.getElementById('resetFilters').addEventListener('click', () => {
+      // Reiniciar els filtres actius
+      activeFilters.attributes.clear();
+      activeFilters.sizes.clear();
+      activeFilters.languages.clear();
+      currentSort.field = null;
+      currentSort.direction = 'asc';
+
+      // Desactivar botons actius
+      document.querySelectorAll('.btn.active').forEach(btn => btn.classList.remove('active'));
+
+      // Reiniciar seleccions
+      document.getElementById('sortSelect').value = "";
+      document.getElementById('sizeSelect').selectedIndex = -1;
+      document.getElementById('languageSelect').selectedIndex = -1;
+      document.getElementById('searchInput').value = "";
+
+      // Renderitzar de nou els elements
+      renderThumbnails();
+      renderRaces();
+    });
 
 
 
