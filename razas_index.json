@@ -17,12 +17,16 @@
     "hobgoblin.json",
 
     "tiefling.json",
-    "slime.json",
+
     "vedalken.json",
     "forjado.json",
     "githyanki.json",
+    "slime.json",
+
     "aasimar.json",
     "sucubo-incubo.json",
+
+    
     "pixie.json",
     "drow.json",
     "druegar.json",
@@ -31,27 +35,28 @@
     "goliat.json",
     "sonar.json",
     "dol-hara.json",
-    
-    "centauro.json",
-    "tabaxi.json",
-    "locahtah.json",
-    "throthoga.json",
-    "loxodon.json",
-    "kenku.json",
-    "ursoi.json",
-    "yuan-ti.json",
     "lamia.json",
-    "foxfolk.json",
-    "wolven.json",
-    "lizardfolk.json",
-    "owlfolk.json",
-    "eftero.json",
-    "vanara.json",
-    "minotauro.json",
-    "grung.json",
-    "insectoide.json",
-    "miconido.json",
-    "harengon.json",
+    "centauro.json",
     "kitsune.json",
-    "universitarios.json"
+
+
+    "eftero.json",
+    "foxfolk.json",
+    "grung.json",
+    "harengon.json",
+    "insectoide.json",
+    "kenku.json",
+    "lizerin.json",
+    "locahtah.json",
+    "loxodon.json",
+    "miconido.json",
+    "minotauro.json",
+    "owlfolk.json",
+    "tabaxi.json",
+    "throthoga.json",
+    "ursoi.json",
+    "vanara.json",
+    "wolven.json",
+    "yuan-ti.json"
+
 ]
