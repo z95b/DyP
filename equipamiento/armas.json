@@ -1,30 +1,33 @@
-
-{
-    "equipment": [
-      {
-        "id": 1,
-        "name": "Ballesta ligera",
-        "origin": "Reglas básicas",
-        "type": "Armas",
-        "category": "Armas sencillas",
-        "range": 15,
-        "damageType": "perforante",
-        "attackMod": "DES",
-        "damage": "1d8 + DES",
-        "properties": ["De carga", "Distancia", "Dos manos", "Munición"],
-        "image": ""
-      },
-      {
-        "id": 2,
-        "name": "Espada larga",
-        "origin": "Reglas básicas",
-        "type": "Armas",
-        "category": "Armas marciales",
-        "damageType": "cortante",
-        "attackMod": "FUE",
-        "damage": "1d8 + FUE",
-        "properties": ["Versátil (1d10)"],
-        "image": ""
-      }
-    ]
-  }
+[
+    {
+      "title": "Arco corto",
+      "description": "Un arco para combate a distancia.",
+      "price": "25 po",
+      "image": "arco_corto",
+      "origin": "Reglas básicas",
+      "type": "Armas",
+      "category": "Armas sencillas",
+      "range": "80/320",
+      "damageType": "Perforante",
+      "critical": "2d6 + DES",
+      "weight": "2 lb",
+      "enchantments": "Ninguno",
+      "properties": ["Distancia", "Dos manos", "Munición"]
+    },
+    {
+      "title": "Hacha de batalla",
+      "description": "Un hacha pesada para combate cuerpo a cuerpo.",
+      "price": "15 po",
+      "image": "hacha_batalla",
+      "origin": "Reglas básicas",
+      "type": "Armas",
+      "category": "Armas sencillas",
+      "range": "30/90",
+      "damageType": "Cortante",
+      "critical": "2d6 + DES",
+      "weight": "4 lb",
+      "enchantments": "Ninguno",
+      "properties": ["Dos manos", "Munición"]
+    }
+  ]
+  
