@@ -2,8 +2,8 @@
     "raceName": "🟦 VARIANTE: Shura",
     "raceDescription": "Los Shura son producto de tragedias como una violación, un asesinato o una venganza. Nacen de madres que murieron embarazadas y cercanas a dar a luz. Estos mal llamados 'espíritus de la venganza' suelen ser personas que buscan apagar una insaciable sed de violencia que eventualmente los consume. Algunos Shura se aíslan para evitar dañar a otros, mientras que otros sucumben a su naturaleza, encontrando placer en arrebatar vidas para intentar llenar un vacío infinito. Los Shura no tienen alma, pero poseen un fuego interno que se alimenta de sus emociones.",
     "bonusRules": "Elegir +2 en Fuerza o Destreza",
-    "movementSpeed": "7",
-    "lifeSpan": "Indefinida.",
+    "movementSpeed": "+3 a la Raza Base",
+    "lifeSpan": "La misma que la Raza base",
     "attributes": {
         "Fuerza o Destreza": "Elegir +2",
         "Constitución": "+2"
@@ -28,6 +28,10 @@
         {
             "name": "Sanación Espiritual",
             "description": "Al asesinar a alguien, te curas 5 puntos de golpe (10 puntos si estás por debajo del 30% de vida). Cada asesinato suma 2 puntos permanentemente a la sanación de esta habilidad. Debes ser quien dé el golpe final, y la víctima debe ser una forma de vida grande o una criatura inteligente."
+        },
+        {
+            "name": "Llamas ardientes",
+            "description": "Al finalizar un Descanso Largo en el que no hayas tomado una vida en un rango de 2d8 días (Tirada ocultada por el DM) entrarás en un estado de ira frenética que durará 12h. Hasta que no finalicen esas 12h tu sed de sangre será insaciable, y requerirás de cada gramo de razón para no dejarte llevar. Si no se arrebatan vidas tras 1d4 de estas Crisis, el número de dados aumenta en 1d8. Si se arrebatan vidas en una cantidad considerable o en estado de Crisis, el número de dados desciende en 1d8"
         }
     ]
 }

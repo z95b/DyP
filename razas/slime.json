@@ -19,8 +19,8 @@
             "description": "Puedes escurrirte entre cavidades muy pequeñas, pero tardarás en recomponerte. Además, puedes alimentarte de cualquier tipo de materia orgánica."
         },
         {
-            "name": "Esponjosidad",
-            "description": "Los golpes críticos te hacen solo 1.5 veces el daño normal."
+            "name": "Divisón",
+            "description": "Como Acción, puedes dividirte en dos individuos iguales a ti pero reduciendo a la mitad la vida máxima, tamaño y peso. Si uno de los dos Cae a 0 PG's, el que siga en pié podrá reabsorber a su otra mitad pero no recuperará los PG's, solo los PG's máximos. Si la copia es destruída totalmente haciéndola irrecuperable, el Slime tardará 2d6 días en recuperarse completamente"
         },
         {
             "name": "Pegajoso",

@@ -5,7 +5,7 @@
     "movementSpeed": "?",
     "lifeSpan": "? ",
     "attributes": {
-        "": "Características de tu raza original."
+            "Constitución": "+2"
     },
     "sizes": [
         1,
@@ -18,7 +18,7 @@
     "abilities": [
         {
             "name": "Necromancia",
-            "description": "No necesitas comer ni beber para sobrevivir, tu estado no-muerto te sustenta de manera sobrenatural."
+            "description": "No necesitas comer ni beber para sobrevivir, tu estado no-muerto te sustenta de manera sobrenatural. Lastimosamente, eres vulnerable al daño Radiante y a objetos bendecidos"
         },
         {
             "name": "Cauterización Natural",

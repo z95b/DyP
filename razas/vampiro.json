@@ -1,0 +1,30 @@
+{
+    "raceName": "🟦 VARIANTE: Vampiro",
+    "raceDescription": "Los vampiros son víctimas de una Maldición que los hará bestias sedientas de sangre si no suplen su insaciable voracidad por esta. Hay muchas razones por las que un sujeto puede caer víctima de esta conversión, pero todas tienen en común que fueron durante una noche muy silenciosa, solo contemplada por la luna",
+    "bonusRules": "",
+    "movementSpeed": "+2c",
+    "lifeSpan": "Longevamente inmortales",
+    "attributes": {
+        "Destreza": "+2"
+    },
+    "sizes": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Mordida",
+            "description": "Como ataque especial puedes morder con tus dientes causando 1d8 + Mod. Destreza de daño Perforante. Si el objetivo no supera una Salvada de Constitución (CD: 8 + Mod. Destr. + Mod. Comp) también le chuparás sangre y te curarás 1/2 del daño realizado. Puedes alimentarte únicamente de sangre"
+        },
+        {
+            "name": "Poderes sobrenaturales",
+            "description": "Obtienes la posibilidad de transformarte en un murciélago a voluntad. Esta forma tiene 3d4 (8) PG's y no tienes límite de tiempo en esta forma. Además, si tus puntos de Golpe se reducen a 0 te convertirás en murciélago en vez de caer al suelo. Si logras escapar con vida, obtendrás 4 niveles de cansancio. 1 vez por Descanso largo."
+        },
+        {
+            "name": "Debilidades vampíricas",
+            "description": "Eres vulnerable al Daño provocado por armas de Plata, agua u objetos bendecidos y al daño Radiante. Se te considera No Muerto a todos los efectos y no podrás entrar a una residencia Bendecida si no te dan permiso"
+        }
+    ]
+}

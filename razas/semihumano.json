@@ -1,12 +1,12 @@
 {
-    "raceName": "🟦 VARIANTE: Semi-Humanos",
-    "raceDescription": "Que hay más constante en el mundo que el sexo y las ganas de experimentar? Exacto, los embarazos fortuitos. Gracias a la gran capacidad humana de entremezclarse con razas humanoides, surgen diferentes híbridos con aspectos inusuales y características suaves que muestran su mezcla de linajes. Los Semi-Humanos son la muestra viviente de que en el fondo no somos tan diferentes. Y que follarse a un gato no es ilegal. Miau.",
+    "raceName": "🟦 VARIANTE: Mestizo",
+    "raceDescription": "Que hay más constante en el mundo que el sexo y las ganas de experimentar? Exacto, los embarazos fortuitos. Gracias a la gran capacidad social de la gran mayoria de razas que poblan Fáerun y al constante conflicto, intereses e historias locas de romance iniciadas por un cúmulo de locas casualidades, surgen diferentes híbridos con aspectos inusuales y características suaves (o no tanto) que muestran su mezcla de linajes. Los Mestizos son la muestra viviente de que en el fondo no somos tan diferentes. Y que follarse a un gato no es ilegal. Miau.",
     "bonusRules": "Adquieres la primera característica de la raza y una negativa (si tiene) +1 característica a elección.",
-    "movementSpeed": "(a+b)/2 ",
-    "lifeSpan": "(a+b)/2 ",
+    "movementSpeed": "La media de ambos progenitores en",
+    "lifeSpan": "La más alta de ambos progenitores",
     "attributes": {
-        "🔷": "Adquieres la primera característica de la raza y una negativa (si tiene).",
-        " 🔷":"+1 característica a elección"
+        "🔷": "Adquieres la característica más alta de un progenitor",
+        " 🔷":"Adquieres la característica más baja de tu otro progenitor"
       
     },
     "sizes": [
@@ -20,11 +20,11 @@
     "abilities": [
         {
             "name": "Heredar Habilidades",
-            "description": "Adquieres 2 habilidades de tus padres. Estas habilidades dependen de las razas de origen y pueden incluir tanto habilidades positivas como negativas."
+            "description": "Adquieres todas las habilidades de tus progenitores y todas sus desventajas. Si tu ascensión es Infernal y Feérica (Pues a tu padre Elfo le interesó de sobremanera una Tiefling buenorra) tendrás ambas categorías"
         },
         {
             "name": "Límites de Mestizaje",
-            "description": "No pueden existir mestizos con: Pixies, Forjados, Lamias, Centauros, Shuras (solo si son fruto de un acto violento) y No Muertos."
+            "description": "No pueden existir mestizos con No Muertos. En caso de un Forjado, sería más un Cyborg que un mestizo, pero si estaria permitido"
         }
     ]
 }

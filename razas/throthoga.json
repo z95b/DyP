@@ -14,16 +14,16 @@
     ],
     "abilities": [
         {
-            "name": "Concha Blindada",
-            "description": "Siempre que no lleves armadura, cuando un enemigo impacte con un ataque sobre ti, este se tambaleará y tendrá desventaja en su próximo ataque. Solo 1 vez por enemigo cada ronda."
+            "name": "Caparazón Blindado",
+            "description": "Siempre que no lleves armadura, cuando un enemigo impacte con un ataque sobre ti, este se tambaleará y tendrá desventaja en su próximo ataque. Solo 1 vez por enemigo cada ronda. Además, tu armadura base aumenta a 15 pero solo puede beneficiarse de un máximo de Destreza de +2 (15 + 2 = 17)"
         },
         {
             "name": "Intuición Natural",
             "description": "Obtienes competencia en una de las siguientes habilidades a elección: Naturaleza, Supervivencia, Medicina o Trato con Animales."
         },
         {
-            "name": "Respiración",
-            "description": "Puedes aguantar la respiración durante 1 hora, tanto dentro como fuera del agua."
+            "name": "Escondite amurallado",
+            "description": "Al meterte dentro de tu caparazón te haces resistente al daño Perforante y Cortante. No puedes emplear reacciones estando dentro de tu Caparazón, tu visión se reduce muchísimo y requieres de una acción adicional para salir de tu Caparazón"
         }
     ]
 }
