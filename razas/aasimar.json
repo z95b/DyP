@@ -21,6 +21,10 @@
         {
             "name": "Toque Sanador",
             "description": "Como acción, puedes curar a una criatura de una enfermedad, veneno o curarle una cantidad de puntos de vida igual a tu nivel x 5. Se recupera tras un descanso corto."
+        },
+        {
+            "name": "Obsequios divinos",
+            "description": "Puedes elegir entre unas alas, un arma especial o una montura. Todas pueden ser invocadas y desconvocadas a través de una Acción Adicional"
         }
     ]
 }

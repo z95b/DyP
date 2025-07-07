@@ -21,7 +21,7 @@
         },
         {
             "name": "Protección",
-            "description": "Como reacción, puedes cruzar tus brazos para reducir en un 50% el daño no mágico de un ataque. Si llevas un escudo, puedes anular el daño por completo, pero debes declarar la reacción antes de saber si el ataque impacta o no."
+            "description": "Como reacción, puedes cruzar tus brazos para reducir en un 50% el daño entrante 1 vez por turno"
         }
     ]
 }

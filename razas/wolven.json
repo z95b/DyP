@@ -20,7 +20,7 @@
         },
         {
             "name": "Camada",
-            "description": "Los Wolven forman fuertes lazos con su manada. Puedes designar a un aliado como Líder de la Manada o tomar tú mismo ese rol. Como acción adicional, el Líder puede ordenar a un aliado dentro de un rango de 10 casillas que realice una de las siguientes acciones: Esconderse, Atacar, Destrabarse o Moverse la mitad de su velocidad. La orden consume la reacción del aliado. Esta habilidad solo puede usarse si existe respeto mutuo dentro de la manada; si el Líder pierde su autoridad o la confianza de los miembros, esta habilidad no estará disponible."
+            "description": "Los Wolven forman fuertes lazos con su manada. Puedes designar a un aliado como Líder de la Manada o tomar tú mismo ese rol. Como acción adicional, el Líder puede ordenar a un aliado dentro de un rango de 10 casillas que realice una de las siguientes acciones: Esconderse, Atacar, Destrabarse o Moverse la mitad de su velocidad. La orden consume la reacción del aliado, excepto si es un Wolven (En este caso no consumirá ningún recurso). Esta habilidad solo puede usarse si existe respeto mutuo dentro de la manada; si el Líder pierde su autoridad o la confianza de los miembros, esta habilidad no estará disponible."
         }
     ],
     "culture": {

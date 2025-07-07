@@ -19,7 +19,11 @@
         },
         {
             "name": "Maestro de Mentirosos",
-            "description": "Tus engaños tienen ventaja si el Master considera que tu mentira es convincente."
+            "description": "Tus engaños tienen ventaja siempre que no te hayan pillado mintiendo anteriormente o si no ha oído rumores sobre ti"
+        },
+        {
+            "name": "Encanto Feérico",
+            "description": "Puedes emplear Hechizar persona como acción sin necesidad de un espacio de conjuro 1 vez por Descanso Corto"
         }
     ]
 }

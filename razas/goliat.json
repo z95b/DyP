@@ -17,7 +17,11 @@
         },
         {
             "name": "Piel pétrea",
-            "description": "Como reacción, puedes activar tu piel pétrea ante un ataque, reduciendo en un 50% el daño Cortante y Perforante durante 10 turnos. Sin embargo, eres vulnerable (+50%) al daño Contundente. Este efecto no puede desactivarse a voluntad y solo puede usarse 1 vez por descanso corto."
+            "description": "Como reacción, puedes reducir el daño recibido por un ataque físico en 1d12 + Mod. Const. Puedes usar este rasgo tantas veces como tu Mod. de Constitución"
+        },
+        {
+            "name": "Dureza en la sangre",
+            "description": "No sufres penalizaciones por altas presiones atmosféricas ni por el frio extremo natural"
         }
     ]
 }

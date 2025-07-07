@@ -18,8 +18,12 @@
             "description": "Puedes ver en la oscuridad total hasta 60 pies como si fuera luz tenue."
         },
         {
-            "name": "Runa del Miedo",
-            "description": "Marcas a un enemigo. Si falla una tirada de salvación de Sabiduría, ese enemigo siempre tratará de alejarse de ti, pues para él representas el mayor de sus temores."
+            "name": "Magia feérica",
+            "description": "A Nivel 1 obtienes el truco Luces Danzantes. A nivel 3 Obtienes el conjuro Fuego Feérico. A Nivel 5 Obtienes el conjuro Oscuridad. Puedes usar ambos conjuros 1 vez por Descanso Largo sin usar espacios de conjuro"
+        },
+        {
+            "name": "Criatura de penumbra",
+            "description": "Meditar en la oscuridad durante 4h seguidas otorga los mismos beneficios que un Descanso Largo"
         }
     ]
 }
