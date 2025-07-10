@@ -14,12 +14,44 @@
     ],
     "abilities": [
         {
-            "name": "Garras de llamas",
-            "description": "Desgarras a tu enemigo con tus garras llameantes (2d6) y cauterizas las heridas, reduciendo la sanación del enemigo al 50%. Puede usarse una vez por descanso corto. Escala con el nivel: Nivel 1 (3d6), Nivel 4 (4d8), Nivel 8 (4d8), Nivel 12 (5d8), Nivel 16 (6d8)."
+            "name": "Espíritu del Zorro",
+            "description": "Obtendrás colas a medida que ganes experiencia y obtendrás poderes adicionales según tu nivel"
         },
         {
-            "name": "Espíritu del Zorro",
-            "description": "Obtendrás colas a medida que ganes experiencia y obtendrás poderes adicionales según tu nivel."
+            "name": "Piel de Zorro",
+            "description": "A nivel 1 puedes transformarte en Zorro como Acción. Obtienes 8c de Movimiento, Ventaja en Percepción de Olfato y Oído, los enemigos sufren desventaja en ataques contra ti, puedes hablar durante tu transformación y dura una cantidad de Horas = a tu Mod. Carisma"
+        },
+        {
+            "name": "Encanto Zorruno",
+            "description": "A nivel 3 puedes lanzar el conjuro Encantar Persona a un enemigo sin gastar ningún espacio de Conjuro 1 vez por Descanso largo. Empleas tu Carisma para las Salvada"
+        },
+        {
+            "name": "Garras Íngeas",
+            "description": "A nivel 5 puedes atacar con tus garras prendiéndolas en fuego mágico. Los enemigos a los que golpees con este ataque reciben 50% menos de sanación hasta el inicio de tu próximo turno. Haces 1d6 perforante y 2d6 de Fuego. 1 vez por turno."
+        },
+        {
+            "name": "Paso feérico",
+            "description": "A nivel 7 puedes lanzar el conjuro Paso Brumoso 1 vez por Descanso Largo. Harás un leve ruído al teletransportarte"
+        },
+        {
+            "name": "Ilusión Seductora",
+            "description": "A nivel 9 puedes lanzar el conjuro Sugestión como acción 1 vez por Descanso Largo."
+        },
+        {
+            "name": "Visión mágica",
+            "description": "A nivel 11 puedes ver a enemigos invisibles y detectar conjuros como Disfrazarse o Polimorfar a 3m de ti"
+        },
+        {
+            "name": "Forma Verdadera",
+            "description": "A nivel 13 puedes transformarte el tiempo que quieras en tu forma de Zorro empleando tan solo tu acción adicional. En esta forma obtienes de forma pasiva el efecto de Aura mágica de Mystul"
+        },
+        {
+            "name": "Protección divina",
+            "description": "A nivel 15 todos los ataques físicos sufridos por la espalda hacen 50% menos de daño"
+        },
+        {
+            "name": "Marca Divina",
+            "description": "A nivel 17 puedes lanzar el conjuro Símbolo como acción 1 vez por Descanso Largo"
         }
         
     ]
