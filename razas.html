@@ -395,7 +395,7 @@
       right: 0;
       bottom: 0;
       background: linear-gradient(45deg,
-          rgba(157, 0, 255, 0.1));
+          rgba(157, 0, 255, 0.02));
     }
 
     .race-content {
@@ -417,7 +417,6 @@
 
     .race-description {
       color: var(--text);
-      margin-bottom: 1.5rem;
       line-height: 1.8;
       font-size: 1.1rem;
     }
@@ -430,12 +429,12 @@
     }
 
     .attribute {
-      background: rgba(42, 45, 62, 0.8);
+      background: rgba(34, 36, 51, 0.8);
       padding: 1rem;
       border-radius: 1rem;
       text-align: center;
       transition: all 0.3s ease;
-      border: 1px solid var(--neon-blue);
+      border: 4px solid var(--neon-blue);
     }
 
     .attribute:hover {
@@ -570,9 +569,29 @@
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       .race-card {
         grid-template-columns: 1fr;
+      }
+
+      .race-description {
+        font-size: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .race-description.expanded {
+        -webkit-line-clamp: unset;
+        overflow: visible;
+      }
+
+      .read-more {
+        color: var(--accent);
+        cursor: pointer;
+        display: inline-block;
       }
 
       .race-image {
@@ -580,11 +599,9 @@
       }
 
       .thumbnails-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
       }
-    }
 
-    @media (max-width: 600px) {
       .container {
         padding: 1rem;
       }
@@ -606,6 +623,8 @@
         text-align: center;
       }
     }
+
+    @media (max-width: 600px) {}
   </style>
 </head>
 
@@ -624,7 +643,13 @@
     </div>
 
     <div id="contentContainer" style="display: none;">
-      <div class="filters">
+      <input type="text" class="search-bar" placeholder="🔍 Buscar razas..." id="searchInput"
+        style="display:block; font-size:2rem;">
+
+      <!-- SECCIÓN 2: Botón para mostrar/ocultar filtros -->
+      <button class="btn" id="toggleFilters" style="margin-bottom:1rem;font-size:1.5rem; width: 100%;">Mostrar/Ocultar
+        Filtros</button>
+      <div class="filters" id="filtersContainer" style="margin-bottom:1rem;display: none">
         <div class="filter-group">
           <h3 class="filter-title">Atributos</h3>
           <div class="filter-buttons" id="attribute-filters">
@@ -797,19 +822,14 @@
         return `
           <div class="thumbnail" 
                style="background-image: url('${race.imageUrl}'); border-color: ${attributeColors[dominantAttr]}; box-shadow: 0 0 15px ${attributeColors[dominantAttr]}"
-               onclick="scrollToRace(${index})">
+               onclick="enhancedScrollToRace(${index})">
             <div class="thumbnail-title">${race.raceName}</div>
           </div>
         `;
       }).join('');
     }
 
-    function scrollToRace(index) {
-      const raceElements = document.querySelectorAll('.race-card');
-      if (raceElements[index]) {
-        raceElements[index].scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+    
 
     async function renderRaces() {
       const container = document.getElementById('racesContainer');
@@ -884,12 +904,12 @@
                 ${Array.from({ length: 6 }, (_, i) => i + 1).map(size => `
                   <div style="height:${size * 10}px" class="size-box ${race.sizes.includes(size) ? 'active' : ''}" 
                        title="${getSizeLabel(size)}"></div>
-                                             ${size == 1 && race.sizes.includes(size)? '0.05</br>0.49':''}
-                                             ${size == 2 && race.sizes.includes(size)? '0.5</br>1.39':''}
-                                             ${size == 3 && race.sizes.includes(size)? '1.4</br>1.89':''}
-                                             ${size == 4 && race.sizes.includes(size)? '1.9</br>2.29':''}
-                                             ${size == 5 && race.sizes.includes(size)? '2.3</br>3.99':''}
-                                             ${size == 6 && race.sizes.includes(size)? '>4</br>':''}
+                                             ${size == 1 && race.sizes.includes(size) ? '0.05</br>0.49' : ''}
+                                             ${size == 2 && race.sizes.includes(size) ? '0.5</br>1.39' : ''}
+                                             ${size == 3 && race.sizes.includes(size) ? '1.4</br>1.89' : ''}
+                                             ${size == 4 && race.sizes.includes(size) ? '1.9</br>2.29' : ''}
+                                             ${size == 5 && race.sizes.includes(size) ? '2.3</br>3.99' : ''}
+                                             ${size == 6 && race.sizes.includes(size) ? '>4</br>' : ''}
                                              `).join('')}
               
 
@@ -1101,6 +1121,69 @@
         await renderRaces();
       });
     }
+
+
+
+    function normalizeString(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    // SECCIÓN 4: Función enhancedScrollToRace
+    function enhancedScrollToRace(index) {
+      const raceElements = document.querySelectorAll('.race-card');
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      raceElements.forEach((el, i) => {
+        el.style.display = (i === index) ? 'grid' : 'none';
+      });
+    
+      if (raceElements[index]) {
+        raceElements[index].scrollIntoView({ behavior: 'smooth' });
+      }
+
+    }
+    // Reemplaza la función scrollToRace original
+    window.scrollToRace = enhancedScrollToRace;
+
+    // SECCIÓN 5: Mostrar/Ocultar filtros
+    const toggleFiltersBtn = document.getElementById('toggleFilters');
+    const filtersContainer = document.getElementById('filtersContainer');
+    let filtersVisible = false;
+    toggleFiltersBtn.addEventListener('click', () => {
+      filtersVisible = !filtersVisible;
+      filtersContainer.style.display = filtersVisible ? 'grid' : 'none';
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', async () => {
+      // Normaliza el valor para ignorar tildes
+      searchInput.value = normalizeString(searchInput.value.toLowerCase());
+      await renderThumbnails();
+      await renderRaces();
+    });
+
+    function addReadMore() {
+      document.querySelectorAll('.race-description').forEach(desc => {
+        if (desc.scrollHeight > desc.clientHeight) {
+          let readMore = desc.nextElementSibling;
+          if (!readMore || !readMore.classList.contains('read-more')) {
+            readMore = document.createElement('span');
+            readMore.className = 'read-more';
+            readMore.textContent = 'Leer más...';
+            readMore.addEventListener('click', () => {
+              const expanded = desc.classList.toggle('expanded');
+              readMore.textContent = expanded ? 'Leer menos' : 'Leer más...';
+            });
+            desc.after(readMore);
+          }
+        }
+      });
+    }
+    // Extiende renderRaces para incluir addReadMore
+    const originalRender = renderRaces;
+    renderRaces = async function () {
+      await originalRender();
+      addReadMore();
+    };
   </script>
 </body>
 
