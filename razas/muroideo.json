@@ -1,0 +1,47 @@
+{
+    "raceName": "Muroideos",
+    "raceDescription": "Humanoides pequeños, parecidos a roedores, originarios de cavernas y zonas desérticas/subterráneas; ahora suelen vivir en caravanas nómadas o barrios urbanos, expertos en comercio, acumuladores y manipuladores.",
+    "movementSpeed": "8c",
+    "lifeSpan": "60-80",
+    "attributes": {
+        "Fuerza": "-2",
+        "Destreza": "+2",
+        "Inteligencia": "+2"
+    },
+    "sizes": [
+        2
+    ],
+    "abilities": [
+        {
+            "name": "Agilidad natural",
+            "description": "+1 a la CA. Pueden moverse a través de espacios ocupados por una o varias criaturas usando la reacción de esa ronda."
+        },
+  
+        {
+            "name": "Furia acorralada",
+            "description": "Con la mitad o menos de los PG y sin aliados conscientes a 4C, obtiene +2 a ataques cuerpo a cuerpo y a la CA."
+        },
+        {
+            "name": "Remendón",
+            "description": "Bonificador racial +2 en Artesanía (alquimia) y Usar objeto mágico."
+        },
+        {
+            "name": "Esconderse",
+            "description": "Bonificador racial +2 en Sigilo. "
+        },
+        {
+            "name": "Olfato",
+            "description": "Obtiene la competencia en Olfato y Oído, pero penalizador -3 en Percepción basada en vista."
+        }
+    ],
+    "relations": {
+        "Humanos": "Buena relación; suelen compartir zonas urbanas",
+        "Enanos": "Fricción; se sienten criticados y territoriales",
+        "Elfos": "Compatibles; atraídos por su cultura y arte"
+    },
+    "languages": [
+        "infracomún"
+    ],
+    "nightVision": true,
+    "referenceLink": "https://pathfinder-es.fandom.com/es/wiki/R%C3%A1tido_(raza_jugable)"
+}

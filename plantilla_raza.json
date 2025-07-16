@@ -1,0 +1,33 @@
+{
+    "raceName": "",
+    "raceDescription": "",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "",
+    "attributes": {
+        "Fuerza": "",
+        "Destreza": "",
+        "Constitución": "",
+        "Inteligencia": "",
+        "Sabiduría": "",
+       "Carisma": ""
+    },
+    "sizes": [1,2,3,4,5,6],
+    "abilities": [
+        {
+            "name": "Habilidad 1",
+            "description": ""
+        },
+        {
+            "name": "Hbailidad 2",
+            "description": ""
+        }
+      
+    ],
+    "relations": {},
+    "languages": [
+        ""
+    ],
+    "nightVision": true,
+    "referenceLink": ""
+}

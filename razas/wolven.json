@@ -3,7 +3,7 @@
     "raceDescription": "Los Wolven son una raza humanoide con rasgos lupinos, conocidos por su instinto de manada y sus habilidades sociales innatas. Poseen un agudo sentido del olfato que los hace expertos rastreadores y detectores de peligros. Su cultura se basa en la estructura de la manada, donde el liderazgo es una posición respetada y vinculada emocionalmente. Aunque físicamente imponentes, los Wolven son también criaturas reflexivas, capaces de mostrar una lealtad inquebrantable hacia quienes consideran parte de su familia. En combate, destacan por su capacidad de trabajar en equipo y aprovechar su conexión con la manada para obtener ventajas tácticas.",
     "bonusRules": "",
     "movementSpeed": "7",
-    "lifeSpan": "30-70",
+    "lifeSpan": "60-80",
     "attributes": {
         "Destreza": "+1",
         "Constitución": "+2"
