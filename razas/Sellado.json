@@ -1,0 +1,32 @@
+{
+    "raceName": "🟦 VARIANTE: Sellado",
+    "raceDescription": "Sea por la razón que sea, un dia Filwood el Conjurador (Uno de los grandes magos de Faerun y fundador de diversas escuelas de magia) despertó tras una noche de borrachera sintiéndose extraño, sin poder moverse. Al conseguir girar la mirada para verse al espejo de su habitación desde la cama, se dió cuenta de algo terrible: Se había convertido en una Botella de Whiskey Blue Label. Debido a que había estudiado en la Universidad, verse convertido en una botella de alcohol no lo desanimó en lo absoluto.",
+    "bonusRules": "Características de tu raza original.",
+    "movementSpeed": "0 excepto casos concretos",
+    "lifeSpan": "Hasta ser destruído o que el estado físico del objeto Contenedor sea deplorable",
+    "attributes": {
+            "Elegir": "+1"
+    },
+    "sizes": [
+        1,
+        2,
+        3,
+        4,
+        5
+        
+    ],
+    "abilities": [
+        {
+            "name": "Utilitarismo",
+            "description": "Tu Bonus de característica aumenta en base a tu Nivel y rebasa el límite máximo de 20 --> Nivel 1 (+1), Nivel 3 --> (+2), Nivel 5 --> (+3),  Nivel 7 --> (+4), Nivel 9 --> (+5)"
+        },
+        {
+            "name": "Salir de Forma (Opcional)",
+            "description": "Si la razón por la que estás confinado lo permite, puedes aparecer como una especie de genio a no más de 10m de tu Contenedor empleando tu forma original pero con toques fantasmales, mágicos o que distorsionen tu aspecto"
+        },
+        {
+            "name": "Poderes",
+            "description": "Puedes dictaminar entre 1-5 efectos o habilidades que tiene tu Receptáculo originarios de tu maldición o de ti mismo. Además, el pobre desgraciado que esté usándote para tu propósito (Ej: Una espada, Una Capa, Un libro...) tendrá el bonus de tu Habilidad Utilitarismo en las tiradas relacionadas a tu bonus y a ti como recurso"
+        }
+    ]
+}
