@@ -19,6 +19,10 @@
         {
             "name": "Invisibilidad",
             "description": "Una vez por descanso corto, puedes volverte invisible durante 10 minutos. La invisibilidad se cancela por las mismas razones que una invisibilidad normal."
+        },
+        {
+            "name": "Visión en la Oscuridad",
+            "description": "Puedes ver en la oscuridad hasta 60 pies como si fuera luz tenue."
         }
     ]
 }

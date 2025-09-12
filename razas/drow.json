@@ -23,7 +23,7 @@
         },
         {
             "name": "Criatura de penumbra",
-            "description": "Meditar en la oscuridad durante 4h seguidas otorga los mismos beneficios que un Descanso Largo"
+            "description": "Meditar en la oscuridad durante 4h seguidas otorga los mismos beneficios que un Descanso Largo y otorga +5 en tiradas de Percepción y Perspicacia durante 6H"
         }
     ]
 }

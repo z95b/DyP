@@ -15,7 +15,7 @@
     "abilities": [
         {
             "name": "Lengüetazo",
-            "description": "Puedes tomar objetos con tu lengua a una distancia de 4 casillas (6m)."
+            "description": "Puedes tomar objetos con tu lengua a una distancia de 4 casillas (6m). Esto también puede servirte para impulsarte a ti hacia un sitio en específico, aunque si llevas armadura Media o Pesada requerirás de realizar una Prueba de Atletismo"
         },
         {
             "name": "Nube Tóxica",
@@ -23,7 +23,7 @@
         },
         {
             "name": "Delicia",
-            "description": "Si hay insectos en la zona donde descanses, recuperarás 1d10 de vida adicional."
+            "description": "Si hay insectos en la zona donde descanses, recuperarás 1d10 de vida adicional y te sacias."
         }
     ]
 }

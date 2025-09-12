@@ -14,11 +14,11 @@
     "abilities": [
         {
             "name": "Dureza de Montaña",
-            "description": "Eres resistente al daño de veneno (-50%) y tienes ventaja en tiradas de salvación contra ser Envenenado."
+            "description": "Eres resistente al daño de veneno (-50%) y tienes ventaja en tiradas de salvación contra ser Envenenado o Drogado."
         },
         {
             "name": "Valentía",
-            "description": "No puedes ser Intimidado ni Asustado."
+            "description": "Todas las tiradas de Salvación de Carisma relacionadas a Asustarte, Aterrarte o Intimidarte tienen ventaja."
         },
         {
             "name": "Hierro en la Sangre",

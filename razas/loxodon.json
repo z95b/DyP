@@ -16,7 +16,7 @@
     "abilities": [
         {
             "name": "Piel Dura",
-            "description": "Tu CA sin armadura es 12 + Modificador de Constitución. Puedes usar esta CA sin armadura incluso si llevas puesta una armadura que te proporcione una menor CA."
+            "description": "Tu CA sin armadura es 17 + Modificador de Constitución. Puedes usar esta CA sin armadura incluso si llevas puesta una armadura que te proporcione una menor CA."
         },
         {
             "name": "Tamaño Considerable",

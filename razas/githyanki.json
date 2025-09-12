@@ -19,6 +19,10 @@
         {
             "name": "Mano Psiónica",
             "description": "Obtienes el truco 'Mano de Mago', pero esta es invisible."
+        },
+        {
+            "name": "Conocimiento bélico",
+            "description": "Con solo unos dias de práctica, aprendes a usar cualquier arma."
         }
     ]
 }

@@ -15,7 +15,7 @@
     "abilities": [
         {
             "name": "Sentidos Agudizados",
-            "description": "Obtienes competencia en Percepción, enfocada en estímulos acústicos."
+            "description": "Obtienes competencia en Percepción, enfocada en estímulos acústicosAdemás, los ataques sorpresa no toman ventaja contra ti."
         },
         {
             "name": "Suerte Feérica",

@@ -19,11 +19,11 @@
         },
         {
             "name": "Maestro de Mentirosos",
-            "description": "Tus engaños tienen ventaja siempre que no te hayan pillado mintiendo anteriormente o si no ha oído rumores sobre ti"
+            "description": "Tus engaños tienen ventaja siempre que no te hayan pillado mintiendo anteriormente o si no ha oído rumores sobre ti. Esto aplica a tiradas de Intimidación, Interpretación, Persuasión y Engaño"        
         },
         {
             "name": "Encanto Feérico",
-            "description": "Puedes emplear Hechizar persona como acción sin necesidad de un espacio de conjuro 1 vez por Descanso Corto"
+            "description": "Puedes emplear Hechizar persona como acción sin necesidad de un espacio de conjuro 1 vez por Descanso Corto. Si posees 4 o más de Carisma, puedes usarlo como conjuro de nivel 4"
         }
     ]
 }

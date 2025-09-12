@@ -1,0 +1,34 @@
+{
+    "raceName": "🟦 VARIANTE: Sellado",
+    "raceDescription": "Criatura cuya esencia ha sido confinada dentro de un objeto físico (botella, libro, espada, joya...). Su estado depende del contenedor y puede permanecer así hasta que sea destruido o se deteriore. Esta condición concede poderes únicos pero limita el movimiento.",
+    "bonusRules": "Mantienes las bonificaciones raciales de tu raza original. Además, eliges +1 en una característica a tu elección.",
+    "movementSpeed": "0 (excepto en casos muy concretos definidos por el DM)",
+    "lifeSpan": "Hasta ser destruido o que el estado físico del contenedor sea deplorable.",
+    "attributes": {
+        "A elegir": "+1"
+    },
+    "sizes": [1,2,3,4,5,6],
+    "abilities": [
+{"name":"",
+            "description": ""
+        }
+        ,{
+            "name": "Utilitarismo",
+            "description": "Tu bonificador de característica aumenta con el nivel y puede superar 20. Nivel 1 → +1, Nivel 3 → +2, Nivel 5 → +3, Nivel 7 → +4, Nivel 9 → +5. Este bono se aplica a las tiradas relacionadas con tu contenedor o propósito."
+        },
+        {
+            "name": "Salir de Forma (Opcional)",
+            "description": "Puedes manifestarte hasta a 10 metros de tu contenedor en una forma similar a tu aspecto original, con un aire fantasmagórico o mágico. Esto depende de las condiciones de tu confinamiento."
+        },
+        {
+            "name": "Poderes del Contenedor",
+            "description": "Puedes definir entre 1 y 5 efectos o habilidades propios de tu receptáculo. Además, quien te use como objeto recibe el bono de Utilitarismo en tiradas relacionadas contigo y tu propósito."
+        }
+    ],
+    "relations": {},
+    "languages": [
+        "Los de tu raza original"
+    ],
+    "nightVision": false,
+    "referenceLink": ""
+}

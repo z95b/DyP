@@ -1,6 +1,6 @@
 {
     "raceName": "Kobolds",
-    "raceDescription": "Los Kobolds son frecuentemente confundidos con dracónidos jóvenes, pero no pueden ser más diferentes los unos de los otros. Estos son más bajos en general, y sus escamas cumplen más una función decorativa y reproductiva que defensiva. Su agilidad y gran habilidad en el habla los hacen contrapartes muy interesantes de sus feroces versiones dracónicas: Un Kobold puede que no sea el mejor luchador, pero sus grandes dotes de actuación y sus movimientos veloces pueden marcar la diferencia en una aventura.",
+    "raceDescription": "Los Kobolds son frecuentemente confundidos con dracónidos jóvenes, pero no pueden ser más diferentes los unos de los otros. Estos son más bajos en general, y sus escamas cumplen más una función decorativa y reproductiva que defensiva. Su agilidad y gran habilidad en el habla los hacen contrapartes muy interesantes de sus feroces versiones dracónicas: Un Kobold puede que no sea el mejor luchador, pero sus grandes dotes de actuación y sus movimientos veloces pueden marcar la diferencia en una aventura. Los kóbolds alcanzan la edad adulta a los 6 años y pueden vivir hasta 120 años, pero rara vez lo hacen.",
     "attributes": {
         "Destreza": "+2",
         "Constitución": "+1"
@@ -10,15 +10,25 @@
         2,
         3
     ],
-    "longevity": "60-80",
+    "longevity": "60-120",
     "abilities": [
+        
         {
             "name": "Aliento alcohólico",
             "description": "No sufre los afectos negativos del alcohol pero si se emborrachan. Al beber alcohol, eres capaz de escupir fuego como acción. Este ataque toma diferentes formas dependiendo de la cantidad y calidad del alcohol. \n\n -Baja Calidad: Descarga de Fuego (Escala con los Niveles del truco)\n-Media Calidad: Bola de Fuego (Aumenta 1d6 a nivel 5,11 y 17)\n-Alta Calidad: Tormenta de Fuego \n\n Puedes usar este  rasgo una vez por Descanso Corto"
         },
         {
             "name": "Regeneración extrema",
-            "description": "Tus heridas, sean del tipo que sean, se regenerarán al cabo de 1 semana. Heridas mayores se regenerarán cuando el cuerpo pueda operar normalmente. Heridas mortales a corto plazo no se podrán curar (Decapitaciones, Destrucción de órganos vitales, etc)"
+     "description": "Tus heridas, sean del tipo que sean, se regenerarán al cabo de 1 semana. Heridas mayores se regenerarán cuando el cuerpo pueda operar normalmente. Heridas mortales no se podrán curar (Decapitaciones, Destrucción de órganos vitales que no se traten rapidamente, etc)"
+             } ,
+        {
+            "name": "Llanto dracónico",
+            "description":"Como acción extra, sueltas un grito a tus enemigos que se encuentran a 2c de ti. Hasta el comienzo de tu próximo turno, tú y tus aliados tenéis ventaja en las tiradas de ataque contra cualquiera de esos enemigos que puedan oírte. Puedes usar este rasgo una cantidad de veces igual a tu bonificación de competencia y recuperarás todos los usos gastados cuando termines un descanso largo."
+
         }
-    ]
+
+        
+    ],
+        "nightVision": true
+
 }

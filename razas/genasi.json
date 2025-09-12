@@ -20,6 +20,10 @@
             "description": "Obtienes competencia en la habilidad Arcano."
         },
         {
+          "name": "Deseo Concedido",
+            "description": "Como Conjuro de nivel 9, puedes emplear Deseo 1 sola vez en toda tu vida. Debes ser mínimo un aventuraro nivel 8 en total para llevar a cabo esta acción"
+        },
+        {
             "name": "Fuego (Tipo de Genasi)",
             "description": "Resistencia al daño de Fuego. Conoces el truco 'Crear Llama' (escala con tu Aptitud Mágica). Puedes lanzar 'Manos Ardientes' como acción 1 vez por descanso corto (añades 1d6 por cada 4 niveles)."
         },

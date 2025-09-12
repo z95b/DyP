@@ -16,7 +16,8 @@
     "abilities": [
         {
             "name": "En Terreno Conocido",
-            "description": "Moverse en terreno difícil acuoso te otorga 2 casillas adicionales de movimiento."
+            "description": "Moverse en terreno difícil acuoso te otorga 2 casillas adicionales de movimiento y puedes respirar indefinidamente bajo el agua"
+
         },
         {
             "name": "Como en Casa",

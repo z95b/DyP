@@ -20,6 +20,10 @@
         {
             "name": "Herencia del Padre",
             "description": "Obtienes una de estas habilidades para usar como acción (Descanso Corto). Estas habilidades aumentan en 1 su dado de daño a los niveles 5, 11 y 17:\n- Fuego (Manos Ardientes): 3d6.\n- Hielo (Ataque en Cono): 3d6.\n- Veneno (Nube Tóxica): 2d6 x 2T.\n- Eléctrico (Ola Atronadora): 2d8.\n- Ácido (Salpicadura Ácida): 1d8 x 2 Objetivos."
+        },
+        {
+            "name": "Mordisco Sanador",
+            "description": "Puedes atacar a una criatura cercana con un mordisco como acción de ataque. Produces 1d6 de daño + Fuerza y te curas el 100% del daño producido SIEMPRE Y CUANDO se dañe los PG's del enemigo y no PG's Temporales"
         }
     ]
 }

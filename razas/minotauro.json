@@ -14,7 +14,7 @@
     "abilities": [
         {
             "name": "Embestida",
-            "description": "Como acción, puedes activar 'Embestida'. Cargas con una furia sobrenatural hacia un objetivo, avanzando hasta detenerte en un obstáculo suficientemente resistente. Los enemigos en tu camino (3 casillas de amplitud) deben realizar una salvada de Acrobacias (Destreza). Si fallan, son arrastrados hasta el final de la carga y reciben 1d8 de daño por cada objeto endeble atravesado + 1d8 por tu Modificador de Fuerza."
+            "description": "Como acción, puedes activar 'Embestida'. Cargas con una furia sobrenatural hacia un objetivo, avanzando hasta detenerte en un obstáculo suficientemente resistente. Los enemigos en tu camino (3 casillas de amplitud) deben realizar una salvada de Acrobacias (Destreza). Si fallan, son arrastrados hasta el final de la carga y reciben 1d8 de daño por cada objeto endeble atravesado + 1d8 por tu Modificador de Fuerza. Puedes usar esta habilidad (1 + Mod. Fuerza) por Descanso largo."
         },
         {
             "name": "Furia de las Bestias",

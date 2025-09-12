@@ -3,7 +3,7 @@
     "raceDescription": "Los centauros son usualmente tribales, alejados de las ciudades y residiendo en comunidades de su propia especie, aunque eso no impide verlos frecuentemente por el mundo. Su robusto cuerpo les permite una gran versatilidad: ávidos guerreros, sabios lógicos o… ambas cosas. Incluso buenos amantes si te gustan las emociones fuertes… y duras.",
     "bonusRules": "",
     "movementSpeed": "7",
-    "lifeSpan": "70-120",
+    "lifeSpan": "100-150",
     "attributes": {
         "Destreza": "+2",
         "Sabiduría": "+1"
